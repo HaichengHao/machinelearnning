@@ -1,0 +1,28 @@
+1 pip install virtualenv
+2 pip install virtualenvwrapper-win
+
+
+3为了防止c盘爆炸的问题，设置环境变量 WORKON_HOME   D:\自己指定 修改之后重启电脑
+
+
+4创建虚拟环境 mkvirtualenv  名称
+
+5进入虚拟环境 workon  虚拟环境名称
+6 离开 deactivate 
+
+7删除虚拟环境的命令 rmvirtualenv 名称
+
+
+section2
+1 pip配置jupyter
+pip install jupyter
+
+2汉化jupyter
+pip install jupyterlab-language-pack-zh-CN
+
+然后启动jupyter notebook在Setting中设置语言为中文
+
+3jupyter git
+pip install jupyterlab-git
+
+安装完成后重新构建 jupyter lab build
