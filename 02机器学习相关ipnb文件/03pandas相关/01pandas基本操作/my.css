@@ -1,0 +1,39 @@
+%%HTML
+<style type="text/css">
+    h1{
+        color:#FE7E00;
+        font-weight:bold;
+    }
+    h2{
+        color:#0D47A1;
+        # font-weight:bold;
+    }
+    h3{
+        color:#408080;
+    }
+    th{
+        border:1px solid black !important;
+        color:white !important;
+        background-color:#FE7E00 !important;
+    }
+    # th td{
+    #     border:1px solid black;
+    # }
+    tr{
+        border:1px solid black !important;
+        border-collapse:collapse !important;
+    }
+    td{
+        border:1px solid black !important;
+    }
+    tr td:hover{
+        background-color:blueviolet !important;
+        color:white !important;
+        transform:scale(1.05)
+    }
+    .code_{
+        background-color:#1c1f2b !important;
+        color:#9dbed3 !important; 
+        white-sapce:pre-wrap;
+    }
+</style>

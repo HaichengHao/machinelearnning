@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>virtualenv的一些相关配置</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 20px;
+
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            justify-content:space-between;
+            flex-wrap: nowrap;
+            background-color: aliceblue;
+        }
+
+        h2 {
+            color: blueviolet;
+        }
+
+        .pycode{
+            white-space: pre;
+            background-color: rgb(31, 30, 30);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>位置修改</h2>
+    <p>
+        安装虚拟环境之前，如果我们不设置虚拟环境安装的位置，
+        系统则会默认的将虚拟环境安装到固定位置(一般为系统盘(C盘))，
+        会增加我们系统盘的压力，这个时候我们就需要将虚拟环境的安装位置修改到其它任意位置
+    </p>
+    <h2>修改方式如下</h2>
+    <ol>
+        <li>点击Windows，搜索环境变量</li>
+        <li>编辑系统环境变量</li>
+        <li>新增一个字段WORKON_HOME,变量值为自己设置的位置(最好指定D盘)</li>
+        <li>重启电脑激活环境变量</li>
+    </ol>
+    <h2>
+        python安装虚拟环境
+    </h2>
+    <p>Python安装虚拟环境可以依赖于许多工具，如virtualenv、virtualenvwrapper和pipenv等</p>
+    <div class="pycode">
+        pip install virtualenv *#python2的安装
+        pip3 install virtualenv *#python3的安装
+    </div>
+    <p>创建虚拟环境使用命令 mkvirtualenv 名称自拟</p>
+    <p>创建虚拟环境的时候还可以指定Python解释器，如virtualenv -p XXX\python.exe [virutalenv name] XXX\python.exe为python解释器的具体位置路径</p>
+    <p>进入虚拟环境 workon 名称</p>
+    <p>退出虚拟环境 deactivate</p>
+    <p>查看已经创建的虚拟环境 lsvirtualenv</p>
+    <p>删除虚拟环境 rmvirtualenv 虚拟环境名</p>
+    <h2>virtualenvwrapper</h2>
+    <p>virtualenvwrapper可以让管理虚拟环境变得更加简单，不用再跑到某个目录下通过virtualenv来创建虚拟环境，并且激活的时候也不需要跑到具体的目录下去激活</p>
+    <div class="pycode">
+        pip install virtualenvwrapper-win
+    </div>
+    <div class="code">
+        linux写法
+        pip install virtualenvwrapper
+        编辑根目录下的.bashrc文件，添加下面几行:
+        export WORKON_HOME=$HOME/.virtualenvs
+        export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+        source /usr/local/bin/virtualenvwrapper.sh
+        并执行source .bashrc使其生效
+    </div>
+</body>
+
+</html>
