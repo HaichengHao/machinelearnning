@@ -1,0 +1,930 @@
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>XGBoost案例介绍 | 传智播客-人工智能学院</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="Edward Meng">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-code/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+        <link rel="stylesheet" href="../custom_style.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../05-集成学习进阶/section4.html" />
+    
+    
+    <link rel="prev" href="../05-集成学习进阶/section2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.3"
+        data-chapter-title="XGBoost案例介绍"
+        data-filepath="05-集成学习进阶/section3.md"
+        data-basepath=".."
+        data-revision="Thu Aug 12 2021 20:16:16 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="http://www.itheima.com/" target="blank" class="custom-link">黑马程序员</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        机器学习（算法篇2）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="01-朴素贝叶斯/index.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        朴素贝叶斯
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="01-朴素贝叶斯/section1.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        朴素贝叶斯算法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01-朴素贝叶斯/section2.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        概率基础复习
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-朴素贝叶斯/section3.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        案例：商品评论情感分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="01-朴素贝叶斯/section4.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        朴素贝叶斯算法总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="02-支持向量机/index.html">
+            
+                
+                    <a href="../02-支持向量机/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        支持向量机
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="02-支持向量机/section1.html">
+            
+                
+                    <a href="../02-支持向量机/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        SVM算法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="02-支持向量机/section2.html">
+            
+                
+                    <a href="../02-支持向量机/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        SVM算法api初步使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="02-支持向量机/section3.html">
+            
+                
+                    <a href="../02-支持向量机/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        SVM算法原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="02-支持向量机/section4.html">
+            
+                
+                    <a href="../02-支持向量机/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        SVM的损失函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="02-支持向量机/section5.html">
+            
+                
+                    <a href="../02-支持向量机/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        SVM的核方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="02-支持向量机/section6.html">
+            
+                
+                    <a href="../02-支持向量机/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        SVM回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="02-支持向量机/section7.html">
+            
+                
+                    <a href="../02-支持向量机/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        SVM算法api再介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="02-支持向量机/section8.html">
+            
+                
+                    <a href="../02-支持向量机/section8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        案例：数字识别器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="02-支持向量机/section9.html">
+            
+                
+                    <a href="../02-支持向量机/section9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                        SVM总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="03-EM算法/index.html">
+            
+                
+                    <a href="../03-EM算法/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        EM算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="03-EM算法/section1.html">
+            
+                
+                    <a href="../03-EM算法/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        初识EM算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="03-EM算法/section2.html">
+            
+                
+                    <a href="../03-EM算法/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        EM算法介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="03-EM算法/section3.html">
+            
+                
+                    <a href="../03-EM算法/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        EM算法实例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="04-HMM模型/index.html">
+            
+                
+                    <a href="../04-HMM模型/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        HMM模型
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="04-HMM模型/section1.html">
+            
+                
+                    <a href="../04-HMM模型/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        马尔科夫链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="04-HMM模型/section2.html">
+            
+                
+                    <a href="../04-HMM模型/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        HMM简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="04-HMM模型/section3.html">
+            
+                
+                    <a href="../04-HMM模型/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        HMM模型基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="04-HMM模型/section4.html">
+            
+                
+                    <a href="../04-HMM模型/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        前向后向算法评估观察序列概率
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="04-HMM模型/section5.html">
+            
+                
+                    <a href="../04-HMM模型/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        维特比算法解码隐藏状态
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="04-HMM模型/section6.html">
+            
+                
+                    <a href="../04-HMM模型/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        鲍姆-韦尔奇算法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="04-HMM模型/section7.html">
+            
+                
+                    <a href="../04-HMM模型/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        HMM模型api介绍
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="05-集成学习进阶/index.html">
+            
+                
+                    <a href="../05-集成学习进阶/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        集成学习进阶
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="05-集成学习进阶/section1.html">
+            
+                
+                    <a href="../05-集成学习进阶/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        XGBoost算法原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="05-集成学习进阶/section2.html">
+            
+                
+                    <a href="../05-集成学习进阶/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        XGBoost算法api介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.3" data-path="05-集成学习进阶/section3.html">
+            
+                
+                    <a href="../05-集成学习进阶/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        XGBoost案例介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="05-集成学习进阶/section4.html">
+            
+                
+                    <a href="../05-集成学习进阶/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        XGBoost-OTTO案例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="05-集成学习进阶/section5.html">
+            
+                
+                    <a href="../05-集成学习进阶/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        LightGBM
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="05-集成学习进阶/section6.html">
+            
+                
+                    <a href="../05-集成学习进阶/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        LightGBM算法api介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="05-集成学习进阶/section7.html">
+            
+                
+                    <a href="../05-集成学习进阶/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.7.</b>
+                        
+                        LightGBM案例介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="05-集成学习进阶/section8.html">
+            
+                
+                    <a href="../05-集成学习进阶/section8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.8.</b>
+                        
+                        案例：《绝地求生》玩家排名预测
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="06-拓展知识/index.html">
+            
+                
+                    <a href="../06-拓展知识/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        拓展知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="06-拓展知识/section1.html">
+            
+                
+                    <a href="../06-拓展知识/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        向量与矩阵的范数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="06-拓展知识/section2.html">
+            
+                
+                    <a href="../06-拓展知识/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        拉格朗日乘子法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="06-拓展知识/section3.html">
+            
+                
+                    <a href="../06-拓展知识/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        极大似然函数取对数原因
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本书使用 GitBook 发布
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >传智播客-人工智能学院</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="113-xgboost&#x6848;&#x4F8B;&#x4ECB;&#x7ECD;">11.3 xgboost&#x6848;&#x4F8B;&#x4ECB;&#x7ECD;</h1>
+<h2 id="1-&#x6848;&#x4F8B;&#x80CC;&#x666F;">1 &#x6848;&#x4F8B;&#x80CC;&#x666F;</h2>
+<blockquote>
+<p>&#x8BE5;&#x6848;&#x4F8B;&#x548C;&#x524D;&#x9762;&#x51B3;&#x7B56;&#x6811;&#x4E2D;&#x6240;&#x7528;&#x6848;&#x4F8B;&#x4E00;&#x6837;&#x3002;</p>
+</blockquote>
+<p>&#x6CF0;&#x5766;&#x5C3C;&#x514B;&#x53F7;&#x6C89;&#x6CA1;&#x662F;&#x5386;&#x53F2;&#x4E0A;&#x6700;&#x81ED;&#x540D;&#x662D;&#x7740;&#x7684;&#x6C89;&#x8239;&#x4E8B;&#x4EF6;&#x4E4B;&#x4E00;&#x3002;1912&#x5E74;4&#x6708;15&#x65E5;&#xFF0C;&#x5728;&#x5979;&#x7684;&#x5904;&#x5973;&#x822A;&#x4E2D;&#xFF0C;&#x6CF0;&#x5766;&#x5C3C;&#x514B;&#x53F7;&#x5728;&#x4E0E;&#x51B0;&#x5C71;&#x76F8;&#x649E;&#x540E;&#x6C89;&#x6CA1;&#xFF0C;&#x5728;2224&#x540D;&#x4E58;&#x5BA2;&#x548C;&#x673A;&#x7EC4;&#x4EBA;&#x5458;&#x4E2D;&#x9020;&#x6210;1502&#x4EBA;&#x6B7B;&#x4EA1;&#x3002;&#x8FD9;&#x573A;&#x8038;&#x4EBA;&#x542C;&#x95FB;&#x7684;&#x60B2;&#x5267;&#x9707;&#x60CA;&#x4E86;&#x56FD;&#x9645;&#x793E;&#x4F1A;&#xFF0C;&#x5E76;&#x4E3A;&#x8239;&#x8236;&#x5236;&#x5B9A;&#x4E86;&#x66F4;&#x597D;&#x7684;&#x5B89;&#x5168;&#x89C4;&#x5B9A;&#x3002; &#x9020;&#x6210;&#x6D77;&#x96BE;&#x5931;&#x4E8B;&#x7684;&#x539F;&#x56E0;&#x4E4B;&#x4E00;&#x662F;&#x4E58;&#x5BA2;&#x548C;&#x673A;&#x7EC4;&#x4EBA;&#x5458;&#x6CA1;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x6551;&#x751F;&#x8247;&#x3002;&#x5C3D;&#x7BA1;&#x5E78;&#x5B58;&#x4E0B;&#x6C89;&#x6709;&#x4E00;&#x4E9B;&#x8FD0;&#x6C14;&#x56E0;&#x7D20;&#xFF0C;&#x4F46;&#x6709;&#x4E9B;&#x4EBA;&#x6BD4;&#x5176;&#x4ED6;&#x4EBA;&#x66F4;&#x5BB9;&#x6613;&#x751F;&#x5B58;&#xFF0C;&#x4F8B;&#x5982;&#x5987;&#x5973;&#xFF0C;&#x513F;&#x7AE5;&#x548C;&#x4E0A;&#x6D41;&#x793E;&#x4F1A;&#x3002; &#x5728;&#x8FD9;&#x4E2A;&#x6848;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x6C42;&#x60A8;&#x5B8C;&#x6210;&#x5BF9;&#x54EA;&#x4E9B;&#x4EBA;&#x53EF;&#x80FD;&#x5B58;&#x6D3B;&#x7684;&#x5206;&#x6790;&#x3002;&#x7279;&#x522B;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x6C42;&#x60A8;&#x8FD0;&#x7528;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x5DE5;&#x5177;&#x6765;&#x9884;&#x6D4B;&#x54EA;&#x4E9B;&#x4E58;&#x5BA2;&#x5E78;&#x514D;&#x4E8E;&#x60B2;&#x5267;&#x3002;</p>
+<blockquote>
+<p>&#x6848;&#x4F8B;&#xFF1A;<a href="https://www.kaggle.com/c/titanic/overview" target="_blank">https://www.kaggle.com/c/titanic/overview</a></p>
+</blockquote>
+<p>&#x6211;&#x4EEC;&#x63D0;&#x53D6;&#x5230;&#x7684;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x7684;&#x7279;&#x5F81;&#x5305;&#x62EC;&#x7968;&#x7684;&#x7C7B;&#x522B;&#xFF0C;&#x662F;&#x5426;&#x5B58;&#x6D3B;&#xFF0C;&#x4E58;&#x5750;&#x73ED;&#x6B21;&#xFF0C;&#x5E74;&#x9F84;&#xFF0C;&#x767B;&#x9646;home.dest&#xFF0C;&#x623F;&#x95F4;&#xFF0C;&#x8239;&#x548C;&#x6027;&#x522B;&#x7B49;&#x3002;</p>
+<blockquote>
+<p>&#x6570;&#x636E;&#xFF1A;<a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/titanic.txt" target="_blank">http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/titanic.txt</a></p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/0082zybply1gbq70pvrljj31oo0gcdph.jpg" alt="&#xE6;&#xB3;&#xB0;&#xE5;&#x9D;&#xA6;&#xE5;&#xB0;&#xBC;&#xE5;&#x2026;&#x2039;&#xE5;&#x8F;&#xB7;&#xE6;&#x2022;&#xB0;&#xE6;&#x8D;&#xAE;"></p>
+<p>&#x7ECF;&#x8FC7;&#x89C2;&#x5BDF;&#x6570;&#x636E;&#x5F97;&#x5230;:</p>
+<ul>
+<li><strong>1 &#x4E58;&#x5750;&#x73ED;&#x662F;&#x6307;&#x4E58;&#x5BA2;&#x73ED;&#xFF08;1&#xFF0C;2&#xFF0C;3&#xFF09;&#xFF0C;&#x662F;&#x793E;&#x4F1A;&#x7ECF;&#x6D4E;&#x9636;&#x5C42;&#x7684;&#x4EE3;&#x8868;&#x3002;</strong></li>
+<li><strong>2 &#x5176;&#x4E2D;age&#x6570;&#x636E;&#x5B58;&#x5728;&#x7F3A;&#x5931;&#x3002;</strong></li>
+</ul>
+<h2 id="2-&#x6B65;&#x9AA4;&#x5206;&#x6790;">2 &#x6B65;&#x9AA4;&#x5206;&#x6790;</h2>
+<ul>
+<li>1.&#x83B7;&#x53D6;&#x6570;&#x636E;</li>
+<li>2.&#x6570;&#x636E;&#x57FA;&#x672C;&#x5904;&#x7406;<ul>
+<li>2.1 &#x786E;&#x5B9A;&#x7279;&#x5F81;&#x503C;,&#x76EE;&#x6807;&#x503C;</li>
+<li>2.2 &#x7F3A;&#x5931;&#x503C;&#x5904;&#x7406;</li>
+<li>2.3 &#x6570;&#x636E;&#x96C6;&#x5212;&#x5206;</li>
+</ul>
+</li>
+<li>3.&#x7279;&#x5F81;&#x5DE5;&#x7A0B;(&#x5B57;&#x5178;&#x7279;&#x5F81;&#x62BD;&#x53D6;)</li>
+<li>4.&#x673A;&#x5668;&#x5B66;&#x4E60;(xgboost)</li>
+<li>5.&#x6A21;&#x578B;&#x8BC4;&#x4F30;</li>
+</ul>
+<h2 id="3-&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">3 &#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h2>
+<ul>
+<li>&#x5BFC;&#x5165;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">from</span> sklearn.feature_extraction <span class="hljs-keyword">import</span> DictVectorizer
+<span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+</code></pre>
+<ul>
+<li>1.&#x83B7;&#x53D6;&#x6570;&#x636E;</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-comment"># 1&#x3001;&#x83B7;&#x53D6;&#x6570;&#x636E;</span>
+titan = pd.read_csv(<span class="hljs-string">&quot;http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/titanic.txt&quot;</span>)
+</code></pre>
+<ul>
+<li>2.&#x6570;&#x636E;&#x57FA;&#x672C;&#x5904;&#x7406;</li>
+<li>2.1 &#x786E;&#x5B9A;&#x7279;&#x5F81;&#x503C;,&#x76EE;&#x6807;&#x503C;</li>
+</ul>
+<pre><code class="lang-python">x = titan[[<span class="hljs-string">&quot;pclass&quot;</span>, <span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;sex&quot;</span>]]
+y = titan[<span class="hljs-string">&quot;survived&quot;</span>]
+</code></pre>
+<ul>
+<li>2.2 &#x7F3A;&#x5931;&#x503C;&#x5904;&#x7406;</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x7F3A;&#x5931;&#x503C;&#x9700;&#x8981;&#x5904;&#x7406;&#xFF0C;&#x5C06;&#x7279;&#x5F81;&#x5F53;&#x4E2D;&#x6709;&#x7C7B;&#x522B;&#x7684;&#x8FD9;&#x4E9B;&#x7279;&#x5F81;&#x8FDB;&#x884C;&#x5B57;&#x5178;&#x7279;&#x5F81;&#x62BD;&#x53D6;</span>
+x[<span class="hljs-string">&apos;age&apos;</span>].fillna(x[<span class="hljs-string">&apos;age&apos;</span>].mean(), inplace=<span class="hljs-keyword">True</span>)
+</code></pre>
+<ul>
+<li>2.3 &#x6570;&#x636E;&#x96C6;&#x5212;&#x5206;</li>
+</ul>
+<pre><code class="lang-python">x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=<span class="hljs-number">22</span>)
+</code></pre>
+<ul>
+<li>3.&#x7279;&#x5F81;&#x5DE5;&#x7A0B;(&#x5B57;&#x5178;&#x7279;&#x5F81;&#x62BD;&#x53D6;)</li>
+</ul>
+<p>&#x7279;&#x5F81;&#x4E2D;&#x51FA;&#x73B0;&#x7C7B;&#x522B;&#x7B26;&#x53F7;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x884C;one-hot&#x7F16;&#x7801;&#x5904;&#x7406;(DictVectorizer)</p>
+<p>x.to_dict(orient=&quot;records&quot;) &#x9700;&#x8981;&#x5C06;&#x6570;&#x7EC4;&#x7279;&#x5F81;&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x5178;&#x6570;&#x636E;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x5BF9;&#x4E8E;x&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x5178;&#x6570;&#x636E;x.to_dict(orient=&quot;records&quot;)</span>
+<span class="hljs-comment"># [{&quot;pclass&quot;: &quot;1st&quot;, &quot;age&quot;: 29.00, &quot;sex&quot;: &quot;female&quot;}, {}]</span>
+
+transfer = DictVectorizer(sparse=<span class="hljs-keyword">False</span>)
+
+x_train = transfer.fit_transform(x_train.to_dict(orient=<span class="hljs-string">&quot;records&quot;</span>))
+x_test = transfer.fit_transform(x_test.to_dict(orient=<span class="hljs-string">&quot;records&quot;</span>))
+</code></pre>
+<hr>
+<ul>
+<li>4.xgboost&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x548C;&#x6A21;&#x578B;&#x8BC4;&#x4F30;</li>
+</ul>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x6A21;&#x578B;&#x521D;&#x6B65;&#x8BAD;&#x7EC3;</span>
+<span class="hljs-keyword">from</span> xgboost <span class="hljs-keyword">import</span> XGBClassifier
+xg = XGBClassifier()
+
+xg.fit(x_train, y_train)
+
+xg.score(x_test, y_test)
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x9488;&#x5BF9;max_depth&#x8FDB;&#x884C;&#x6A21;&#x578B;&#x8C03;&#x4F18;</span>
+depth_range = range(<span class="hljs-number">10</span>)
+score = []
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> depth_range:
+    xg = XGBClassifier(eta=<span class="hljs-number">1</span>, gamma=<span class="hljs-number">0</span>, max_depth=i)
+    xg.fit(x_train, y_train)
+    s = xg.score(x_test, y_test)
+    print(s)
+    score.append(s)
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x7ED3;&#x679C;&#x53EF;&#x89C6;&#x5316;</span>
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+plt.plot(depth_range, score)
+
+plt.show()
+</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/0082zybply1gbq77zmbzxj30ok0fa759.jpg" alt="image-20200209155048100" style="zoom: 50%;"></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../05-集成学习进阶/section2.html" class="navigation navigation-prev " aria-label="Previous page: XGBoost算法api介绍"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../05-集成学习进阶/section4.html" class="navigation navigation-next " aria-label="Next page: XGBoost-OTTO案例"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-code/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"code":{"copyButtons":true},"chart":{"type":"c3"},"splitter":{},"expandable-chapters":{},"graph":{},"katex":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

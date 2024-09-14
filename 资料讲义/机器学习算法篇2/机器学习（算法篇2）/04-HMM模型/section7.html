@@ -1,0 +1,897 @@
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>HMM模型api介绍 | 传智播客-人工智能学院</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="Edward Meng">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-code/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+        <link rel="stylesheet" href="../custom_style.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../05-集成学习进阶/index.html" />
+    
+    
+    <link rel="prev" href="../04-HMM模型/section6.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="4.7"
+        data-chapter-title="HMM模型api介绍"
+        data-filepath="04-HMM模型/section7.md"
+        data-basepath=".."
+        data-revision="Thu Aug 12 2021 20:16:16 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="http://www.itheima.com/" target="blank" class="custom-link">黑马程序员</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        机器学习（算法篇2）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="01-朴素贝叶斯/index.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        朴素贝叶斯
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="01-朴素贝叶斯/section1.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        朴素贝叶斯算法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01-朴素贝叶斯/section2.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        概率基础复习
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-朴素贝叶斯/section3.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        案例：商品评论情感分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="01-朴素贝叶斯/section4.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        朴素贝叶斯算法总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="02-支持向量机/index.html">
+            
+                
+                    <a href="../02-支持向量机/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        支持向量机
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="02-支持向量机/section1.html">
+            
+                
+                    <a href="../02-支持向量机/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        SVM算法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="02-支持向量机/section2.html">
+            
+                
+                    <a href="../02-支持向量机/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        SVM算法api初步使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="02-支持向量机/section3.html">
+            
+                
+                    <a href="../02-支持向量机/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        SVM算法原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="02-支持向量机/section4.html">
+            
+                
+                    <a href="../02-支持向量机/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        SVM的损失函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="02-支持向量机/section5.html">
+            
+                
+                    <a href="../02-支持向量机/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        SVM的核方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="02-支持向量机/section6.html">
+            
+                
+                    <a href="../02-支持向量机/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        SVM回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="02-支持向量机/section7.html">
+            
+                
+                    <a href="../02-支持向量机/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        SVM算法api再介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="02-支持向量机/section8.html">
+            
+                
+                    <a href="../02-支持向量机/section8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        案例：数字识别器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="02-支持向量机/section9.html">
+            
+                
+                    <a href="../02-支持向量机/section9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                        SVM总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="03-EM算法/index.html">
+            
+                
+                    <a href="../03-EM算法/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        EM算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="03-EM算法/section1.html">
+            
+                
+                    <a href="../03-EM算法/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        初识EM算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="03-EM算法/section2.html">
+            
+                
+                    <a href="../03-EM算法/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        EM算法介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="03-EM算法/section3.html">
+            
+                
+                    <a href="../03-EM算法/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        EM算法实例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="04-HMM模型/index.html">
+            
+                
+                    <a href="../04-HMM模型/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        HMM模型
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="04-HMM模型/section1.html">
+            
+                
+                    <a href="../04-HMM模型/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        马尔科夫链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="04-HMM模型/section2.html">
+            
+                
+                    <a href="../04-HMM模型/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        HMM简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="04-HMM模型/section3.html">
+            
+                
+                    <a href="../04-HMM模型/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        HMM模型基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="04-HMM模型/section4.html">
+            
+                
+                    <a href="../04-HMM模型/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        前向后向算法评估观察序列概率
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="04-HMM模型/section5.html">
+            
+                
+                    <a href="../04-HMM模型/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        维特比算法解码隐藏状态
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="04-HMM模型/section6.html">
+            
+                
+                    <a href="../04-HMM模型/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        鲍姆-韦尔奇算法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.7" data-path="04-HMM模型/section7.html">
+            
+                
+                    <a href="../04-HMM模型/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        HMM模型api介绍
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="05-集成学习进阶/index.html">
+            
+                
+                    <a href="../05-集成学习进阶/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        集成学习进阶
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="05-集成学习进阶/section1.html">
+            
+                
+                    <a href="../05-集成学习进阶/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        XGBoost算法原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="05-集成学习进阶/section2.html">
+            
+                
+                    <a href="../05-集成学习进阶/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        XGBoost算法api介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="05-集成学习进阶/section3.html">
+            
+                
+                    <a href="../05-集成学习进阶/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        XGBoost案例介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="05-集成学习进阶/section4.html">
+            
+                
+                    <a href="../05-集成学习进阶/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        XGBoost-OTTO案例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="05-集成学习进阶/section5.html">
+            
+                
+                    <a href="../05-集成学习进阶/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        LightGBM
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="05-集成学习进阶/section6.html">
+            
+                
+                    <a href="../05-集成学习进阶/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        LightGBM算法api介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="05-集成学习进阶/section7.html">
+            
+                
+                    <a href="../05-集成学习进阶/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.7.</b>
+                        
+                        LightGBM案例介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="05-集成学习进阶/section8.html">
+            
+                
+                    <a href="../05-集成学习进阶/section8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.8.</b>
+                        
+                        案例：《绝地求生》玩家排名预测
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="06-拓展知识/index.html">
+            
+                
+                    <a href="../06-拓展知识/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        拓展知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="06-拓展知识/section1.html">
+            
+                
+                    <a href="../06-拓展知识/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        向量与矩阵的范数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="06-拓展知识/section2.html">
+            
+                
+                    <a href="../06-拓展知识/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        拉格朗日乘子法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="06-拓展知识/section3.html">
+            
+                
+                    <a href="../06-拓展知识/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        极大似然函数取对数原因
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本书使用 GitBook 发布
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >传智播客-人工智能学院</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="107-hmm&#x6A21;&#x578B;api&#x4ECB;&#x7ECD;">10.7 HMM&#x6A21;&#x578B;API&#x4ECB;&#x7ECD;</h1>
+<h2 id="&#x5B66;&#x4E60;&#x76EE;&#x6807;">&#x5B66;&#x4E60;&#x76EE;&#x6807;</h2>
+<ul>
+<li>&#x6307;&#x5BFC;HMM&#x6A21;&#x578B;API&#x4F7F;&#x7528;&#x65B9;&#x6CD5;</li>
+</ul>
+<hr>
+<h2 id="1-api&#x7684;&#x5B89;&#x88C5;&#xFF1A;">1 API&#x7684;&#x5B89;&#x88C5;&#xFF1A;</h2>
+<p>&#x5B98;&#x7F51;&#x94FE;&#x63A5;&#xFF1A;<a href="https://hmmlearn.readthedocs.io/en/latest/" target="_blank">https://hmmlearn.readthedocs.io/en/latest/</a></p>
+<pre><code class="lang-python">pip3 install hmmlearn
+</code></pre>
+<h2 id="2-hmmlearn&#x4ECB;&#x7ECD;">2 hmmlearn&#x4ECB;&#x7ECD;</h2>
+<p>hmmlearn&#x5B9E;&#x73B0;&#x4E86;&#x4E09;&#x79CD;HMM&#x6A21;&#x578B;&#x7C7B;&#xFF0C;&#x6309;&#x7167;&#x89C2;&#x6D4B;&#x72B6;&#x6001;&#x662F;&#x8FDE;&#x7EED;&#x72B6;&#x6001;&#x8FD8;&#x662F;&#x79BB;&#x6563;&#x72B6;&#x6001;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#x3002;</p>
+<p>GaussianHMM&#x548C;GMMHMM&#x662F;&#x8FDE;&#x7EED;&#x89C2;&#x6D4B;&#x72B6;&#x6001;&#x7684;HMM&#x6A21;&#x578B;&#xFF0C;&#x800C;MultinomialHMM&#x662F;&#x79BB;&#x6563;&#x89C2;&#x6D4B;&#x72B6;&#x6001;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x4E5F;&#x662F;&#x6211;&#x4EEC;&#x5728;HMM&#x539F;&#x7406;&#x7CFB;&#x5217;&#x7BC7;&#x91CC;&#x9762;&#x4F7F;&#x7528;&#x7684;&#x6A21;&#x578B;&#x3002;</p>
+<p>&#x5728;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x6211;&#x4EEC;&#x524D;&#x9762;&#x4E00;&#x76F4;&#x8BB2;&#x7684;&#x5173;&#x4E8E;&#x79BB;&#x6563;&#x72B6;&#x6001;&#x7684;MultinomialHMM&#x6A21;&#x578B;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;MultinomialHMM&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x91CC;&#x9762;&#x6709;&#x51E0;&#x4E2A;&#x5E38;&#x7528;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<ul>
+<li>&quot;startprob_&quot;&#x53C2;&#x6570;&#x5BF9;&#x5E94;&#x6211;&#x4EEC;&#x7684;&#x9690;&#x85CF;&#x72B6;&#x6001;&#x521D;&#x59CB;&#x5206;&#x5E03;&#x3A0;, </li>
+<li>&quot;transmat_&quot;&#x5BF9;&#x5E94;&#x6211;&#x4EEC;&#x7684;&#x72B6;&#x6001;&#x8F6C;&#x79FB;&#x77E9;&#x9635;A, </li>
+<li>&quot;emissionprob_&quot;&#x5BF9;&#x5E94;&#x6211;&#x4EEC;&#x7684;&#x89C2;&#x6D4B;&#x72B6;&#x6001;&#x6982;&#x7387;&#x77E9;&#x9635;B&#x3002;</li>
+</ul>
+<h2 id="3-multinomialhmm&#x5B9E;&#x4F8B;">3 MultinomialHMM&#x5B9E;&#x4F8B;</h2>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x7528;&#x6211;&#x4EEC;&#x5728;&#x524D;&#x9762;&#x8BB2;&#x7684;&#x5173;&#x4E8E;&#x7403;&#x7684;&#x90A3;&#x4E2A;&#x4F8B;&#x5B50;&#x4F7F;&#x7528;MultinomialHMM&#x8DD1;&#x4E00;&#x904D;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">from</span> hmmlearn <span class="hljs-keyword">import</span> hmm
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x8BBE;&#x5B9A;&#x9690;&#x85CF;&#x72B6;&#x6001;&#x7684;&#x96C6;&#x5408;</span>
+states = [<span class="hljs-string">&quot;box 1&quot;</span>, <span class="hljs-string">&quot;box 2&quot;</span>, <span class="hljs-string">&quot;box3&quot;</span>]
+n_states = len(states)
+
+<span class="hljs-comment"># &#x8BBE;&#x5B9A;&#x89C2;&#x5BDF;&#x72B6;&#x6001;&#x7684;&#x96C6;&#x5408;</span>
+observations = [<span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-string">&quot;white&quot;</span>]
+n_observations = len(observations)
+
+<span class="hljs-comment"># &#x8BBE;&#x5B9A;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x5206;&#x5E03;</span>
+start_probability = np.array([<span class="hljs-number">0.2</span>, <span class="hljs-number">0.4</span>, <span class="hljs-number">0.4</span>])
+
+<span class="hljs-comment"># &#x8BBE;&#x5B9A;&#x72B6;&#x6001;&#x8F6C;&#x79FB;&#x6982;&#x7387;&#x5206;&#x5E03;&#x77E9;&#x9635;</span>
+transition_probability = np.array([
+  [<span class="hljs-number">0.5</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0.3</span>],
+  [<span class="hljs-number">0.3</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0.2</span>],
+  [<span class="hljs-number">0.2</span>, <span class="hljs-number">0.3</span>, <span class="hljs-number">0.5</span>]
+])
+
+<span class="hljs-comment"># &#x8BBE;&#x5B9A;&#x89C2;&#x6D4B;&#x72B6;&#x6001;&#x6982;&#x7387;&#x77E9;&#x9635;</span>
+emission_probability = np.array([
+  [<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>],
+  [<span class="hljs-number">0.4</span>, <span class="hljs-number">0.6</span>],
+  [<span class="hljs-number">0.7</span>, <span class="hljs-number">0.3</span>]
+])
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x8BBE;&#x5B9A;&#x6A21;&#x578B;&#x53C2;&#x6570;</span>
+model = hmm.MultinomialHMM(n_components=n_states)
+model.startprob_=start_probability  <span class="hljs-comment"># &#x521D;&#x59CB;&#x72B6;&#x6001;&#x5206;&#x5E03;</span>
+model.transmat_=transition_probability  <span class="hljs-comment"># &#x72B6;&#x6001;&#x8F6C;&#x79FB;&#x6982;&#x7387;&#x5206;&#x5E03;&#x77E9;&#x9635;</span>
+model.emissionprob_=emission_probability  <span class="hljs-comment"># &#x89C2;&#x6D4B;&#x72B6;&#x6001;&#x6982;&#x7387;&#x77E9;&#x9635;</span>
+</code></pre>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x8DD1;&#x4E00;&#x8DD1;HMM&#x95EE;&#x9898;&#x4E09;&#x7EF4;&#x7279;&#x6BD4;&#x7B97;&#x6CD5;&#x7684;&#x89E3;&#x7801;&#x8FC7;&#x7A0B;&#xFF0C;&#x4F7F;&#x7528;&#x548C;&#x4E4B;&#x524D;&#x4E00;&#x6837;&#x7684;&#x89C2;&#x6D4B;&#x5E8F;&#x5217;&#x6765;&#x89E3;&#x7801;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-python">seen = np.array([[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>]]).T  <span class="hljs-comment"># &#x8BBE;&#x5B9A;&#x89C2;&#x6D4B;&#x5E8F;&#x5217;</span>
+box = model.predict(seen)
+
+print(<span class="hljs-string">&quot;&#x7403;&#x7684;&#x89C2;&#x6D4B;&#x987A;&#x5E8F;&#x4E3A;&#xFF1A;\n&quot;</span>, <span class="hljs-string">&quot;, &quot;</span>.join(map(<span class="hljs-keyword">lambda</span> x: observations[x], seen.flatten())))
+<span class="hljs-comment"># &#x6CE8;&#x610F;&#xFF1A;&#x9700;&#x8981;&#x4F7F;&#x7528;flatten&#x65B9;&#x6CD5;&#xFF0C;&#x628A;seen&#x4ECE;&#x4E8C;&#x7EF4;&#x53D8;&#x6210;&#x4E00;&#x7EF4;</span>
+print(<span class="hljs-string">&quot;&#x6700;&#x53EF;&#x80FD;&#x7684;&#x9690;&#x85CF;&#x72B6;&#x6001;&#x5E8F;&#x5217;&#x4E3A;:\n&quot;</span>&#xFF0C; <span class="hljs-string">&quot;, &quot;</span>.join(map(<span class="hljs-keyword">lambda</span> x: states[x], box)))
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x518D;&#x6765;&#x770B;&#x770B;&#x6C42;HMM&#x95EE;&#x9898;&#x4E00;&#x7684;&#x89C2;&#x6D4B;&#x5E8F;&#x5217;&#x7684;&#x6982;&#x7387;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-python">print(model.score(seen))
+<span class="hljs-comment"># &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x662F;&#xFF1A;-2.03854530992</span>
+</code></pre>
+<p>&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;score&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4EE5;&#x81EA;&#x7136;&#x5BF9;&#x6570;&#x4E3A;&#x5E95;&#x7684;&#x5BF9;&#x6570;&#x6982;&#x7387;&#x503C;&#xFF0C;&#x6211;&#x4EEC;&#x5728;HMM&#x95EE;&#x9898;&#x4E00;&#x4E2D;&#x624B;&#x52A8;&#x8BA1;&#x7B97;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x672A;&#x53D6;&#x5BF9;&#x6570;&#x7684;&#x539F;&#x59CB;&#x6982;&#x7387;&#x662F;0.13022&#x3002;&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> math
+
+math.exp(-<span class="hljs-number">2.038545309915233</span>)
+<span class="hljs-comment"># ln0.13022&#x2248;&#x2212;2.0385</span>
+<span class="hljs-comment"># &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x662F;&#xFF1A;0.13021800000000003</span>
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../04-HMM模型/section6.html" class="navigation navigation-prev " aria-label="Previous page: 鲍姆-韦尔奇算法简介"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../05-集成学习进阶/index.html" class="navigation navigation-next " aria-label="Next page: 集成学习进阶"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-code/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"code":{"copyButtons":true},"chart":{"type":"c3"},"splitter":{},"expandable-chapters":{},"graph":{},"katex":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

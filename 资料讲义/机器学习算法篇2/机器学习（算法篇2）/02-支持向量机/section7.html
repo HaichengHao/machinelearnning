@@ -1,0 +1,924 @@
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>SVM算法api再介绍 | 传智播客-人工智能学院</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="Edward Meng">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-code/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+        <link rel="stylesheet" href="../custom_style.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../02-支持向量机/section8.html" />
+    
+    
+    <link rel="prev" href="../02-支持向量机/section6.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2.7"
+        data-chapter-title="SVM算法api再介绍"
+        data-filepath="02-支持向量机/section7.md"
+        data-basepath=".."
+        data-revision="Thu Aug 12 2021 20:16:16 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="http://www.itheima.com/" target="blank" class="custom-link">黑马程序员</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        机器学习（算法篇2）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="01-朴素贝叶斯/index.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        朴素贝叶斯
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="01-朴素贝叶斯/section1.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        朴素贝叶斯算法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01-朴素贝叶斯/section2.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        概率基础复习
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-朴素贝叶斯/section3.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        案例：商品评论情感分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="01-朴素贝叶斯/section4.html">
+            
+                
+                    <a href="../01-朴素贝叶斯/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        朴素贝叶斯算法总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="02-支持向量机/index.html">
+            
+                
+                    <a href="../02-支持向量机/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        支持向量机
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="02-支持向量机/section1.html">
+            
+                
+                    <a href="../02-支持向量机/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        SVM算法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="02-支持向量机/section2.html">
+            
+                
+                    <a href="../02-支持向量机/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        SVM算法api初步使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="02-支持向量机/section3.html">
+            
+                
+                    <a href="../02-支持向量机/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        SVM算法原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="02-支持向量机/section4.html">
+            
+                
+                    <a href="../02-支持向量机/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        SVM的损失函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="02-支持向量机/section5.html">
+            
+                
+                    <a href="../02-支持向量机/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        SVM的核方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="02-支持向量机/section6.html">
+            
+                
+                    <a href="../02-支持向量机/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        SVM回归
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.7" data-path="02-支持向量机/section7.html">
+            
+                
+                    <a href="../02-支持向量机/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        SVM算法api再介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="02-支持向量机/section8.html">
+            
+                
+                    <a href="../02-支持向量机/section8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        案例：数字识别器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="02-支持向量机/section9.html">
+            
+                
+                    <a href="../02-支持向量机/section9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                        SVM总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="03-EM算法/index.html">
+            
+                
+                    <a href="../03-EM算法/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        EM算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="03-EM算法/section1.html">
+            
+                
+                    <a href="../03-EM算法/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        初识EM算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="03-EM算法/section2.html">
+            
+                
+                    <a href="../03-EM算法/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        EM算法介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="03-EM算法/section3.html">
+            
+                
+                    <a href="../03-EM算法/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        EM算法实例
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="04-HMM模型/index.html">
+            
+                
+                    <a href="../04-HMM模型/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        HMM模型
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="04-HMM模型/section1.html">
+            
+                
+                    <a href="../04-HMM模型/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        马尔科夫链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="04-HMM模型/section2.html">
+            
+                
+                    <a href="../04-HMM模型/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        HMM简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="04-HMM模型/section3.html">
+            
+                
+                    <a href="../04-HMM模型/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        HMM模型基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="04-HMM模型/section4.html">
+            
+                
+                    <a href="../04-HMM模型/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        前向后向算法评估观察序列概率
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="04-HMM模型/section5.html">
+            
+                
+                    <a href="../04-HMM模型/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        维特比算法解码隐藏状态
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="04-HMM模型/section6.html">
+            
+                
+                    <a href="../04-HMM模型/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        鲍姆-韦尔奇算法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="04-HMM模型/section7.html">
+            
+                
+                    <a href="../04-HMM模型/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        HMM模型api介绍
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="05-集成学习进阶/index.html">
+            
+                
+                    <a href="../05-集成学习进阶/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        集成学习进阶
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="05-集成学习进阶/section1.html">
+            
+                
+                    <a href="../05-集成学习进阶/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        XGBoost算法原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="05-集成学习进阶/section2.html">
+            
+                
+                    <a href="../05-集成学习进阶/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        XGBoost算法api介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="05-集成学习进阶/section3.html">
+            
+                
+                    <a href="../05-集成学习进阶/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        XGBoost案例介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="05-集成学习进阶/section4.html">
+            
+                
+                    <a href="../05-集成学习进阶/section4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        XGBoost-OTTO案例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="05-集成学习进阶/section5.html">
+            
+                
+                    <a href="../05-集成学习进阶/section5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        LightGBM
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="05-集成学习进阶/section6.html">
+            
+                
+                    <a href="../05-集成学习进阶/section6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        LightGBM算法api介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="05-集成学习进阶/section7.html">
+            
+                
+                    <a href="../05-集成学习进阶/section7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.7.</b>
+                        
+                        LightGBM案例介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="05-集成学习进阶/section8.html">
+            
+                
+                    <a href="../05-集成学习进阶/section8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.8.</b>
+                        
+                        案例：《绝地求生》玩家排名预测
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="06-拓展知识/index.html">
+            
+                
+                    <a href="../06-拓展知识/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        拓展知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="06-拓展知识/section1.html">
+            
+                
+                    <a href="../06-拓展知识/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        向量与矩阵的范数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="06-拓展知识/section2.html">
+            
+                
+                    <a href="../06-拓展知识/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        拉格朗日乘子法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="06-拓展知识/section3.html">
+            
+                
+                    <a href="../06-拓展知识/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        极大似然函数取对数原因
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本书使用 GitBook 发布
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >传智播客-人工智能学院</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="87-svm&#x7B97;&#x6CD5;api&#x518D;&#x4ECB;&#x7ECD;">8.7 SVM&#x7B97;&#x6CD5;api&#x518D;&#x4ECB;&#x7ECD;</h1>
+<h2 id="&#x5B66;&#x4E60;&#x76EE;&#x6807;">&#x5B66;&#x4E60;&#x76EE;&#x6807;</h2>
+<ul>
+<li>&#x77E5;&#x9053;SVM&#x7B97;&#x6CD5;api&#x4E2D;&#x7684;SVC&#x3001;NuSVC&#x3001;LinearSVC</li>
+</ul>
+<hr>
+<h2 id="1-svm&#x7B97;&#x6CD5;api&#x7EFC;&#x8FF0;">1 SVM&#x7B97;&#x6CD5;api&#x7EFC;&#x8FF0;</h2>
+<ul>
+<li>SVM&#x65B9;&#x6CD5;&#x65E2;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5206;&#x7C7B;&#xFF08;&#x4E8C;/&#x591A;&#x5206;&#x7C7B;&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x7528;&#x4E8E;&#x56DE;&#x5F52;&#x548C;&#x5F02;&#x5E38;&#x503C;&#x68C0;&#x6D4B;&#x3002;</li>
+</ul>
+<ul>
+<li>SVM&#x5177;&#x6709;&#x826F;&#x597D;&#x7684;&#x9C81;&#x68D2;&#x6027;&#xFF0C;&#x5BF9;&#x672A;&#x77E5;&#x6570;&#x636E;&#x62E5;&#x6709;&#x5F88;&#x5F3A;&#x7684;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#xFF0C;<strong>&#x7279;&#x522B;&#x662F;&#x5728;&#x6570;&#x636E;&#x91CF;&#x8F83;&#x5C11;&#x7684;&#x60C5;&#x51B5;&#x4E0B;</strong>&#xFF0C;&#x76F8;&#x8F83;&#x5176;&#x4ED6;&#x4F20;&#x7EDF;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x5177;&#x6709;&#x66F4;&#x4F18;&#x7684;&#x6027;&#x80FD;&#x3002;</li>
+</ul>
+<hr>
+<p>&#x4F7F;&#x7528;SVM&#x4F5C;&#x4E3A;&#x6A21;&#x578B;&#x65F6;&#xFF0C;&#x901A;&#x5E38;&#x91C7;&#x7528;&#x5982;&#x4E0B;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ol>
+<li>&#x5BF9;&#x6837;&#x672C;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5F52;&#x4E00;&#x5316;</li>
+<li>&#x5E94;&#x7528;&#x6838;&#x51FD;&#x6570;&#x5BF9;&#x6837;&#x672C;&#x8FDB;&#x884C;&#x6620;&#x5C04;<strong>&#xFF08;&#x6700;&#x5E38;&#x91C7;&#x7528;&#x548C;&#x6838;&#x51FD;&#x6570;&#x662F;RBF&#x548C;Linear&#xFF0C;&#x5728;&#x6837;&#x672C;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x65F6;&#xFF0C;Linear&#x6548;&#x679C;&#x8981;&#x6BD4;RBF&#x597D;&#xFF09;</strong></li>
+<li>&#x7528;cross-validation&#x548C;grid-search&#x5BF9;&#x8D85;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x4F18;&#x9009;</li>
+<li>&#x7528;&#x6700;&#x4F18;&#x53C2;&#x6570;&#x8BAD;&#x7EC3;&#x5F97;&#x5230;&#x6A21;&#x578B;</li>
+<li>&#x6D4B;&#x8BD5;</li>
+</ol>
+<hr>
+<p>sklearn&#x4E2D;&#x652F;&#x6301;&#x5411;&#x91CF;&#x5206;&#x7C7B;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;SVC&#x3001;NuSVC&#x3001;LinearSVC&#xFF0C;&#x6269;&#x5C55;&#x4E3A;&#x4E09;&#x4E2A;&#x652F;&#x6301;&#x5411;&#x91CF;&#x56DE;&#x5F52;&#x65B9;&#x6CD5;&#xFF1A;SVR&#x3001;NuSVR&#x3001;LinearSVR&#x3002;</p>
+<ul>
+<li>SVC&#x548C;NuSVC&#x65B9;&#x6CD5;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#xFF0C;&#x552F;&#x4E00;&#x533A;&#x522B;&#x5C31;&#x662F;&#x635F;&#x5931;&#x51FD;&#x6570;&#x7684;&#x5EA6;&#x91CF;&#x65B9;&#x5F0F;&#x4E0D;&#x540C;<ul>
+<li>NuSVC&#x4E2D;&#x7684;nu&#x53C2;&#x6570;&#x548C;SVC&#x4E2D;&#x7684;C&#x53C2;&#x6570;&#xFF1B;</li>
+</ul>
+</li>
+<li>LinearSVC&#x662F;&#x5B9E;&#x73B0;&#x7EBF;&#x6027;&#x6838;&#x51FD;&#x6570;&#x7684;&#x652F;&#x6301;&#x5411;&#x91CF;&#x5206;&#x7C7B;&#xFF0C;&#x6CA1;&#x6709;kernel&#x53C2;&#x6570;&#x3002;</li>
+</ul>
+<h2 id="2-svc">2 SVC</h2>
+<pre><code class="lang-python">class sklearn.svm.SVC(C=1.0, kernel=&apos;rbf&apos;, degree=3,coef0=0.0,random_state=None)
+</code></pre>
+<ul>
+<li><strong>C:</strong> &#x60E9;&#x7F5A;&#x7CFB;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x63A7;&#x5236;&#x635F;&#x5931;&#x51FD;&#x6570;&#x7684;&#x60E9;&#x7F5A;&#x7CFB;&#x6570;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x7EBF;&#x6027;&#x56DE;&#x5F52;&#x4E2D;&#x7684;&#x6B63;&#x5219;&#x5316;&#x7CFB;&#x6570;&#x3002;<ul>
+<li>C&#x8D8A;&#x5927;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x60E9;&#x7F5A;&#x677E;&#x5F1B;&#x53D8;&#x91CF;&#xFF0C;&#x5E0C;&#x671B;&#x677E;&#x5F1B;&#x53D8;&#x91CF;&#x63A5;&#x8FD1;0&#xFF0C;&#x5373;<strong>&#x5BF9;&#x8BEF;&#x5206;&#x7C7B;&#x7684;&#x60E9;&#x7F5A;&#x589E;&#x5927;</strong>&#xFF0C;&#x8D8B;&#x5411;&#x4E8E;&#x5BF9;&#x8BAD;&#x7EC3;&#x96C6;&#x5168;&#x5206;&#x5BF9;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x8FD9;&#x6837;&#x4F1A;&#x51FA;&#x73B0;&#x8BAD;&#x7EC3;&#x96C6;&#x6D4B;&#x8BD5;&#x65F6;&#x51C6;&#x786E;&#x7387;&#x5F88;&#x9AD8;&#xFF0C;&#x4F46;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x5F31;&#xFF0C;&#x5BB9;&#x6613;&#x5BFC;&#x81F4;&#x8FC7;&#x62DF;&#x5408;&#x3002; </li>
+<li>C&#x503C;&#x5C0F;&#xFF0C;<strong>&#x5BF9;&#x8BEF;&#x5206;&#x7C7B;&#x7684;&#x60E9;&#x7F5A;&#x51CF;&#x5C0F;</strong>&#xFF0C;&#x5BB9;&#x9519;&#x80FD;&#x529B;&#x589E;&#x5F3A;&#xFF0C;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x8F83;&#x5F3A;&#xFF0C;&#x4F46;&#x4E5F;&#x53EF;&#x80FD;&#x6B20;&#x62DF;&#x5408;&#x3002;</li>
+</ul>
+</li>
+<li><strong>kernel:</strong> &#x7B97;&#x6CD5;&#x4E2D;&#x91C7;&#x7528;&#x7684;&#x6838;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x6838;&#x51FD;&#x6570;&#x662F;&#x7528;&#x6765;&#x5C06;&#x975E;&#x7EBF;&#x6027;&#x95EE;&#x9898;&#x8F6C;&#x5316;&#x4E3A;&#x7EBF;&#x6027;&#x95EE;&#x9898;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x3002;<ul>
+<li>&#x53C2;&#x6570;&#x9009;&#x62E9;&#x6709;RBF, Linear, Poly, Sigmoid&#x6216;&#x8005;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6838;&#x51FD;&#x6570;&#x3002;<ul>
+<li>&#x9ED8;&#x8BA4;&#x7684;&#x662F;&quot;RBF&quot;&#xFF0C;&#x5373;&#x5F84;&#x5411;&#x57FA;&#x6838;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x9AD8;&#x65AF;&#x6838;&#x51FD;&#x6570;&#xFF1B;</li>
+<li>&#x800C;Linear&#x6307;&#x7684;&#x662F;&#x7EBF;&#x6027;&#x6838;&#x51FD;&#x6570;&#xFF0C;</li>
+<li>Poly&#x6307;&#x7684;&#x662F;&#x591A;&#x9879;&#x5F0F;&#x6838;&#xFF0C;</li>
+<li>Sigmoid&#x6307;&#x7684;&#x662F;&#x53CC;&#x66F2;&#x6B63;&#x5207;&#x51FD;&#x6570;tanh&#x6838;&#xFF1B;&#x3002;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>degree:</strong> <ul>
+<li>&#x5F53;&#x6307;&#x5B9A;kernel&#x4E3A;&apos;poly&apos;&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x9009;&#x62E9;&#x7684;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x6700;&#x9AD8;&#x6B21;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E09;&#x6B21;&#x591A;&#x9879;&#x5F0F;&#xFF1B;</li>
+<li>&#x82E5;&#x6307;&#x5B9A;kernel&#x4E0D;&#x662F;&apos;poly&apos;&#xFF0C;&#x5219;&#x5FFD;&#x7565;&#xFF0C;&#x5373;&#x8BE5;&#x53C2;&#x6570;&#x53EA;&#x5BF9;&apos;poly&apos;&#x6709;&#x7528;&#x3002;<ul>
+<li>&#x591A;&#x9879;&#x5F0F;&#x6838;&#x51FD;&#x6570;&#x662F;&#x5C06;&#x4F4E;&#x7EF4;&#x7684;&#x8F93;&#x5165;&#x7A7A;&#x95F4;&#x6620;&#x5C04;&#x5230;&#x9AD8;&#x7EF4;&#x7684;&#x7279;&#x5F81;&#x7A7A;&#x95F4;&#x3002;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>coef0:</strong> &#x6838;&#x51FD;&#x6570;&#x5E38;&#x6570;&#x503C;(y=kx+b&#x4E2D;&#x7684;b&#x503C;)&#xFF0C;<ul>
+<li>&#x53EA;&#x6709;&#x2018;poly&#x2019;&#x548C;&#x2018;sigmoid&#x2019;&#x6838;&#x51FD;&#x6570;&#x6709;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x662F;0&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-nusvc&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;">3 NuSVC&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;</h2>
+<pre><code class="lang-python">class sklearn.svm.NuSVC(nu=0.5)
+</code></pre>
+<ul>
+<li><strong>nu&#xFF1A;</strong> &#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x90E8;&#x5206;&#x7684;&#x4E0A;&#x9650;&#x548C;&#x652F;&#x6301;&#x5411;&#x91CF;&#x90E8;&#x5206;&#x7684;&#x4E0B;&#x9650;&#xFF0C;&#x53D6;&#x503C;&#x5728;&#xFF08;0&#xFF0C;1&#xFF09;&#x4E4B;&#x95F4;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;0.5</li>
+</ul>
+<h2 id="4-linearsvc&#x3000;&#x3000;&#x3000;&#x3000;">4 LinearSVC&#x3000;&#x3000;&#x3000;&#x3000;</h2>
+<pre><code class="lang-python">class sklearn.svm.LinearSVC(penalty=&apos;l2&apos;, loss=&apos;squared_hinge&apos;, dual=True, C=1.0)
+</code></pre>
+<ul>
+<li>penalty:&#x6B63;&#x5219;&#x5316;&#x53C2;&#x6570;&#xFF0C;<ul>
+<li>L1&#x548C;L2&#x4E24;&#x79CD;&#x53C2;&#x6570;&#x53EF;&#x9009;&#xFF0C;&#x4EC5;LinearSVC&#x6709;&#x3002;</li>
+</ul>
+</li>
+<li>loss:&#x635F;&#x5931;&#x51FD;&#x6570;&#xFF0C;<ul>
+<li>&#x6709;hinge&#x548C;squared_hinge&#x4E24;&#x79CD;&#x53EF;&#x9009;&#xFF0C;&#x524D;&#x8005;&#x53C8;&#x79F0;L1&#x635F;&#x5931;&#xFF0C;&#x540E;&#x8005;&#x79F0;&#x4E3A;L2&#x635F;&#x5931;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;squared_hinge&#xFF0C;</li>
+<li>&#x5176;&#x4E2D;hinge&#x662F;SVM&#x7684;&#x6807;&#x51C6;&#x635F;&#x5931;&#xFF0C;squared_hinge&#x662F;hinge&#x7684;&#x5E73;&#x65B9;</li>
+</ul>
+</li>
+<li>dual:&#x662F;&#x5426;&#x8F6C;&#x5316;&#x4E3A;&#x5BF9;&#x5076;&#x95EE;&#x9898;&#x6C42;&#x89E3;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;True&#x3002;</li>
+<li>C:&#x60E9;&#x7F5A;&#x7CFB;&#x6570;&#xFF0C;<ul>
+<li>&#x7528;&#x6765;&#x63A7;&#x5236;&#x635F;&#x5931;&#x51FD;&#x6570;&#x7684;&#x60E9;&#x7F5A;&#x7CFB;&#x6570;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x7EBF;&#x6027;&#x56DE;&#x5F52;&#x4E2D;&#x7684;&#x6B63;&#x5219;&#x5316;&#x7CFB;&#x6570;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-&#x5C0F;&#x7ED3;">3 &#x5C0F;&#x7ED3;</h2>
+<ul>
+<li>SVM&#x7684;&#x6838;&#x65B9;&#x6CD5;<ul>
+<li>&#x5C06;&#x539F;&#x59CB;&#x8F93;&#x5165;&#x7A7A;&#x95F4;&#x6620;&#x5C04;&#x5230;&#x65B0;&#x7684;&#x7279;&#x5F81;&#x7A7A;&#x95F4;&#xFF0C;&#x4ECE;&#x800C;&#xFF0C;&#x4F7F;&#x5F97;&#x539F;&#x672C;&#x7EBF;&#x6027;&#x4E0D;&#x53EF;&#x5206;&#x7684;&#x6837;&#x672C;&#x53EF;&#x80FD;&#x5728;&#x6838;&#x7A7A;&#x95F4;&#x53EF;&#x5206;&#x3002;</li>
+</ul>
+</li>
+<li>SVM&#x7B97;&#x6CD5;api<ul>
+<li>sklearn.svm.SVC</li>
+<li>sklearn.svm.NuSVC</li>
+<li>sklearn.svm.LinearSVC</li>
+</ul>
+</li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../02-支持向量机/section6.html" class="navigation navigation-prev " aria-label="Previous page: SVM回归"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../02-支持向量机/section8.html" class="navigation navigation-next " aria-label="Next page: 案例：数字识别器"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-code/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"code":{"copyButtons":true},"chart":{"type":"c3"},"splitter":{},"expandable-chapters":{},"graph":{},"katex":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

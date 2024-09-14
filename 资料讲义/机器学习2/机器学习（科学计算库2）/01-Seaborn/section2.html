@@ -1,0 +1,441 @@
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>用分类数据绘图 | 传智播客-人工智能学院</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="Edward Meng">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-code/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+        <link rel="stylesheet" href="../custom_style.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../01-Seaborn/section3.html" />
+    
+    
+    <link rel="prev" href="../01-Seaborn/section1.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.2"
+        data-chapter-title="用分类数据绘图"
+        data-filepath="01-Seaborn/section2.md"
+        data-basepath=".."
+        data-revision="Wed Aug 11 2021 13:33:18 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="http://www.itheima.com/" target="blank" class="custom-link">黑马程序员</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        机器学习（常用科学计算库2）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="01-Seaborn/index.html">
+            
+                
+                    <a href="../01-Seaborn/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Seaborn
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="01-Seaborn/section1.html">
+            
+                
+                    <a href="../01-Seaborn/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Seaborn-绘制统计图形
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="01-Seaborn/section2.html">
+            
+                
+                    <a href="../01-Seaborn/section2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        用分类数据绘图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-Seaborn/section3.html">
+            
+                
+                    <a href="../01-Seaborn/section3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        案例：NBA球员数据分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="02-Case/index.html">
+            
+                
+                    <a href="../02-Case/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        综合案例
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="02-Case/section1.html">
+            
+                
+                    <a href="../02-Case/section1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        北京租房数据统计分析
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本书使用 GitBook 发布
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >传智播客-人工智能学院</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="52-&#x7528;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x7ED8;&#x56FE;">5.2 &#x7528;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x7ED8;&#x56FE;</h1>
+<h2 id="&#x5B66;&#x4E60;&#x76EE;&#x6807;">&#x5B66;&#x4E60;&#x76EE;&#x6807;</h2>
+<ul>
+<li>&#x4F1A;&#x4F7F;&#x7528;Seaborn&#x7ED8;&#x5236;&#x7BB1;&#x7EBF;&#x56FE;&#x3001;&#x5C0F;&#x63D0;&#x7434;&#x56FE;</li>
+<li>&#x4F1A;&#x4F7F;&#x7528;Seaborn&#x7ED8;&#x5236;&#x6761;&#x5F62;&#x56FE;&#x3001;&#x70B9;&#x56FE;</li>
+</ul>
+<hr>
+<p>&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6709;&#x5F88;&#x591A;&#x79CD;&#xFF0C;&#x9664;&#x4E86;&#x8FDE;&#x7EED;&#x7684;&#x7279;&#x5F81;&#x53D8;&#x91CF;&#x4E4B;&#x5916;&#xFF0C;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x5C31;&#x662F;&#x7C7B;&#x522B;&#x578B;&#x7684;&#x6570;&#x636E;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;&#x4EBA;&#x7684;&#x6027;&#x522B;&#x3001;&#x5B66;&#x5386;&#x3001;&#x7231;&#x597D;&#x7B49;&#xFF0C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x90FD;&#x4E0D;&#x80FD;&#x7528;&#x8FDE;&#x7EED;&#x7684;&#x53D8;&#x91CF;&#x6765;&#x8868;&#x793A;&#xFF0C;&#x800C;&#x662F;&#x7528;&#x5206;&#x7C7B;&#x7684;&#x6570;&#x636E;&#x6765;&#x8868;&#x793A;&#x3002;</p>
+<p>Seaborn&#x9488;&#x5BF9;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x63D0;&#x4F9B;&#x4E86;&#x4E13;&#x95E8;&#x7684;&#x53EF;&#x89C6;&#x5316;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x5927;&#x81F4;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x5982;&#x4E0B;&#x4E09;&#x79CD;:</p>
+<ul>
+<li>&#x5206;&#x7C7B;&#x6570;&#x636E;&#x6563;&#x70B9;&#x56FE;: swarmplot()&#x4E0E; stripplot()&#x3002;</li>
+<li>&#x7C7B;&#x6570;&#x636E;&#x7684;&#x5206;&#x5E03;&#x56FE;: boxplot() &#x4E0E; violinplot()&#x3002;</li>
+<li>&#x5206;&#x7C7B;&#x6570;&#x636E;&#x7684;&#x7EDF;&#x8BA1;&#x4F30;&#x7B97;&#x56FE;:barplot() &#x4E0E; pointplot()&#x3002;</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x4E24;&#x8282;&#x5C06;&#x9488;&#x5BF9;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x53EF;&#x7ED8;&#x5236;&#x7684;&#x56FE;&#x5F62;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#xFF0C;&#x5177;&#x4F53;&#x5185;&#x5BB9;&#x5982;&#x4E0B;</p>
+<h2 id="1-&#x7C7B;&#x522B;&#x6563;&#x70B9;&#x56FE;">1 &#x7C7B;&#x522B;&#x6563;&#x70B9;&#x56FE;</h2>
+<p>&#x901A;&#x8FC7; stripplot()&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x753B;&#x4E00;&#x4E2A;&#x6563;&#x70B9;&#x56FE;&#xFF0C; stripplot0&#x51FD;&#x6570;&#x7684;&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-python">seaborn.stripplot(x=<span class="hljs-keyword">None</span>, y=<span class="hljs-keyword">None</span>, hue=<span class="hljs-keyword">None</span>, data=<span class="hljs-keyword">None</span>, order=<span class="hljs-keyword">None</span>, hue_order=<span class="hljs-keyword">None</span>, jitter=<span class="hljs-keyword">False</span>)
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x51FD;&#x6570;&#x4E2D;&#x5E38;&#x7528;&#x53C2;&#x6570;&#x7684;&#x542B;&#x4E49;&#x5982;&#x4E0B;</p>
+<ul>
+<li>(1) x&#xFF0C;y&#xFF0C;hue&#xFF1A;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x6570;&#x636E;&#x7684;&#x8F93;&#x5165;&#x3002;</li>
+<li>(2) data&#xFF1A;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x7684;&#x6570;&#x636E;&#x96C6;&#x3002;</li>
+<li>(3) jitter&#xFF1A;&#x8868;&#x793A;&#x6296;&#x52A8;&#x7684;&#x7A0B;&#x5EA6;(&#x4EC5;&#x6CBF;&#x7C7B;&#x5225;&#x8F74;)&#x3002;&#x5F53;&#x5F88;&#x591A;&#x6570;&#x636E;&#x70B9;&#x91CD;&#x53E0;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x6296;&#x52A8;&#x7684;&#x6570;&#x91CF;&#x6216;&#x8005;&#x8BBE;&#x4E3A;True&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x503C;&#x3002;</li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x8BA9;&#x5927;&#x5BB6;&#x66F4;&#x597D;&#x5730;&#x7406;&#x89E3;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x901A;&#x8FC7; stripplot()&#x51FD;&#x6570;&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x6563;&#x70B9;&#x56FE;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># &#x83B7;&#x53D6;tips&#x6570;&#x636E;</span>
+tips = sns.load_dataset(<span class="hljs-string">&quot;tips&quot;</span>)
+
+sns.stripplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gauzxwyulyj30lm0eoab8.jpg" alt="image-20200113160626333" style="zoom:67%;"></p>
+<p>&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x56FE;&#x8868;&#x4E2D;&#x7684;&#x6A2A;&#x5750;&#x6807;&#x662F;&#x5206;&#x7C7B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E14;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x70B9;&#x4F1A;&#x4E92;&#x76F8;&#x91CD;&#x53E0;&#xFF0C;&#x4E0D;&#x6613;&#x4E8E;&#x89C2;&#x5BDF;&#x3002;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8C03;&#x7528;striplot()&#x51FD;&#x6570;&#x65F6;&#x4F20;&#x5165;jitter&#x53C2;&#x6570;&#xFF0C;&#x4EE5;&#x8C03;&#x6574;&#x6A2A;&#x5750;&#x6807;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x6539;&#x540E;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-python">sns.stripplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips, jitter=<span class="hljs-keyword">True</span>)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf3jbp5a9zj30f50aiq37.jpg" alt="striplot&#x7684;jitter&#x53C2;&#x6570;"></p>
+<p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x8C03;&#x7528; swarmplot0&#x51FD;&#x6570;&#x7ED8;&#x5236;&#x6563;&#x70B9;&#x56FE;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x597D;&#x5904;&#x662F;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x70B9;&#x90FD;&#x4E0D;&#x4F1A;&#x91CD;&#x53E0;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x6E05;&#x6670;&#x5730;&#x89C2;&#x5BDF;&#x5230;&#x6570;&#x636E;&#x7684;&#x5206;&#x5E03;&#x60C5;&#x51B5;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-python">sns.swarmplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gauzylop8lj30lo0f2dif.jpg" alt="image-20200113160705784" style="zoom:67%;"></p>
+<h2 id="2-&#x7C7B;&#x522B;&#x5185;&#x7684;&#x6570;&#x636E;&#x5206;&#x5E03;">2 &#x7C7B;&#x522B;&#x5185;&#x7684;&#x6570;&#x636E;&#x5206;&#x5E03;</h2>
+<p>&#x8981;&#x60F3;&#x67E5;&#x770B;&#x5404;&#x4E2A;&#x5206;&#x7C7B;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5206;&#x5E03;&#xFF0C;&#x663E;&#x800C;&#x6613;&#x89C1;&#xFF0C;&#x6563;&#x70B9;&#x56FE;&#x662F;&#x4E0D;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x7684;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x5B83;&#x4E0D;&#x591F;&#x76F4;&#x89C2;&#x3002;&#x9488;&#x5BF9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x5982;&#x4E0B;&#x4E24;&#x79CD;&#x56FE;&#x5F62;&#x8FDB;&#x884C;&#x67E5;&#x770B;:</p>
+<ul>
+<li><strong>&#x7BB1;&#x5F62;&#x56FE;</strong>:<ul>
+<li>&#x7BB1;&#x5F62;&#x56FE;&#xFF08;Box-plot&#xFF09;&#x53C8;&#x79F0;&#x4E3A;&#x76D2;&#x987B;&#x56FE;&#x3001;&#x76D2;&#x5F0F;&#x56FE;&#x6216;&#x7BB1;&#x7EBF;&#x56FE;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x7528;&#x4F5C;&#x663E;&#x793A;&#x4E00;&#x7EC4;&#x6570;&#x636E;&#x5206;&#x6563;&#x60C5;&#x51B5;&#x8D44;&#x6599;&#x7684;&#x7EDF;&#x8BA1;&#x56FE;&#x3002;&#x56E0;&#x5F62;&#x72B6;&#x5982;&#x7BB1;&#x5B50;&#x800C;&#x5F97;&#x540D;&#x3002;</li>
+<li>&#x7BB1;&#x5F62;&#x56FE;&#x4E8E;1977&#x5E74;&#x7531;&#x7F8E;&#x56FD;&#x8457;&#x540D;&#x7EDF;&#x8BA1;&#x5B66;&#x5BB6;&#x7EA6;&#x7FF0;&#xB7;&#x56FE;&#x57FA;&#xFF08;John Tukey&#xFF09;&#x53D1;&#x660E;&#x3002;<strong>&#x5B83;&#x80FD;&#x663E;&#x793A;&#x51FA;&#x4E00;&#x7EC4;&#x6570;&#x636E;&#x7684;&#x6700;&#x5927;&#x503C;&#x3001;&#x6700;&#x5C0F;&#x503C;&#x3001;&#x4E2D;&#x4F4D;&#x6570;&#x3001;&#x53CA;&#x4E0A;&#x4E0B;&#x56DB;&#x5206;&#x4F4D;&#x6570;&#x3002;</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gav10wq3qdj308z09m3yh.jpg" alt="img"></p>
+<ul>
+<li><strong>&#x5C0F;&#x63D0;&#x7434;&#x56FE;:</strong><ul>
+<li>&#x5C0F;&#x63D0;&#x7434;&#x56FE; (Violin Plot) &#x7528;&#x4E8E;&#x663E;&#x793A;&#x6570;&#x636E;&#x5206;&#x5E03;&#x53CA;&#x5176;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x3002;</li>
+<li><strong>&#x8FD9;&#x79CD;&#x56FE;&#x8868;&#x7ED3;&#x5408;&#x4E86;&#x7BB1;&#x5F62;&#x56FE;&#x548C;&#x5BC6;&#x5EA6;&#x56FE;&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x663E;&#x793A;&#x6570;&#x636E;&#x7684;&#x5206;&#x5E03;&#x5F62;&#x72B6;&#x3002;</strong></li>
+<li><strong>&#x4E2D;&#x95F4;&#x7684;&#x9ED1;&#x8272;&#x7C97;&#x6761;&#x8868;&#x793A;&#x56DB;&#x5206;&#x4F4D;&#x6570;&#x8303;&#x56F4;&#xFF0C;&#x4ECE;&#x5176;&#x5EF6;&#x4F38;&#x7684;&#x5E7C;&#x7EC6;&#x9ED1;&#x7EBF;&#x4EE3;&#x8868; 95% &#x7F6E;&#x4FE1;&#x533A;&#x95F4;&#xFF0C;&#x800C;&#x767D;&#x70B9;&#x5219;&#x4E3A;&#x4E2D;&#x4F4D;&#x6570;&#x3002;</strong></li>
+<li><strong>&#x7BB1;&#x5F62;&#x56FE;&#x5728;&#x6570;&#x636E;&#x663E;&#x793A;&#x65B9;&#x9762;&#x53D7;&#x5230;&#x9650;&#x5236;&#xFF0C;&#x7B80;&#x5355;&#x7684;&#x8BBE;&#x8BA1;&#x5F80;&#x5F80;&#x9690;&#x85CF;&#x4E86;&#x6709;&#x5173;&#x6570;&#x636E;&#x5206;&#x5E03;&#x7684;&#x91CD;&#x8981;&#x7EC6;&#x8282;&#x3002;</strong>&#x4F8B;&#x5982;&#x4F7F;&#x7528;&#x7BB1;&#x5F62;&#x56FE;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x4E86;&#x89E3;&#x6570;&#x636E;&#x5206;&#x5E03;&#x3002;&#x867D;&#x7136;&#x5C0F;&#x63D0;&#x7434;&#x56FE;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x66F4;&#x591A;&#x8BE6;&#x60C5;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x4E5F;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x8F83;&#x591A;&#x5E72;&#x6270;&#x4FE1;&#x606F;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gav157d6osj30l80fedhp.jpg" alt="image-20200113164802237" style="zoom: 50%;"></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x9488;&#x5BF9; Seaborn&#x5E93;&#x4E2D;&#x7BB1;&#x5F62;&#x56FE;&#x548C;&#x63D0;&#x7434;&#x56FE;&#x7684;&#x7ED8;&#x5236;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x4ECB;&#x7ECD;&#x3002;</p>
+<h3 id="21-&#x7ED8;&#x5236;&#x7BB1;&#x5F62;&#x56FE;">2.1 &#x7ED8;&#x5236;&#x7BB1;&#x5F62;&#x56FE;</h3>
+<p>seaborn&#x4E2D;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x7BB1;&#x5F62;&#x56FE;&#x7684;&#x51FD;&#x6570;&#x4E3A; boxplot()&#xFF0C;&#x5176;&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-python">seaborn.boxplot(x=<span class="hljs-keyword">None</span>, y=<span class="hljs-keyword">None</span>, hue=<span class="hljs-keyword">None</span>, data=<span class="hljs-keyword">None</span>, orient=<span class="hljs-keyword">None</span>, color=<span class="hljs-keyword">None</span>,  saturation=<span class="hljs-number">0.75</span>, width=<span class="hljs-number">0.8</span>)
+</code></pre>
+<p>&#x5E38;&#x7528;&#x53C2;&#x6570;&#x7684;&#x542B;&#x4E49;&#x5982;&#x4E0B;:</p>
+<ul>
+<li>(1) palette&#xFF1A;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7EA7;&#x522B;&#x8272;&#x76F8;&#x7684;&#x989C;&#x8272;&#x53D8;&#x91CF;&#x3002;---- palette=[&quot;r&quot;,&quot;g&quot;,&quot;b&quot;,&quot;y&quot;]</li>
+<li>(2) saturation&#xFF1A;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x663E;&#x793A;&#x7684;&#x989C;&#x8272;&#x9971;&#x548C;&#x5EA6;&#x3002;---- &#x4F7F;&#x7528;&#x5C0F;&#x6570;&#x8868;&#x793A;</li>
+</ul>
+<p>&#x4F7F;&#x7528; boxplot()&#x51FD;&#x6570;&#x7ED8;&#x5236;&#x7BB1;&#x5F62;&#x56FE;&#x7684;&#x5177;&#x4F53;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-python">sns.boxplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips)
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528; seaborn&#x4E2D;&#x5185;&#x7F6E;&#x7684;&#x6570;&#x636E;&#x96C6;tips&#x7ED8;&#x5236;&#x4E86;&#x4E00;&#x4E2A;&#x7BB1;&#x5F62;&#x56FE;&#xFF0C;&#x56FE;&#x4E2D;x&#x8F74;&#x7684;&#x540D;&#x79F0;&#x4E3A;day&#xFF0C;&#x5176;&#x523B;&#x5EA6;&#x8303;&#x56F4;&#x662F; Thur~Sun(&#x5468;&#x56DB;&#x81F3;&#x5468;&#x65E5;)&#xFF0C;y&#x8F74;&#x7684;&#x540D;&#x79F0;&#x4E3A; total_bill&#xFF0C;&#x523B;&#x5EA6;&#x8303;&#x56F4;&#x4E3A;10-50&#x5DE6;&#x53F3;</p>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gav01lmrs9j30h20buu0v.jpg" alt="&#x7BB1;&#x4F53;&#x56FE;" style="zoom:75%;"></p>
+<p>&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;</p>
+<ul>
+<li>Thur&#x5217;&#x5927;&#x90E8;&#x5206;&#x6570;&#x636E;&#x90FD;&#x5C0F;&#x4E8E;30&#xFF0C;&#x4E0D;&#x8FC7;&#x6709;5&#x4E2A;&#x5927;&#x4E8E;30&#x7684;&#x5F02;&#x5E38;&#x503C;&#xFF0C;</li>
+<li>Fri&#x5217;&#x4E2D;&#x5927;&#x90E8;&#x5206;&#x6570;&#x636E;&#x90FD;&#x5C0F;&#x4E8E;30&#xFF0C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5F02;&#x5E38;&#x503C;&#x5927;&#x4E8E;40&#xFF0C;</li>
+<li>Sat&#x4E00;&#x5217;&#x4E2D;&#x6709;3&#x4E2A;&#x5927;&#x4E8E;40&#x7684;&#x5F02;&#x5E38;&#x503C;&#xFF0C;</li>
+<li>Sun&#x5217;&#x4E2D;&#x6709;&#x4E24;&#x4E2A;&#x5927;&#x4E8E;40&#x7684;&#x5F02;&#x5E38;&#x503C;</li>
+</ul>
+<h3 id="22-&#x7ED8;&#x5236;&#x63D0;&#x7434;&#x56FE;">2.2 &#x7ED8;&#x5236;&#x63D0;&#x7434;&#x56FE;</h3>
+<p>seaborn&#x4E2D;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x63D0;&#x7434;&#x56FE;&#x7684;&#x51FD;&#x6570;&#x4E3A;violinplot()&#xFF0C;&#x5176;&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-python">seaborn.violinplot(x=<span class="hljs-keyword">None</span>, y=<span class="hljs-keyword">None</span>, hue=<span class="hljs-keyword">None</span>, data=<span class="hljs-keyword">None</span>)
+</code></pre>
+<p>&#x901A;&#x8FC7;violinplot()&#x51FD;&#x6570;&#x7ED8;&#x5236;&#x63D0;&#x7434;&#x56FE;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-python">sns.violinplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips)
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;seaborn&#x4E2D;&#x5185;&#x7F6E;&#x7684;&#x6570;&#x636E;&#x96C6;&#x7ED8;&#x5236;&#x4E86;&#x4E00;&#x4E2A;&#x63D0;&#x7434;&#x56FE;&#xFF0C;&#x56FE;&#x4E2D;x&#x8F74;&#x7684;&#x540D;&#x79F0;&#x4E3A;day&#xFF0C;y&#x8F74;&#x7684;&#x540D;&#x79F0;&#x4E3A;total_bill</p>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gav03u59xfj30gp0bgb0p.jpg" alt="&#x7BB1;&#x4F53;&#x56FE;1" style="zoom:75%;"></p>
+<p>&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;</p>
+<ul>
+<li>Thur&#x4E00;&#x5217;&#x4E2D;&#x4F4D;&#x4E8E;5~25&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x503C;&#x8F83;&#x591A;&#xFF0C;</li>
+<li>Fri&#x5217;&#x4E2D;&#x4F4D;&#x4E8E;5-30&#x4E4B;&#x95F4;&#x7684;&#x8F83;&#x591A;&#xFF0C;</li>
+<li>Sat-&#x5217;&#x4E2D;&#x4F4D;&#x4E8E;5-35&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x503C;&#x8F83;&#x591A;&#xFF0C;</li>
+<li>Sun&#x4E00;&#x5217;&#x4E2D;&#x4F4D;&#x4E8E;5-40&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x503C;&#x8F83;&#x591A;&#x3002;</li>
+</ul>
+<h2 id="3-&#x7C7B;&#x522B;&#x5185;&#x7684;&#x7EDF;&#x8BA1;&#x4F30;&#x8BA1;">3 &#x7C7B;&#x522B;&#x5185;&#x7684;&#x7EDF;&#x8BA1;&#x4F30;&#x8BA1;</h2>
+<p>&#x8981;&#x60F3;&#x67E5;&#x770B;&#x6BCF;&#x4E2A;&#x5206;&#x7C7B;&#x7684;&#x96C6;&#x4E2D;&#x8D8B;&#x52BF;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6761;&#x5F62;&#x56FE;&#x548C;&#x70B9;&#x56FE;&#x8FDB;&#x884C;&#x5C55;&#x793A;&#x3002; Seaborn&#x5E93;&#x4E2D;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x8FD9;&#x4E24;&#x79CD;&#x56FE;&#x8868;&#x7684;&#x5177;&#x4F53;&#x51FD;&#x6570;&#x5982;&#x4E0B;</p>
+<ul>
+<li>barplot()&#x51FD;&#x6570;&#xFF1A;&#x7ED8;&#x5236;&#x6761;&#x5F62;&#x56FE;&#x3002;</li>
+<li>pointplot()&#x51FD;&#x6570;&#xFF1A;&#x7ED8;&#x5236;&#x70B9;&#x56FE;&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x7684;API&#x4E0E;&#x4E0A;&#x9762;&#x90A3;&#x4E9B;&#x51FD;&#x6570;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x8BB2;&#x89E3;&#x51FD;&#x6570;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x4E0D;&#x518D;&#x8FC7;&#x591A;&#x5BF9;&#x51FD;&#x6570;&#x7684;&#x8BED;&#x6CD5;&#x8FDB;&#x884C;&#x8BB2;&#x89E3;&#x4E86;&#x3002;</p>
+<h3 id="31-&#x7ED8;&#x5236;&#x6761;&#x5F62;&#x56FE;">3.1 &#x7ED8;&#x5236;&#x6761;&#x5F62;&#x56FE;</h3>
+<p>&#x6700;&#x5E38;&#x7528;&#x7684;&#x67E5;&#x770B;&#x96C6;&#x4E2D;&#x8D8B;&#x52BF;&#x7684;&#x56FE;&#x5F62;&#x5C31;&#x662F;&#x6761;&#x5F62;&#x56FE;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C; barplot&#x51FD;&#x6570;&#x4F1A;&#x5728;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x96C6;&#x4E0A;&#x4F7F;&#x7528;&#x5747;&#x503C;&#x8FDB;&#x884C;&#x4F30;&#x8BA1;&#x3002;<strong>&#x82E5;&#x6BCF;&#x4E2A;&#x7C7B;&#x522B;&#x4E2D;&#x6709;&#x591A;&#x4E2A;&#x7C7B;&#x522B;&#x65F6;(&#x4F7F;&#x7528;&#x4E86;hue&#x53C2;&#x6570;)</strong>&#xFF0C;&#x5219;&#x6761;&#x5F62;&#x56FE;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5F15;&#x5BFC;&#x6765;&#x8BA1;&#x7B97;&#x4F30;&#x8BA1;&#x7684;<strong>&#x7F6E;&#x4FE1;&#x533A;&#x95F4;(&#x662F;&#x6307;&#x7531;&#x6837;&#x672C;&#x7EDF;&#x8BA1;&#x91CF;&#x6240;&#x6784;&#x9020;&#x7684;&#x603B;&#x4F53;&#x53C2;&#x6570;&#x7684;&#x4F30;&#x8BA1;&#x533A;&#x95F4;)</strong>&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x8BEF;&#x5DEE;&#x6761;&#x6765;&#x8868;&#x793A;&#x7F6E;&#x4FE1;&#x533A;&#x95F4;&#x3002;</p>
+<p>&#x4F7F;&#x7528; barplot()&#x51FD;&#x6570;&#x7684;&#x793A;&#x4F8B;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-python">sns.barplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gav05fq8iuj30h50bg4pv.jpg" alt="barplot" style="zoom:75%;"></p>
+<h3 id="32-&#x7ED8;&#x5236;&#x70B9;&#x56FE;">3.2 &#x7ED8;&#x5236;&#x70B9;&#x56FE;</h3>
+<p>&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x7528;&#x4E8E;&#x4F30;&#x8BA1;&#x7684;&#x56FE;&#x5F62;&#x662F;&#x70B9;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528; pointplot()&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x7ED8;&#x5236;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x4F1A;&#x7528;&#x9AD8;&#x5EA6;&#x4F4E;&#x8BA1;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x63CF;&#x8FF0;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x663E;&#x793A;&#x5B8C;&#x6574;&#x7684;&#x6761;&#x5F62;&#xFF0C;<strong>&#x5B83;&#x53EA;&#x4F1A;&#x7ED8;&#x5236;&#x70B9;&#x4F30;&#x8BA1;&#x548C;&#x7F6E;&#x4FE1;&#x533A;&#x95F4;</strong>&#x3002;</p>
+<p>&#x901A;&#x8FC7; pointplot()&#x51FD;&#x6570;&#x7ED8;&#x5236;&#x70B9;&#x56FE;&#x7684;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-python">sns.pointplot(x=<span class="hljs-string">&quot;day&quot;</span>, y=<span class="hljs-string">&quot;total_bill&quot;</span>, data=tips)
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gav05wsvvbj30h20buu0v.jpg" alt="pointplot" style="zoom:67%;"></p>
+<h2 id="4-&#x5C0F;&#x7ED3;">4 &#x5C0F;&#x7ED3;</h2>
+<ul>
+<li>&#x7C7B;&#x522B;&#x6563;&#x70B9;&#x56FE;<ul>
+<li>seaborn.stripplot()</li>
+</ul>
+</li>
+<li>&#x7C7B;&#x522B;&#x5185;&#x7684;&#x6570;&#x636E;&#x5206;&#x5E03;<ul>
+<li>&#x7BB1;&#x7EBF;&#x56FE;<ul>
+<li>seaborn.boxplot()</li>
+</ul>
+</li>
+<li>&#x5C0F;&#x63D0;&#x7434;&#x56FE;<ul>
+<li>seaborn.violinplot()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&#x7C7B;&#x522B;&#x5185;&#x7684;&#x7EDF;&#x8BA1;&#x4F30;&#x8BA1;<ul>
+<li>&#x6761;&#x5F62;&#x56FE;<ul>
+<li>barplot()</li>
+</ul>
+</li>
+<li>&#x70B9;&#x56FE;<ul>
+<li>pointplot()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../01-Seaborn/section1.html" class="navigation navigation-prev " aria-label="Previous page: Seaborn-绘制统计图形"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../01-Seaborn/section3.html" class="navigation navigation-next " aria-label="Next page: 案例：NBA球员数据分析"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-code/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"code":{"copyButtons":true},"chart":{"type":"c3"},"splitter":{},"expandable-chapters":{},"graph":{},"katex":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
