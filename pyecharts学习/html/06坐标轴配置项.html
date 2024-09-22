@@ -7643,12 +7643,37 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=34f368e4-7ffd-41ae-940d-f4d69e5ac266">
+</div>python3样例代码
+type_ ： 坐标轴类型
+name ： 坐标轴名称
+name_textstyle_opts ： 坐标轴名称的文字样式
+name_gap ：坐标轴名称与轴线之间的距离
+name_rotate ：坐标轴名字旋转，角度值
+name_location：坐标轴名称显示位置
+is_show ： 是否显示坐标轴
+is_scale ： 坐标刻度是否包含零刻度
+is_inverse ：是否是反向坐标轴
+interval ： 坐标轴间隔
+grid_index：坐标轴所在的 grid 的索引
+position：坐标轴位置
+offset：坐标轴偏移
+split_number：坐标轴的分割段数
+boundary_gap：坐标轴两边留白策略
+min_ ：坐标轴最小值
+max_ ：坐标轴最大值
+min_interval ：坐标轴最小间隔
+max_interval ：坐标轴最大间隔
+axisline_opts：坐标轴轴线相关设置
+axistick_opts：坐标轴刻度相关设置
+axislabel_opts ：坐标轴刻度标签的相关设置
+axispointer_opts ：坐标轴指示器设置
+splitarea_opts：坐标轴在 grid 区域中的分隔区域设置
+splitline_opts ：坐标轴在 grid 区域中的分隔线设置<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=34f368e4-7ffd-41ae-940d-f4d69e5ac266">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyecharts</span> <span class="kn">import</span> <span class="n">options</span> <span class="k">as</span> <span class="n">opts</span>
@@ -7666,7 +7691,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="p">(</span>
@@ -7782,6 +7807,8 @@ a.anchor-link {
         <span class="c1"># AxisOpts: 坐标配置项</span>
         <span class="n">xaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span>
             <span class="n">is_show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1">#是否显示x轴,默认是True</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">'x轴名称'</span><span class="p">,</span>
+            <span class="n">name_location</span><span class="o">=</span><span class="s1">'end'</span><span class="p">,</span>
             <span class="c1">#坐标轴的类型</span>
             <span class="c1"># 有几个可供选择的值</span>
             <span class="c1"># value:数值轴 , 一般用于连续型数据</span>
@@ -7790,6 +7817,8 @@ a.anchor-link {
             <span class="n">type_</span><span class="o">=</span><span class="s1">'category'</span><span class="p">,</span>
         <span class="p">),</span>
         <span class="n">yaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">'y轴名称'</span><span class="p">,</span>
+            <span class="n">name_location</span><span class="o">=</span><span class="s1">'end'</span><span class="p">,</span>
             <span class="n">axisline_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisLineOpts</span><span class="p">(</span>
                 <span class="c1"># is_show=False, #不显示y轴的竖线</span>
             <span class="p">),</span>
@@ -7809,7 +7838,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">load_javascript</span><span class="p">()</span>
@@ -7823,10 +7852,10 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="application/javascript" id="247dfd9b-4e4c-4b8e-88db-1648822e2fbe" tabindex="0">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+<div class="jp-RenderedJavaScript jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="application/javascript" id="e2e298b0-094b-494a-b5bc-a0c111341bbc" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('247dfd9b-4e4c-4b8e-88db-1648822e2fbe');
+var element = document.getElementById('e2e298b0-094b-494a-b5bc-a0c111341bbc');
 new Promise(function(resolve, reject) {
     var script = document.createElement("script");
     script.onload = resolve;
@@ -7846,7 +7875,7 @@ new Promise(function(resolve, reject) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -7860,7 +7889,7 @@ new Promise(function(resolve, reject) {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <!DOCTYPE html>
 
@@ -7869,11 +7898,11 @@ new Promise(function(resolve, reject) {
 <meta charset="utf-8"/>
 </head>
 <body>
-<div class="chart-container" id="7bf025fdfa294dfab72e45c5cf0108a2" style="width:800px; height:750px; "></div>
+<div class="chart-container" id="61b2c222a4fe4859881a8f97354ad1e1" style="width:800px; height:750px; "></div>
 <script>
-        var chart_7bf025fdfa294dfab72e45c5cf0108a2 = echarts.init(
-            document.getElementById('7bf025fdfa294dfab72e45c5cf0108a2'), 'white', {renderer: 'canvas'});
-        var option_7bf025fdfa294dfab72e45c5cf0108a2 = {
+        var chart_61b2c222a4fe4859881a8f97354ad1e1 = echarts.init(
+            document.getElementById('61b2c222a4fe4859881a8f97354ad1e1'), 'white', {renderer: 'canvas'});
+        var option_61b2c222a4fe4859881a8f97354ad1e1 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -7902,13 +7931,13 @@ new Promise(function(resolve, reject) {
             "name": "A",
             "legendHoverLink": true,
             "data": [
-                143,
-                101,
-                81,
-                100,
-                144,
-                109,
-                65
+                93,
+                44,
+                93,
+                62,
+                22,
+                93,
+                127
             ],
             "realtimeSort": false,
             "showBackground": false,
@@ -7934,13 +7963,13 @@ new Promise(function(resolve, reject) {
             "name": "B",
             "legendHoverLink": true,
             "data": [
-                109,
-                74,
-                131,
-                102,
-                24,
-                95,
-                96
+                129,
+                138,
+                59,
+                64,
+                149,
+                99,
+                62
             ],
             "realtimeSort": false,
             "showBackground": false,
@@ -7966,13 +7995,13 @@ new Promise(function(resolve, reject) {
             "name": "C",
             "legendHoverLink": true,
             "data": [
-                142,
-                75,
-                46,
-                114,
-                72,
+                29,
+                136,
                 94,
-                147
+                116,
+                37,
+                69,
+                47
             ],
             "realtimeSort": false,
             "showBackground": false,
@@ -7998,13 +8027,13 @@ new Promise(function(resolve, reject) {
             "name": "D",
             "legendHoverLink": true,
             "data": [
-                45,
-                30,
-                39,
-                63,
-                57,
-                53,
-                31
+                105,
+                134,
+                68,
+                104,
+                60,
+                48,
+                67
             ],
             "realtimeSort": false,
             "showBackground": false,
@@ -8091,6 +8120,7 @@ new Promise(function(resolve, reject) {
     "xAxis": [
         {
             "type": "category",
+            "name": "x\u8f74\u540d\u79f0",
             "show": true,
             "scale": false,
             "nameLocation": "end",
@@ -8111,18 +8141,19 @@ new Promise(function(resolve, reject) {
                 }
             },
             "data": [
-                "\u8349\u8393",
-                "\u8292\u679c",
-                "\u8461\u8404",
-                "\u96ea\u68a8",
-                "\u897f\u74dc",
-                "\u67e0\u6aac",
-                "\u8f66\u5398\u5b50"
+                "\u53ef\u4e50",
+                "\u96ea\u78a7",
+                "\u6a59\u6c41",
+                "\u7eff\u8336",
+                "\u5976\u8336",
+                "\u767e\u5a01",
+                "\u9752\u5c9b"
             ]
         }
     ],
     "yAxis": [
         {
+            "name": "y\u8f74\u540d\u79f0",
             "show": true,
             "scale": false,
             "nameLocation": "end",
@@ -8272,7 +8303,7 @@ new Promise(function(resolve, reject) {
         "filterMode": "filter"
     }
 };
-        chart_7bf025fdfa294dfab72e45c5cf0108a2.setOption(option_7bf025fdfa294dfab72e45c5cf0108a2);
+        chart_61b2c222a4fe4859881a8f97354ad1e1.setOption(option_61b2c222a4fe4859881a8f97354ad1e1);
     </script>
 </body>
 </html>

@@ -7667,7 +7667,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="p">(</span>
@@ -7706,9 +7706,11 @@ a.anchor-link {
             <span class="n">is_show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1">#是否显示底部滑块组件</span>
             <span class="c1"># type_='slide', #设置滑块组件样式,默认就是slide还有一个是inside</span>
             <span class="c1"># 我们来看一下inside</span>
-            <span class="c1"># type_='inside'</span>
+            <span class="c1"># type_='inside',#可以实现缩放条不显示,鼠标悬停在画上滚动鼠标滚轮即可滚动</span>
             <span class="n">is_realtime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1">#是否实时渲染图表默认True</span>
             <span class="n">range_start</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="c1">#设置滑块区域(数据窗口的起始位置)的默认位置,默认是20，我们可以自己指定</span>
+            <span class="n">orient</span><span class="o">=</span><span class="s1">'horizontal'</span><span class="p">,</span> <span class="c1">#修改水平方向默认是horizontal,如果改成垂直那就是virtical</span>
+            <span class="n">is_zoom_lock</span><span class="o">=</span><span class="kc">True</span> <span class="c1">#是否锁定选择区域,如果锁定那就不能缩放只能平移</span>
         <span class="p">)</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -7723,10 +7725,10 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="application/javascript" id="93815cbe-4fa3-4276-af45-71450f9db08e" tabindex="0">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
+<div class="jp-RenderedJavaScript jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="application/javascript" id="34497534-90ef-404e-a758-3c1248d1440e" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('93815cbe-4fa3-4276-af45-71450f9db08e');
+var element = document.getElementById('34497534-90ef-404e-a758-3c1248d1440e');
 new Promise(function(resolve, reject) {
     var script = document.createElement("script");
     script.onload = resolve;
@@ -7746,7 +7748,7 @@ new Promise(function(resolve, reject) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -7760,7 +7762,7 @@ new Promise(function(resolve, reject) {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <!DOCTYPE html>
 
@@ -7769,11 +7771,11 @@ new Promise(function(resolve, reject) {
 <meta charset="utf-8"/>
 </head>
 <body>
-<div class="chart-container" id="62aab2b80ac14463a3e05c52e8341636" style="width:500px; height:450px; "></div>
+<div class="chart-container" id="a03f503832de43b1876efbfa94defc52" style="width:500px; height:450px; "></div>
 <script>
-        var chart_62aab2b80ac14463a3e05c52e8341636 = echarts.init(
-            document.getElementById('62aab2b80ac14463a3e05c52e8341636'), 'essos', {renderer: 'canvas'});
-        var option_62aab2b80ac14463a3e05c52e8341636 = {
+        var chart_a03f503832de43b1876efbfa94defc52 = echarts.init(
+            document.getElementById('a03f503832de43b1876efbfa94defc52'), 'essos', {renderer: 'canvas'});
+        var option_a03f503832de43b1876efbfa94defc52 = {
     "backgroundColor": "azure",
     "animation": true,
     "animationThreshold": 2000,
@@ -7792,13 +7794,13 @@ new Promise(function(resolve, reject) {
             "name": "A\u7c7b",
             "legendHoverLink": true,
             "data": [
-                90,
-                61,
-                142,
-                133,
-                121,
-                103,
-                70
+                49,
+                147,
+                101,
+                56,
+                148,
+                119,
+                69
             ],
             "realtimeSort": false,
             "showBackground": false,
@@ -7824,13 +7826,13 @@ new Promise(function(resolve, reject) {
             "name": "B\u7c7b",
             "legendHoverLink": true,
             "data": [
-                145,
-                34,
-                90,
-                23,
-                43,
-                86,
-                42
+                37,
+                50,
+                21,
+                60,
+                21,
+                70,
+                75
             ],
             "realtimeSort": false,
             "showBackground": false,
@@ -7924,13 +7926,13 @@ new Promise(function(resolve, reject) {
                 }
             },
             "data": [
-                "\u54c8\u58eb\u5947",
-                "\u8428\u6469\u8036",
-                "\u6cf0\u8fea",
-                "\u91d1\u6bdb",
-                "\u7267\u7f8a\u72ac",
-                "\u5409\u5a03\u5a03",
-                "\u67ef\u57fa"
+                "\u6cb3\u9a6c",
+                "\u87d2\u86c7",
+                "\u8001\u864e",
+                "\u5927\u8c61",
+                "\u5154\u5b50",
+                "\u718a\u732b",
+                "\u72ee\u5b50"
             ]
         }
     ],
@@ -7982,11 +7984,11 @@ new Promise(function(resolve, reject) {
         "start": 20,
         "end": 80,
         "orient": "horizontal",
-        "zoomLock": false,
+        "zoomLock": true,
         "filterMode": "filter"
     }
 };
-        chart_62aab2b80ac14463a3e05c52e8341636.setOption(option_62aab2b80ac14463a3e05c52e8341636);
+        chart_a03f503832de43b1876efbfa94defc52.setOption(option_a03f503832de43b1876efbfa94defc52);
     </script>
 </body>
 </html>
