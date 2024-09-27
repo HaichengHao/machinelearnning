@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>07系列配置项之线和标签配置</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>17雷达图</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7509,7 +7509,7 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0d3beee5-3ed0-438f-a014-7dcc2933ae26">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5020531e-ff5f-42ac-8792-d4ebfdb95e1f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7633,243 +7633,92 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f603b99f-4c63-460a-995a-18e5ecfdc485">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=66db8754-2dd0-4a12-8f17-482b2dbcb226">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="%E7%B3%BB%E5%88%97%E9%85%8D%E7%BD%AE%E9%A1%B9%E4%B9%8B%E7%BA%BF%E5%92%8C%E6%A0%87%E7%AD%BE%E9%85%8D%E7%BD%AE">系列配置项之线和标签配置<a class="anchor-link" href="#%E7%B3%BB%E5%88%97%E9%85%8D%E7%BD%AE%E9%A1%B9%E4%B9%8B%E7%BA%BF%E5%92%8C%E6%A0%87%E7%AD%BE%E9%85%8D%E7%BD%AE">¶</a></h1>
+<h1 id="%E9%9B%B7%E8%BE%BE%E5%9B%BE">雷达图<a class="anchor-link" href="#%E9%9B%B7%E8%BE%BE%E5%9B%BE">¶</a></h1>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c354d61a-9557-47f8-8636-fc4d405213ca">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="%E5%AF%BC%E5%85%A5%E9%9C%80%E8%A6%81%E7%9A%84%E5%8C%85">导入需要的包<a class="anchor-link" href="#%E5%AF%BC%E5%85%A5%E9%9C%80%E8%A6%81%E7%9A%84%E5%8C%85">¶</a></h4>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1ff31c0a-202e-4697-9ded-506365a57d4d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=60b2c3aa-c8de-464f-a0c9-c27e2234f512">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 新来的一个包</span>
-<span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="kn">import</span> <span class="n">Line</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3f0b16e3-cf94-4d1e-b507-c0a0d9c7d4c7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pyecharts.options</span> <span class="k">as</span> <span class="nn">opts</span>
-<span class="kn">from</span> <span class="nn">pyecharts.globals</span> <span class="kn">import</span> <span class="n">CurrentConfig</span><span class="p">,</span><span class="n">NotebookType</span><span class="p">,</span><span class="n">RenderType</span><span class="p">,</span><span class="n">ThemeType</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyecharts.globals</span> <span class="kn">import</span> <span class="n">CurrentConfig</span><span class="p">,</span><span class="n">NotebookType</span><span class="p">,</span><span class="n">ThemeType</span>
 <span class="n">CurrentConfig</span><span class="o">.</span><span class="n">NOTEBOOK_TYPE</span> <span class="o">=</span> <span class="n">NotebookType</span><span class="o">.</span><span class="n">JUPYTER_LAB</span>
+<span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="kn">import</span> <span class="n">Radar</span>
 <span class="kn">from</span> <span class="nn">pyecharts.faker</span> <span class="kn">import</span> <span class="n">Faker</span>
-<span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="kn">import</span> <span class="n">Bar</span>
+<span class="kn">import</span> <span class="nn">pyecharts.options</span> <span class="k">as</span> <span class="nn">opts</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=251962e6-255a-4bbd-82ec-86fbec98fdec">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dcd88b06-114a-4abb-886b-a860b1425f6b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87">数据准备<a class="anchor-link" href="#%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=dc6a4f28-7fc0-4c81-b1be-6e1e5cbcd296">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="p">(</span>
-    <span class="n">Line</span><span class="p">(</span>
-        <span class="n">init_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">InitOpts</span><span class="p">(</span>
-            <span class="n">width</span><span class="o">=</span><span class="s1">'800px'</span><span class="p">,</span>
-            <span class="n">height</span><span class="o">=</span><span class="s1">'750px'</span><span class="p">,</span>
-            <span class="c1"># theme=ThemeType.ESSOS,</span>
-            <span class="c1"># bg_color='bisque'</span>
-            <span class="n">page_title</span><span class="o">=</span><span class="s1">'起名'</span>
-            
-            
-        <span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">4300</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">28000</span><span class="p">,</span><span class="mi">35000</span><span class="p">,</span><span class="mi">50000</span><span class="p">,</span><span class="mi">19000</span><span class="p">]]</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5000</span><span class="p">,</span><span class="mi">14000</span><span class="p">,</span><span class="mi">28000</span><span class="p">,</span><span class="mi">31000</span><span class="p">,</span><span class="mi">42000</span><span class="p">,</span><span class="mi">21000</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3bbe1378-725b-43bf-b700-02e3ae9ab7ee">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Radar</span><span class="p">()</span>
+    <span class="c1"># 雷达图并不是x,y坐标的形式,所以需要换一个写法</span>
+    <span class="c1"># schema 图解</span>
+    <span class="o">.</span><span class="n">add_schema</span><span class="p">(</span>
+        <span class="n">schema</span><span class="o">=</span><span class="p">[</span>
+            <span class="c1"># 设置指示项,默认是逆时针的</span>
+            <span class="n">opts</span><span class="o">.</span><span class="n">RadarIndicatorItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'项目1'</span><span class="p">,</span><span class="n">max_</span><span class="o">=</span><span class="mi">6000</span><span class="p">),</span>
+            <span class="n">opts</span><span class="o">.</span><span class="n">RadarIndicatorItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'项目2'</span><span class="p">,</span><span class="n">max_</span><span class="o">=</span><span class="mi">16000</span><span class="p">),</span>
+            <span class="n">opts</span><span class="o">.</span><span class="n">RadarIndicatorItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'项目3'</span><span class="p">,</span><span class="n">max_</span><span class="o">=</span><span class="mi">30000</span><span class="p">),</span>
+            <span class="n">opts</span><span class="o">.</span><span class="n">RadarIndicatorItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'项目4'</span><span class="p">,</span><span class="n">max_</span><span class="o">=</span><span class="mi">38000</span><span class="p">),</span>
+            <span class="n">opts</span><span class="o">.</span><span class="n">RadarIndicatorItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'项目5'</span><span class="p">,</span><span class="n">max_</span><span class="o">=</span><span class="mi">60000</span><span class="p">),</span>
+            <span class="n">opts</span><span class="o">.</span><span class="n">RadarIndicatorItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'项目6'</span><span class="p">,</span><span class="n">max_</span><span class="o">=</span><span class="mi">22000</span><span class="p">),</span>
+        <span class="p">]</span>
     <span class="p">)</span>
-    <span class="o">.</span><span class="n">add_xaxis</span><span class="p">(</span><span class="n">Faker</span><span class="o">.</span><span class="n">choose</span><span class="p">())</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="s1">'A'</span><span class="p">,</span><span class="n">Faker</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span><span class="n">Faker</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="s1">'C'</span><span class="p">,</span><span class="n">Faker</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    <span class="o">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="s1">'D'</span><span class="p">,</span><span class="n">Faker</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    
-    <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
-        <span class="c1"># 设置标题配置项</span>
-        <span class="c1"># TitleOptions</span>
-        <span class="n">title_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TitleOpts</span><span class="p">(</span>
-            <span class="n">title</span><span class="o">=</span><span class="s1">'主标题'</span><span class="p">,</span>
-            <span class="n">subtitle</span><span class="o">=</span><span class="s1">'副标题'</span><span class="p">,</span>
-            <span class="c1"># pos_bottom=0,</span>
-            <span class="c1"># pos_left=0,</span>
-            <span class="c1"># padding=10, #注意padding直接写就可以不需要用引号引起来</span>
-            <span class="c1"># item_gap= 40 #设置主标题和副标题的间距</span>
-            <span class="c1"># 写法很多,也可以pos_方向='npx'这种形式指定像素</span>
-            <span class="c1"># 也可以写pos_方向='n%'这样的形式，结合前端知识理解更快更容易</span>
-            <span class="c1"># 我们也可以写内边距不得不佩服baidu前端大佬写的echarts对与有前端基础的人太友好了</span>
-            
-        <span class="p">),</span>
-        <span class="c1"># 设置图例配置项</span>
-        <span class="n">legend_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LegendOpts</span><span class="p">(</span>
-            <span class="c1"># 图例的类型有两种 ,默认是plain,还有一种是可以滚动scroll,适合图例非常多的情况</span>
-            <span class="n">type_</span><span class="o">=</span><span class="s2">"scroll"</span><span class="p">,</span>
-            <span class="n">orient</span><span class="o">=</span><span class="s1">'vertical'</span><span class="p">,</span><span class="c1">#控制方向,两个选择,水平或者垂直</span>
-            <span class="n">pos_right</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="c1">#像定位这些很多全局配置项目都是通用的</span>
-            <span class="n">pos_top</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-            <span class="c1"># is_show=False #是否显示图例,如果是False则会隐藏图例</span>
-            <span class="c1"># 选择模式</span>
-            <span class="c1"># 4个值,True为开启图例点击(默认),False为不开启图例点击,这俩不用加引号</span>
-            <span class="c1"># single：默认单选 multipel:多选 这俩要加引号</span>
-            <span class="n">selected_mode</span><span class="o">=</span><span class="s1">'multiple'</span><span class="p">,</span>
-            <span class="c1"># item_gap= 3 #没错这个和上面的titleopts也是差不多的,不过控制的是图例之间的间距</span>
-            <span class="c1"># align='right', #默认是auto,设置图例的对齐方式,相对于文字而言的色块儿的位置</span>
-            <span class="c1"># item_width=10, #设置图例的宽度 </span>
-            <span class="c1"># item_height=10, #设置图例的高度</span>
-            <span class="n">inactive_color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="c1">#设置图例非激活状态下的颜色默认是灰色</span>
-            <span class="n">legend_icon</span><span class="o">=</span> <span class="s1">'circle'</span>  <span class="c1">#甚至可以改图例的图表样式</span>
-            <span class="c1"># 常见的图标 'circle','rect','roundRect(圆角矩形，默认选项)','triangle(三角形)','dismond','arrow'</span>
-            <span class="c1"># 甚至你可以自己指定一个图标的文件路径也行,就像是html中可以指定cursour即鼠标的样式</span>
-        <span class="p">),</span>
-        <span class="c1"># 设置工具箱配置ToolboxOpts</span>
-        <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ToolboxOpts</span><span class="p">(),</span>
-        <span class="c1"># 设置视觉映射</span>
-        <span class="c1"># visualmap_opts=opts.VisualMapOpts(</span>
-        <span class="c1">#     type_='color', #两个选项,一个是color,一个是size</span>
-        <span class="c1">#     min_=30, #设置最小值</span>
-        <span class="c1">#     max_=90 ,#设置最大值</span>
-        <span class="c1">#     # range_color=['red','green','blue','purple'], #指定视觉映射组件的过渡颜色</span>
-        <span class="c1">#     range_opacity=0.7, #图元和标签文字都透明</span>
-        <span class="c1">#     # range_start=,</span>
-        <span class="c1">#     range_text=['大','小'], #设置的是视觉映射最大值和最小值的文本</span>
-        <span class="c1">#     # range_size=</span>
-        <span class="c1">#     orient='vertical' ,#设置对齐方式和之前都是一样的，默认是垂直对齐</span>
-        <span class="c1">#     # pos_right=,</span>
-        <span class="c1">#     # pos_top=,</span>
-        <span class="c1">#     # is_piecewise=True #是否为分段型,默认是False</span>
-        <span class="c1">#     # is_inverse= #是否将组件翻转,默认是False</span>
-        <span class="c1"># ),</span>
-        <span class="c1"># 设置提示框配置项</span>
-        <span class="n">tooltip_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TooltipOpts</span><span class="p">(</span>
-            <span class="c1"># is_show=True #默认显示</span>
-            <span class="c1"># 触发类型</span>
-            <span class="c1"># 有几个值可供选择</span>
-            <span class="c1"># item:数据项,一般用于散点图,柱状图,饼图(默认项)</span>
-            <span class="c1"># axis:坐标轴,提示线,主要用于条形图,折线图</span>
-            <span class="n">trigger</span><span class="o">=</span><span class="s1">'axis'</span><span class="p">,</span>
-
-            <span class="c1"># 触发条件</span>
-            <span class="c1"># 几个选项可供选择</span>
-            <span class="c1"># mousemove(默认),mousemove,click,也可以这样写mousehover|click采用双约束触发</span>
-            <span class="n">trigger_on</span><span class="o">=</span><span class="s1">'mousemove|click'</span><span class="p">,</span>
-            <span class="n">is_show_content</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1">#是否显示提示框的内容,默认是True</span>
-
-            <span class="c1"># 标签内容的格式</span>
-            <span class="c1"># 几个常用的模板变量</span>
-            <span class="c1"># {a}:系列名,就是add_yaxis中的参数中的系列名,即A类,B类这样的</span>
-            <span class="c1"># {b}:数据名</span>
-            <span class="c1"># {c}:值</span>
-            <span class="n">formatter</span><span class="o">=</span><span class="s1">'</span><span class="si">{a}</span><span class="s1">:</span><span class="si">{b}</span><span class="s1">--</span><span class="si">{c}</span><span class="s1">'</span><span class="p">,</span>
-            <span class="n">background_color</span><span class="o">=</span><span class="s1">'blueviolet'</span><span class="p">,</span> <span class="c1">#提示框设置背景颜色,注意这里与初始化配置中的写法略微不同</span>
-            <span class="n">border_color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="c1">#设置边框的颜色,注意如果不设置border_width可能会看不出看来</span>
-            <span class="n">border_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-            <span class="n">textstyle_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">TextStyleOpts</span><span class="p">(</span>
-                <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span> <span class="c1">#设置提示框中字体的颜色</span>
-            <span class="p">)</span>
-        <span class="p">),</span>
-        <span class="c1"># 设置数据缩放配置项</span>
-        <span class="c1"># DatazoomOptions</span>
-        <span class="n">datazoom_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">DataZoomOpts</span><span class="p">(</span>
-            <span class="n">is_show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1">#是否显示底部滑块组件</span>
-            <span class="c1"># type_='slide', #设置滑块组件样式,默认就是slide还有一个是inside</span>
-            <span class="c1"># 我们来看一下inside</span>
-            <span class="c1"># type_='inside',</span>
-            <span class="n">is_realtime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1">#是否实时渲染图表默认True</span>
-            <span class="n">range_start</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="c1">#设置滑块区域(数据窗口的起始位置)的默认位置,默认是20，我们可以自己指定</span>
-            <span class="n">orient</span><span class="o">=</span><span class="s1">'horizontal'</span><span class="p">,</span> <span class="c1">#修改水平方向默认是horizontal,如果改成垂直那就是virtical</span>
-            <span class="c1"># is_zoom_lock=True #是否锁定选择区域,如果锁定那就不能缩放只能平移</span>
-        <span class="p">),</span>
-        <span class="c1"># AxisOpts: 坐标配置项</span>
-        <span class="n">xaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span>
-            <span class="n">is_show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1">#是否显示x轴,默认是True</span>
-            <span class="c1">#坐标轴的类型</span>
-            <span class="c1"># 有几个可供选择的值</span>
-            <span class="c1"># value:数值轴 , 一般用于连续型数据</span>
-            <span class="c1"># category:类目轴,适用于离散数据,比如星期一到星期五这样的</span>
-            <span class="c1"># time:时间轴,适用于连续的时序数据</span>
-            <span class="n">type_</span><span class="o">=</span><span class="s1">'category'</span><span class="p">,</span>
-           
-        <span class="p">),</span>
-        <span class="n">yaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span>
-            <span class="n">axisline_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisLineOpts</span><span class="p">(</span>
-                <span class="c1"># is_show=False, #不显示y轴的竖线</span>
-            <span class="p">),</span>
-            <span class="n">axistick_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisTickOpts</span><span class="p">(</span>
-                <span class="c1"># is_show=False,#不显示y轴的刻度</span>
-            <span class="p">)</span>
-        <span class="p">)</span>     
-    <span class="p">)</span>
-
-    <span class="c1"># 系列配置项</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'数据1'</span><span class="p">,</span><span class="n">v1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'数据2'</span><span class="p">,</span><span class="n">v2</span><span class="p">)</span>
     <span class="o">.</span><span class="n">set_series_opts</span><span class="p">(</span>
-        <span class="c1"># 标签配置项(注意观察图形上文字的位置,其实还是跟全局配置中的legendopts中控制位置的align作用很相近)</span>
         <span class="n">label_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span>
-            <span class="c1"># is_show=True</span>
-            <span class="c1"># 文字位置选项,默认是top,当然还有其三个方位</span>
-            <span class="c1"># 另外还可以设置文字在标签之中,这种方式适合漏斗图</span>
-            <span class="c1"># inside,insideleft,insideright</span>
-            <span class="n">position</span><span class="o">=</span><span class="s1">'top'</span><span class="p">,</span>
-            <span class="c1"># 还有几个关于字体的设置,学过前端的很熟悉</span>
-            <span class="n">font_size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
-            <span class="c1"># font_weight=bolder,#默认normal</span>
-            <span class="c1"># font_family=,</span>
-            <span class="c1"># font_style=italic, #italic斜体,normal(默认)</span>
-
-            <span class="c1"># 字体旋转</span>
-            <span class="n">rotate</span><span class="o">=</span><span class="mi">30</span> <span class="c1">#值是角度,默认为0,-90-90,正数为逆时针旋转,负数为顺时针旋转</span>
-            
-        <span class="p">),</span>
-        <span class="c1"># 图元样式配置项,注意如果设置了visualmap配置项会与该项冲突</span>
-        <span class="n">itemstyle_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ItemStyleOpts</span><span class="p">(</span>
-            <span class="c1"># 图的颜色,可以使用颜色项目,也支持RGB和RGBA,以及hex如#ccc这样的</span>
-            <span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">,</span>
-            <span class="c1"># 单独设置透明度也是可以的</span>
-            <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
-            <span class="c1"># 也可以设置边框的颜色以及边框的粗细</span>
-            <span class="n">border_color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span>
-            <span class="n">border_width</span><span class="o">=</span><span class="mi">20</span>
-        <span class="p">),</span>
-        <span class="c1"># 线条样式配置项</span>
-        <span class="n">linestyle_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LineStyleOpts</span><span class="p">(</span>
-            <span class="c1"># is_show=True, #默认的</span>
-            <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="c1">#设置线条的宽度</span>
-            <span class="n">color</span><span class="o">=</span><span class="s1">'tomato'</span><span class="p">,</span><span class="c1">#设置线条的颜色</span>
-
-            <span class="c1"># 设置线条的类型</span>
-            <span class="c1"># 有几个选项可供选择,结合前端边框样式来理解</span>
-            <span class="c1"># dashed(虚线),solid,weavy,dotted(圆点线)</span>
-            <span class="n">type_</span><span class="o">=</span><span class="s1">'dotted'</span> <span class="c1">#默认情况下是solid</span>
-            
-            
+            <span class="c1"># is_show=False,</span>
         <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+        
     <span class="p">)</span>
     
 <span class="p">)</span>
@@ -7878,12 +7727,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c8e4f127-cc7c-4fd3-b732-30678a59ebeb">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7ca7b9e4-1db5-433c-9e5b-9d46cf350649">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">load_javascript</span><span class="p">()</span>
@@ -7897,15 +7746,15 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="application/javascript" id="33222c1d-71e6-4005-9699-462205a8de44" tabindex="0">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+<div class="jp-RenderedJavaScript jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="application/javascript" id="8ecc029a-0e82-4af1-9f17-b2c9bd3a5745" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('33222c1d-71e6-4005-9699-462205a8de44');
+var element = document.getElementById('8ecc029a-0e82-4af1-9f17-b2c9bd3a5745');
 new Promise(function(resolve, reject) {
     var script = document.createElement("script");
     script.onload = resolve;
     script.onerror = reject;
-    script.src = "https://assets.pyecharts.org/assets/echarts.min.js";
+    script.src = "https://assets.pyecharts.org/assets/v5/echarts.min.js";
     document.head.appendChild(script);
 }).then(() => {
 
@@ -7915,12 +7764,12 @@ new Promise(function(resolve, reject) {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=49adf186-16d8-4e25-aa4f-f3e00009e388">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=91b0d3aa-105d-4bf5-a4a6-bcacfe34fc13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -7934,7 +7783,7 @@ new Promise(function(resolve, reject) {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <!DOCTYPE html>
 
@@ -7943,11 +7792,11 @@ new Promise(function(resolve, reject) {
 <meta charset="utf-8"/>
 </head>
 <body>
-<div class="chart-container" id="e67b6203935f456fab0280c845178b48" style="width:800px; height:750px;"></div>
+<div class="chart-container" id="d7ba14ddabb24ed48e9065528ac7399e" style="width:900px; height:500px; "></div>
 <script>
-        var chart_e67b6203935f456fab0280c845178b48 = echarts.init(
-            document.getElementById('e67b6203935f456fab0280c845178b48'), 'white', {renderer: 'canvas'});
-        var option_e67b6203935f456fab0280c845178b48 = {
+        var chart_d7ba14ddabb24ed48e9065528ac7399e = echarts.init(
+            document.getElementById('d7ba14ddabb24ed48e9065528ac7399e'), 'white', {renderer: 'canvas'});
+        var option_d7ba14ddabb24ed48e9065528ac7399e = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -7956,357 +7805,104 @@ new Promise(function(resolve, reject) {
     "animationDurationUpdate": 300,
     "animationEasingUpdate": "cubicOut",
     "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
     "color": [
-        "#c23531",
-        "#2f4554",
-        "#61a0a8",
-        "#d48265",
-        "#749f83",
-        "#ca8622",
-        "#bda29a",
-        "#6e7074",
-        "#546570",
-        "#c4ccd3",
-        "#f05b72",
-        "#ef5b9c",
-        "#f47920",
-        "#905a3d",
-        "#fab27b",
-        "#2a5caa",
-        "#444693",
-        "#726930",
-        "#b2d235",
-        "#6d8346",
-        "#ac6767",
-        "#1d953f",
-        "#6950a1",
-        "#918597"
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
     ],
     "series": [
         {
-            "type": "line",
-            "name": "A",
-            "connectNulls": false,
-            "symbolSize": 4,
-            "showSymbol": true,
-            "smooth": false,
-            "clip": true,
-            "step": false,
+            "type": "radar",
+            "name": "\u6570\u636e1",
             "data": [
                 [
-                    "\u54c8\u58eb\u5947",
-                    147
-                ],
-                [
-                    "\u8428\u6469\u8036",
-                    63
-                ],
-                [
-                    "\u6cf0\u8fea",
-                    92
-                ],
-                [
-                    "\u91d1\u6bdb",
-                    106
-                ],
-                [
-                    "\u7267\u7f8a\u72ac",
-                    50
-                ],
-                [
-                    "\u5409\u5a03\u5a03",
-                    135
-                ],
-                [
-                    "\u67ef\u57fa",
-                    84
+                    4300,
+                    10000,
+                    28000,
+                    35000,
+                    50000,
+                    19000
                 ]
             ],
-            "hoverAnimation": true,
             "label": {
                 "show": true,
-                "position": "top",
-                "rotate": 30,
-                "margin": 8,
-                "fontSize": 14
+                "margin": 8
+            },
+            "selectedMode": false,
+            "zlevel": 0,
+            "z": 2,
+            "itemStyle": {
+                "normal": {
+                    "color": "red"
+                }
             },
             "lineStyle": {
                 "show": true,
-                "width": 3,
+                "width": 1,
                 "opacity": 1,
                 "curveness": 0,
-                "type": "dotted",
-                "color": "tomato"
+                "type": "solid"
             },
             "areaStyle": {
                 "opacity": 0
-            },
-            "itemStyle": {
-                "color": "blue",
-                "borderColor": "green",
-                "borderWidth": 20,
-                "opacity": 0.7
-            },
-            "zlevel": 0,
-            "z": 0,
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
             }
         },
         {
-            "type": "line",
-            "name": "B",
-            "connectNulls": false,
-            "symbolSize": 4,
-            "showSymbol": true,
-            "smooth": false,
-            "clip": true,
-            "step": false,
+            "type": "radar",
+            "name": "\u6570\u636e2",
             "data": [
                 [
-                    "\u54c8\u58eb\u5947",
-                    90
-                ],
-                [
-                    "\u8428\u6469\u8036",
-                    42
-                ],
-                [
-                    "\u6cf0\u8fea",
-                    40
-                ],
-                [
-                    "\u91d1\u6bdb",
-                    118
-                ],
-                [
-                    "\u7267\u7f8a\u72ac",
-                    123
-                ],
-                [
-                    "\u5409\u5a03\u5a03",
-                    131
-                ],
-                [
-                    "\u67ef\u57fa",
-                    52
+                    5000,
+                    14000,
+                    28000,
+                    31000,
+                    42000,
+                    21000
                 ]
             ],
-            "hoverAnimation": true,
             "label": {
                 "show": true,
-                "position": "top",
-                "rotate": 30,
-                "margin": 8,
-                "fontSize": 14
+                "margin": 8
+            },
+            "selectedMode": false,
+            "zlevel": 0,
+            "z": 2,
+            "itemStyle": {
+                "normal": {}
             },
             "lineStyle": {
                 "show": true,
-                "width": 3,
+                "width": 1,
                 "opacity": 1,
                 "curveness": 0,
-                "type": "dotted",
-                "color": "tomato"
+                "type": "solid"
             },
             "areaStyle": {
                 "opacity": 0
-            },
-            "itemStyle": {
-                "color": "blue",
-                "borderColor": "green",
-                "borderWidth": 20,
-                "opacity": 0.7
-            },
-            "zlevel": 0,
-            "z": 0,
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
-            }
-        },
-        {
-            "type": "line",
-            "name": "C",
-            "connectNulls": false,
-            "symbolSize": 4,
-            "showSymbol": true,
-            "smooth": false,
-            "clip": true,
-            "step": false,
-            "data": [
-                [
-                    "\u54c8\u58eb\u5947",
-                    124
-                ],
-                [
-                    "\u8428\u6469\u8036",
-                    60
-                ],
-                [
-                    "\u6cf0\u8fea",
-                    76
-                ],
-                [
-                    "\u91d1\u6bdb",
-                    98
-                ],
-                [
-                    "\u7267\u7f8a\u72ac",
-                    79
-                ],
-                [
-                    "\u5409\u5a03\u5a03",
-                    113
-                ],
-                [
-                    "\u67ef\u57fa",
-                    101
-                ]
-            ],
-            "hoverAnimation": true,
-            "label": {
-                "show": true,
-                "position": "top",
-                "rotate": 30,
-                "margin": 8,
-                "fontSize": 14
-            },
-            "lineStyle": {
-                "show": true,
-                "width": 3,
-                "opacity": 1,
-                "curveness": 0,
-                "type": "dotted",
-                "color": "tomato"
-            },
-            "areaStyle": {
-                "opacity": 0
-            },
-            "itemStyle": {
-                "color": "blue",
-                "borderColor": "green",
-                "borderWidth": 20,
-                "opacity": 0.7
-            },
-            "zlevel": 0,
-            "z": 0,
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
-            }
-        },
-        {
-            "type": "line",
-            "name": "D",
-            "connectNulls": false,
-            "symbolSize": 4,
-            "showSymbol": true,
-            "smooth": false,
-            "clip": true,
-            "step": false,
-            "data": [
-                [
-                    "\u54c8\u58eb\u5947",
-                    125
-                ],
-                [
-                    "\u8428\u6469\u8036",
-                    32
-                ],
-                [
-                    "\u6cf0\u8fea",
-                    97
-                ],
-                [
-                    "\u91d1\u6bdb",
-                    94
-                ],
-                [
-                    "\u7267\u7f8a\u72ac",
-                    58
-                ],
-                [
-                    "\u5409\u5a03\u5a03",
-                    49
-                ],
-                [
-                    "\u67ef\u57fa",
-                    108
-                ]
-            ],
-            "hoverAnimation": true,
-            "label": {
-                "show": true,
-                "position": "top",
-                "rotate": 30,
-                "margin": 8,
-                "fontSize": 14
-            },
-            "lineStyle": {
-                "show": true,
-                "width": 3,
-                "opacity": 1,
-                "curveness": 0,
-                "type": "dotted",
-                "color": "tomato"
-            },
-            "areaStyle": {
-                "opacity": 0
-            },
-            "itemStyle": {
-                "color": "blue",
-                "borderColor": "green",
-                "borderWidth": 20,
-                "opacity": 0.7
-            },
-            "zlevel": 0,
-            "z": 0,
-            "rippleEffect": {
-                "show": true,
-                "brushType": "stroke",
-                "scale": 2.5,
-                "period": 4
             }
         }
     ],
     "legend": [
         {
             "data": [
-                "A",
-                "B",
-                "C",
-                "D"
+                "\u6570\u636e1",
+                "\u6570\u636e2"
             ],
-            "selected": {
-                "A": true,
-                "B": true,
-                "C": true,
-                "D": true
-            },
-            "type": "scroll",
-            "selectedMode": "multiple",
-            "show": true,
-            "right": 0,
-            "top": 30,
-            "orient": "vertical",
-            "padding": 5,
-            "itemGap": 10,
-            "itemWidth": 25,
-            "itemHeight": 14,
-            "inactiveColor": "black",
-            "icon": "circle"
+            "selected": {}
         }
     ],
     "tooltip": {
         "show": true,
-        "trigger": "axis",
+        "trigger": "item",
         "triggerOn": "mousemove|click",
         "axisPointer": {
             "type": "line"
@@ -8315,29 +7911,51 @@ new Promise(function(resolve, reject) {
         "alwaysShowContent": false,
         "showDelay": 0,
         "hideDelay": 100,
-        "formatter": "{a}:{b}--{c}",
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
         "textStyle": {
-            "color": "white"
+            "fontSize": 14
         },
-        "backgroundColor": "blueviolet",
-        "borderColor": "white",
-        "borderWidth": 2,
-        "padding": 5
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
     },
-    "xAxis": [
+    "radar": [
         {
-            "type": "category",
-            "show": true,
-            "scale": false,
-            "nameLocation": "end",
-            "nameGap": 15,
-            "gridIndex": 0,
-            "inverse": false,
-            "offset": 0,
-            "splitNumber": 5,
-            "minInterval": 0,
+            "indicator": [
+                {
+                    "name": "\u9879\u76ee1",
+                    "max": 6000
+                },
+                {
+                    "name": "\u9879\u76ee2",
+                    "max": 16000
+                },
+                {
+                    "name": "\u9879\u76ee3",
+                    "max": 30000
+                },
+                {
+                    "name": "\u9879\u76ee4",
+                    "max": 38000
+                },
+                {
+                    "name": "\u9879\u76ee5",
+                    "max": 60000
+                },
+                {
+                    "name": "\u9879\u76ee6",
+                    "max": 22000
+                }
+            ],
+            "startAngle": 90,
+            "name": {
+                "textStyle": {}
+            },
             "splitLine": {
-                "show": false,
+                "show": true,
                 "lineStyle": {
                     "show": true,
                     "width": 1,
@@ -8346,145 +7964,21 @@ new Promise(function(resolve, reject) {
                     "type": "solid"
                 }
             },
-            "data": [
-                "\u54c8\u58eb\u5947",
-                "\u8428\u6469\u8036",
-                "\u6cf0\u8fea",
-                "\u91d1\u6bdb",
-                "\u7267\u7f8a\u72ac",
-                "\u5409\u5a03\u5a03",
-                "\u67ef\u57fa"
-            ]
-        }
-    ],
-    "yAxis": [
-        {
-            "show": true,
-            "scale": false,
-            "nameLocation": "end",
-            "nameGap": 15,
-            "gridIndex": 0,
+            "splitArea": {
+                "show": true,
+                "areaStyle": {
+                    "opacity": 0
+                }
+            },
             "axisLine": {
                 "show": true,
                 "onZero": true,
                 "onZeroAxisIndex": 0
-            },
-            "axisTick": {
-                "show": true,
-                "alignWithLabel": false,
-                "inside": false
-            },
-            "inverse": false,
-            "offset": 0,
-            "splitNumber": 5,
-            "minInterval": 0,
-            "splitLine": {
-                "show": false,
-                "lineStyle": {
-                    "show": true,
-                    "width": 1,
-                    "opacity": 1,
-                    "curveness": 0,
-                    "type": "solid"
-                }
             }
         }
-    ],
-    "title": [
-        {
-            "text": "\u4e3b\u6807\u9898",
-            "subtext": "\u526f\u6807\u9898",
-            "padding": 5,
-            "itemGap": 10
-        }
-    ],
-    "toolbox": {
-        "show": true,
-        "orient": "horizontal",
-        "itemSize": 15,
-        "itemGap": 10,
-        "left": "80%",
-        "feature": {
-            "saveAsImage": {
-                "type": "png",
-                "backgroundColor": "auto",
-                "connectedBackgroundColor": "#fff",
-                "show": true,
-                "title": "\u4fdd\u5b58\u4e3a\u56fe\u7247",
-                "pixelRatio": 1
-            },
-            "restore": {
-                "show": true,
-                "title": "\u8fd8\u539f"
-            },
-            "dataView": {
-                "show": true,
-                "title": "\u6570\u636e\u89c6\u56fe",
-                "readOnly": false,
-                "lang": [
-                    "\u6570\u636e\u89c6\u56fe",
-                    "\u5173\u95ed",
-                    "\u5237\u65b0"
-                ],
-                "backgroundColor": "#fff",
-                "textareaColor": "#fff",
-                "textareaBorderColor": "#333",
-                "textColor": "#000",
-                "buttonColor": "#c23531",
-                "buttonTextColor": "#fff"
-            },
-            "dataZoom": {
-                "show": true,
-                "title": {
-                    "zoom": "\u533a\u57df\u7f29\u653e",
-                    "back": "\u533a\u57df\u7f29\u653e\u8fd8\u539f"
-                },
-                "icon": {},
-                "xAxisIndex": false,
-                "yAxisIndex": false,
-                "filterMode": "filter"
-            },
-            "magicType": {
-                "show": true,
-                "type": [
-                    "line",
-                    "bar",
-                    "stack",
-                    "tiled"
-                ],
-                "title": {
-                    "line": "\u5207\u6362\u4e3a\u6298\u7ebf\u56fe",
-                    "bar": "\u5207\u6362\u4e3a\u67f1\u72b6\u56fe",
-                    "stack": "\u5207\u6362\u4e3a\u5806\u53e0",
-                    "tiled": "\u5207\u6362\u4e3a\u5e73\u94fa"
-                },
-                "icon": {}
-            },
-            "brush": {
-                "icon": {},
-                "title": {
-                    "rect": "\u77e9\u5f62\u9009\u62e9",
-                    "polygon": "\u5708\u9009",
-                    "lineX": "\u6a2a\u5411\u9009\u62e9",
-                    "lineY": "\u7eb5\u5411\u9009\u62e9",
-                    "keep": "\u4fdd\u6301\u9009\u62e9",
-                    "clear": "\u6e05\u9664\u9009\u62e9"
-                }
-            }
-        }
-    },
-    "dataZoom": {
-        "show": true,
-        "type": "slider",
-        "realtime": true,
-        "start": 20,
-        "end": 80,
-        "orient": "horizontal",
-        "zoomLock": false,
-        "filterMode": "filter"
-    }
+    ]
 };
-        chart_e67b6203935f456fab0280c845178b48.setOption(option_e67b6203935f456fab0280c845178b48);
+        chart_d7ba14ddabb24ed48e9065528ac7399e.setOption(option_d7ba14ddabb24ed48e9065528ac7399e);
     </script>
 </body>
 </html>
@@ -8492,7 +7986,7 @@ new Promise(function(resolve, reject) {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a8885139-5a83-410f-9a83-77149fe031da">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=067b8723-9d0a-4c0b-a96c-3169adb1cc9b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

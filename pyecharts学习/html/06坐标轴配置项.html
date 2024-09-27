@@ -7643,32 +7643,18 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div>python3样例代码
-type_ ： 坐标轴类型
-name ： 坐标轴名称
-name_textstyle_opts ： 坐标轴名称的文字样式
-name_gap ：坐标轴名称与轴线之间的距离
-name_rotate ：坐标轴名字旋转，角度值
-name_location：坐标轴名称显示位置
-is_show ： 是否显示坐标轴
-is_scale ： 坐标刻度是否包含零刻度
-is_inverse ：是否是反向坐标轴
-interval ： 坐标轴间隔
-grid_index：坐标轴所在的 grid 的索引
-position：坐标轴位置
-offset：坐标轴偏移
-split_number：坐标轴的分割段数
-boundary_gap：坐标轴两边留白策略
-min_ ：坐标轴最小值
-max_ ：坐标轴最大值
-min_interval ：坐标轴最小间隔
-max_interval ：坐标轴最大间隔
-axisline_opts：坐标轴轴线相关设置
-axistick_opts：坐标轴刻度相关设置
-axislabel_opts ：坐标轴刻度标签的相关设置
-axispointer_opts ：坐标轴指示器设置
-splitarea_opts：坐标轴在 grid 区域中的分隔区域设置
-splitline_opts ：坐标轴在 grid 区域中的分隔线设置<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=34f368e4-7ffd-41ae-940d-f4d69e5ac266">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=72895f64-dc29-4309-a559-c26795a2e929">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%E9%9C%80%E8%A6%81%E8%AE%B0%E4%BD%8F%E4%B8%89%E4%B8%AAaxisline,axisticks,axislabel,%E5%86%99%E5%9C%A8%E5%9D%90%E6%A0%87%E8%BD%B4%E7%9A%84%E9%85%8D%E7%BD%AE%E5%BD%93%E4%B8%AD,%E5%88%86%E5%88%AB%E5%AF%B9%E5%BA%94%E7%9A%84%E6%98%AF%E5%9D%90%E6%A0%87%E8%BD%B4%E7%BA%BF,%E5%9D%90%E6%A0%87%E8%BD%B4%E5%88%BB%E5%BA%A6,%E5%9D%90%E6%A0%87%E8%BD%B4%E5%88%BB%E5%BA%A6%E6%96%87%E5%AD%97">需要记住三个axisline,axisticks,axislabel,写在坐标轴的配置当中,分别对应的是坐标轴线,坐标轴刻度,坐标轴刻度文字<a class="anchor-link" href="#%E9%9C%80%E8%A6%81%E8%AE%B0%E4%BD%8F%E4%B8%89%E4%B8%AAaxisline,axisticks,axislabel,%E5%86%99%E5%9C%A8%E5%9D%90%E6%A0%87%E8%BD%B4%E7%9A%84%E9%85%8D%E7%BD%AE%E5%BD%93%E4%B8%AD,%E5%88%86%E5%88%AB%E5%AF%B9%E5%BA%94%E7%9A%84%E6%98%AF%E5%9D%90%E6%A0%87%E8%BD%B4%E7%BA%BF,%E5%9D%90%E6%A0%87%E8%BD%B4%E5%88%BB%E5%BA%A6,%E5%9D%90%E6%A0%87%E8%BD%B4%E5%88%BB%E5%BA%A6%E6%96%87%E5%AD%97">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=34f368e4-7ffd-41ae-940d-f4d69e5ac266">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7691,7 +7677,7 @@ splitline_opts ：坐标轴在 grid 区域中的分隔线设置<div class="jp-Ce
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="p">(</span>
@@ -7814,19 +7800,33 @@ splitline_opts ：坐标轴在 grid 区域中的分隔线设置<div class="jp-Ce
             <span class="c1"># value:数值轴 , 一般用于连续型数据</span>
             <span class="c1"># category:类目轴,适用于离散数据,比如星期一到星期五这样的</span>
             <span class="c1"># time:时间轴,适用于连续的时序数据</span>
+            <span class="c1"># </span>
             <span class="n">type_</span><span class="o">=</span><span class="s1">'category'</span><span class="p">,</span>
         <span class="p">),</span>
         <span class="n">yaxis_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisOpts</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s1">'y轴名称'</span><span class="p">,</span>
             <span class="n">name_location</span><span class="o">=</span><span class="s1">'end'</span><span class="p">,</span>
+            <span class="c1"># 柱状图所有图形的 zlevel 值。</span>
+            <span class="c1">#  z_level: types.Numeric = 0,</span>
+            <span class="c1"># 柱状图组件的所有图形的z值。控制图形的前后顺序。</span>
+            <span class="c1"># z值小的图形会被z值大的图形覆盖。</span>
+
+              <span class="c1"># min_= 指定最小值</span>
+            <span class="c1"># max_=指定最大值</span>
             <span class="n">axisline_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisLineOpts</span><span class="p">(</span>
                 <span class="c1"># is_show=False, #不显示y轴的竖线</span>
+                 <span class="c1"># 轴线颜色</span>
+                <span class="n">linestyle_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LineStyleOpts</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"#d14a61"</span><span class="p">)</span>
             <span class="p">),</span>
             <span class="n">axistick_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">AxisTickOpts</span><span class="p">(</span>
                 <span class="c1"># is_show=False,#不显示y轴的刻度</span>
-            <span class="p">)</span>
+            <span class="p">),</span>
+             <span class="c1"># 轴线配置</span>
+            <span class="c1"># 轴标签显示格式</span>
+            <span class="n">axislabel_opts</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">LabelOpts</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="s2">"</span><span class="si">{value}</span><span class="s2">万"</span><span class="p">),</span>
         <span class="p">)</span>
-    <span class="p">)</span>
+        <span class="p">)</span>
+    
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -7838,7 +7838,7 @@ splitline_opts ：坐标轴在 grid 区域中的分隔线设置<div class="jp-Ce
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">load_javascript</span><span class="p">()</span>
@@ -7852,15 +7852,15 @@ splitline_opts ：坐标轴在 grid 区域中的分隔线设置<div class="jp-Ce
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
-<div class="jp-RenderedJavaScript jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="application/javascript" id="e2e298b0-094b-494a-b5bc-a0c111341bbc" tabindex="0">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+<div class="jp-RenderedJavaScript jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="application/javascript" id="ea48c90c-962c-498c-a2f0-4f548c17b5f0" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('e2e298b0-094b-494a-b5bc-a0c111341bbc');
+var element = document.getElementById('ea48c90c-962c-498c-a2f0-4f548c17b5f0');
 new Promise(function(resolve, reject) {
     var script = document.createElement("script");
     script.onload = resolve;
     script.onerror = reject;
-    script.src = "https://assets.pyecharts.org/assets/v5/echarts.min.js";
+    script.src = "https://assets.pyecharts.org/assets/echarts.min.js";
     document.head.appendChild(script);
 }).then(() => {
 
@@ -7875,7 +7875,7 @@ new Promise(function(resolve, reject) {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">render_notebook</span><span class="p">()</span>
@@ -7889,7 +7889,7 @@ new Promise(function(resolve, reject) {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <!DOCTYPE html>
 
@@ -7898,11 +7898,11 @@ new Promise(function(resolve, reject) {
 <meta charset="utf-8"/>
 </head>
 <body>
-<div class="chart-container" id="61b2c222a4fe4859881a8f97354ad1e1" style="width:800px; height:750px; "></div>
+<div class="chart-container" id="ec9a641be56c4c9d84f78342beda768c" style="width:800px; height:750px;"></div>
 <script>
-        var chart_61b2c222a4fe4859881a8f97354ad1e1 = echarts.init(
-            document.getElementById('61b2c222a4fe4859881a8f97354ad1e1'), 'white', {renderer: 'canvas'});
-        var option_61b2c222a4fe4859881a8f97354ad1e1 = {
+        var chart_ec9a641be56c4c9d84f78342beda768c = echarts.init(
+            document.getElementById('ec9a641be56c4c9d84f78342beda768c'), 'white', {renderer: 'canvas'});
+        var option_ec9a641be56c4c9d84f78342beda768c = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -7911,19 +7911,31 @@ new Promise(function(resolve, reject) {
     "animationDurationUpdate": 300,
     "animationEasingUpdate": "cubicOut",
     "animationDelayUpdate": 0,
-    "aria": {
-        "enabled": false
-    },
     "color": [
-        "#5470c6",
-        "#91cc75",
-        "#fac858",
-        "#ee6666",
-        "#73c0de",
-        "#3ba272",
-        "#fc8452",
-        "#9a60b4",
-        "#ea7ccc"
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
     ],
     "series": [
         {
@@ -7931,18 +7943,15 @@ new Promise(function(resolve, reject) {
             "name": "A",
             "legendHoverLink": true,
             "data": [
-                93,
-                44,
-                93,
-                62,
-                22,
-                93,
-                127
+                52,
+                116,
+                33,
+                129,
+                82,
+                49,
+                29
             ],
-            "realtimeSort": false,
             "showBackground": false,
-            "stackStrategy": "samesign",
-            "cursor": "pointer",
             "barMinHeight": 0,
             "barCategoryGap": "20%",
             "barGap": "30%",
@@ -7955,6 +7964,7 @@ new Promise(function(resolve, reject) {
             "z": 2,
             "label": {
                 "show": true,
+                "position": "top",
                 "margin": 8
             }
         },
@@ -7963,18 +7973,15 @@ new Promise(function(resolve, reject) {
             "name": "B",
             "legendHoverLink": true,
             "data": [
-                129,
-                138,
-                59,
-                64,
-                149,
-                99,
-                62
+                147,
+                131,
+                100,
+                29,
+                25,
+                139,
+                37
             ],
-            "realtimeSort": false,
             "showBackground": false,
-            "stackStrategy": "samesign",
-            "cursor": "pointer",
             "barMinHeight": 0,
             "barCategoryGap": "20%",
             "barGap": "30%",
@@ -7987,6 +7994,7 @@ new Promise(function(resolve, reject) {
             "z": 2,
             "label": {
                 "show": true,
+                "position": "top",
                 "margin": 8
             }
         },
@@ -7995,18 +8003,15 @@ new Promise(function(resolve, reject) {
             "name": "C",
             "legendHoverLink": true,
             "data": [
-                29,
-                136,
-                94,
-                116,
+                90,
+                105,
+                65,
+                87,
                 37,
-                69,
-                47
+                57,
+                124
             ],
-            "realtimeSort": false,
             "showBackground": false,
-            "stackStrategy": "samesign",
-            "cursor": "pointer",
             "barMinHeight": 0,
             "barCategoryGap": "20%",
             "barGap": "30%",
@@ -8019,6 +8024,7 @@ new Promise(function(resolve, reject) {
             "z": 2,
             "label": {
                 "show": true,
+                "position": "top",
                 "margin": 8
             }
         },
@@ -8027,18 +8033,15 @@ new Promise(function(resolve, reject) {
             "name": "D",
             "legendHoverLink": true,
             "data": [
-                105,
-                134,
-                68,
-                104,
-                60,
-                48,
-                67
+                42,
+                26,
+                47,
+                50,
+                110,
+                85,
+                92
             ],
-            "realtimeSort": false,
             "showBackground": false,
-            "stackStrategy": "samesign",
-            "cursor": "pointer",
             "barMinHeight": 0,
             "barCategoryGap": "20%",
             "barGap": "30%",
@@ -8051,6 +8054,7 @@ new Promise(function(resolve, reject) {
             "z": 2,
             "label": {
                 "show": true,
+                "position": "top",
                 "margin": 8
             }
         }
@@ -8063,7 +8067,12 @@ new Promise(function(resolve, reject) {
                 "C",
                 "D"
             ],
-            "selected": {},
+            "selected": {
+                "A": true,
+                "B": true,
+                "C": true,
+                "D": true
+            },
             "type": "scroll",
             "selectedMode": "multiple",
             "show": true,
@@ -8075,21 +8084,7 @@ new Promise(function(resolve, reject) {
             "itemWidth": 25,
             "itemHeight": 14,
             "inactiveColor": "black",
-            "icon": "circle",
-            "backgroundColor": "transparent",
-            "borderColor": "#ccc",
-            "borderRadius": 0,
-            "pageButtonItemGap": 5,
-            "pageButtonPosition": "end",
-            "pageFormatter": "{current}/{total}",
-            "pageIconColor": "#2f4554",
-            "pageIconInactiveColor": "#aaa",
-            "pageIconSize": 15,
-            "animationDurationUpdate": 800,
-            "selector": false,
-            "selectorPosition": "auto",
-            "selectorItemGap": 7,
-            "selectorButtonGap": 10
+            "icon": "circle"
         }
     ],
     "tooltip": {
@@ -8103,10 +8098,6 @@ new Promise(function(resolve, reject) {
         "alwaysShowContent": false,
         "showDelay": 0,
         "hideDelay": 100,
-        "enterable": false,
-        "confine": false,
-        "appendToBody": false,
-        "transitionDuration": 0.4,
         "formatter": "{a}:{b}--{c}",
         "textStyle": {
             "color": "green"
@@ -8114,8 +8105,7 @@ new Promise(function(resolve, reject) {
         "backgroundColor": "tomato",
         "borderColor": "white",
         "borderWidth": 2,
-        "padding": 5,
-        "order": "seriesAsc"
+        "padding": 5
     },
     "xAxis": [
         {
@@ -8131,7 +8121,7 @@ new Promise(function(resolve, reject) {
             "splitNumber": 5,
             "minInterval": 0,
             "splitLine": {
-                "show": true,
+                "show": false,
                 "lineStyle": {
                     "show": true,
                     "width": 1,
@@ -8141,13 +8131,13 @@ new Promise(function(resolve, reject) {
                 }
             },
             "data": [
-                "\u53ef\u4e50",
-                "\u96ea\u78a7",
-                "\u6a59\u6c41",
-                "\u7eff\u8336",
-                "\u5976\u8336",
-                "\u767e\u5a01",
-                "\u9752\u5c9b"
+                "\u886c\u886b",
+                "\u6bdb\u8863",
+                "\u9886\u5e26",
+                "\u88e4\u5b50",
+                "\u98ce\u8863",
+                "\u9ad8\u8ddf\u978b",
+                "\u889c\u5b50"
             ]
         }
     ],
@@ -8162,19 +8152,33 @@ new Promise(function(resolve, reject) {
             "axisLine": {
                 "show": true,
                 "onZero": true,
-                "onZeroAxisIndex": 0
+                "onZeroAxisIndex": 0,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid",
+                    "color": "#d14a61"
+                }
             },
             "axisTick": {
                 "show": true,
                 "alignWithLabel": false,
                 "inside": false
             },
+            "axisLabel": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{value}\u4e07"
+            },
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
             "minInterval": 0,
             "splitLine": {
-                "show": true,
+                "show": false,
                 "lineStyle": {
                     "show": true,
                     "width": 1,
@@ -8187,16 +8191,10 @@ new Promise(function(resolve, reject) {
     ],
     "title": [
         {
-            "show": true,
             "text": "\u4e3b\u6807\u9898",
-            "target": "blank",
             "subtext": "\u526f\u6807\u9898",
-            "subtarget": "blank",
             "padding": 5,
-            "itemGap": 10,
-            "textAlign": "auto",
-            "textVerticalAlign": "auto",
-            "triggerEvent": false
+            "itemGap": 10
         }
     ],
     "toolbox": {
@@ -8241,6 +8239,8 @@ new Promise(function(resolve, reject) {
                     "back": "\u533a\u57df\u7f29\u653e\u8fd8\u539f"
                 },
                 "icon": {},
+                "xAxisIndex": false,
+                "yAxisIndex": false,
                 "filterMode": "filter"
             },
             "magicType": {
@@ -8258,6 +8258,17 @@ new Promise(function(resolve, reject) {
                     "tiled": "\u5207\u6362\u4e3a\u5e73\u94fa"
                 },
                 "icon": {}
+            },
+            "brush": {
+                "icon": {},
+                "title": {
+                    "rect": "\u77e9\u5f62\u9009\u62e9",
+                    "polygon": "\u5708\u9009",
+                    "lineX": "\u6a2a\u5411\u9009\u62e9",
+                    "lineY": "\u7eb5\u5411\u9009\u62e9",
+                    "keep": "\u4fdd\u6301\u9009\u62e9",
+                    "clear": "\u6e05\u9664\u9009\u62e9"
+                }
             }
         }
     },
@@ -8282,9 +8293,7 @@ new Promise(function(resolve, reject) {
         "calculable": true,
         "inverse": false,
         "splitNumber": 5,
-        "hoverLink": true,
         "orient": "vertical",
-        "padding": 5,
         "showLabel": true,
         "itemWidth": 20,
         "itemHeight": 140,
@@ -8293,8 +8302,6 @@ new Promise(function(resolve, reject) {
     "dataZoom": {
         "show": true,
         "type": "slider",
-        "showDetail": true,
-        "showDataShadow": true,
         "realtime": true,
         "start": 20,
         "end": 80,
@@ -8303,7 +8310,7 @@ new Promise(function(resolve, reject) {
         "filterMode": "filter"
     }
 };
-        chart_61b2c222a4fe4859881a8f97354ad1e1.setOption(option_61b2c222a4fe4859881a8f97354ad1e1);
+        chart_ec9a641be56c4c9d84f78342beda768c.setOption(option_ec9a641be56c4c9d84f78342beda768c);
     </script>
 </body>
 </html>
@@ -8311,7 +8318,32 @@ new Promise(function(resolve, reject) {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ba4177b6-6feb-4d74-bcb6-611f12522468">
+</div>python3样例代码
+type_ ： 坐标轴类型
+name ： 坐标轴名称
+name_textstyle_opts ： 坐标轴名称的文字样式
+name_gap ：坐标轴名称与轴线之间的距离
+name_rotate ：坐标轴名字旋转，角度值
+name_location：坐标轴名称显示位置
+is_show ： 是否显示坐标轴
+is_scale ： 坐标刻度是否包含零刻度
+is_inverse ：是否是反向坐标轴
+interval ： 坐标轴间隔
+grid_index：坐标轴所在的 grid 的索引
+position：坐标轴位置
+offset：坐标轴偏移
+split_number：坐标轴的分割段数
+boundary_gap：坐标轴两边留白策略
+min_ ：坐标轴最小值
+max_ ：坐标轴最大值
+min_interval ：坐标轴最小间隔
+max_interval ：坐标轴最大间隔
+axisline_opts：坐标轴轴线相关设置
+axistick_opts：坐标轴刻度相关设置
+axislabel_opts ：坐标轴刻度标签的相关设置
+axispointer_opts ：坐标轴指示器设置
+splitarea_opts：坐标轴在 grid 区域中的分隔区域设置
+splitline_opts ：坐标轴在 grid 区域中的分隔线设置<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ba4177b6-6feb-4d74-bcb6-611f12522468">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
