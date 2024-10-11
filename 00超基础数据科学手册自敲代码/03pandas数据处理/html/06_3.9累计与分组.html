@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>05_3.8合并数据集</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>06_3.9累计与分组</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7509,7 +7509,7 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8db98401-32da-4450-891a-6bfb3a4242f1">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=42e555be-228e-482d-bdc2-9dd2fc077926">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7552,7 +7552,7 @@ a.anchor-link {
 <span class="w">        </span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="nt">td</span><span class="p">:</span><span class="nd">hover</span><span class="p">{</span>
-<span class="w">        </span><span class="k">transform</span><span class="p">:</span><span class="nb">scale</span><span class="p">(</span><span class="mf">1.1</span><span class="p">);</span>
+<span class="w">        </span><span class="k">transform</span><span class="p">:</span><span class="nb">scale</span><span class="p">(</span><span class="mf">1.1</span><span class="p">)</span><span class="w"> </span><span class="mf">0.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">all</span><span class="w"> </span><span class="n">liner</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
 <span class="w">        </span><span class="k">background-color</span><span class="p">:</span><span class="kc">orange</span><span class="p">;</span>
 <span class="w">        </span><span class="k">color</span><span class="p">:</span><span class="kc">blueviolet</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
@@ -7566,7 +7566,7 @@ a.anchor-link {
 <span class="w">    </span><span class="p">#</span><span class="nn">ct</span><span class="p">{</span>
 <span class="w">        </span><span class="k">text-align</span><span class="p">:</span><span class="kc">center</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="err">}</span>
+<span class="w">    </span>
 <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 </pre></div>
 </div>
@@ -7614,7 +7614,7 @@ a.anchor-link {
         
     }
     td:hover{
-        transform:scale(1.1);
+        transform:scale(1.1) 0.3s all liner !important;
         background-color:orange;
         color:blueviolet;
     }
@@ -7628,13 +7628,13 @@ a.anchor-link {
     #ct{
         text-align:center;
     }
-    }
+    
 </style>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4f55493e-271d-4e70-850c-ea1afb246a6e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c7a71a0b-0ab0-44e5-9e0e-544ba375ad4a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7642,120 +7642,66 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=03bb0db4-c557-42f8-a2a4-f5ecca15a0f1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b8ba5e8a-b00f-4d22-a823-1a150ec6054d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.8-%E5%90%88%E5%B9%B6%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%9A%E5%90%88%E5%B9%B6%E4%B8%8E%E8%BF%9E%E6%8E%A5">3.8 合并数据集：合并与连接<a class="anchor-link" href="#3.8-%E5%90%88%E5%B9%B6%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%9A%E5%90%88%E5%B9%B6%E4%B8%8E%E8%BF%9E%E6%8E%A5">¶</a></h2>
+<h2 id="3.9-%E7%B4%AF%E8%AE%A1%E4%B8%8E%E5%88%86%E7%BB%84">3.9 累计与分组<a class="anchor-link" href="#3.9-%E7%B4%AF%E8%AE%A1%E4%B8%8E%E5%88%86%E7%BB%84">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9e7fb170-4ecc-40e1-a220-0de266a17bdf">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=be6a2ee6-1229-467a-917c-96840219a021">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Pandas 的基本特性之一就是高性能的内存式数据连接（join）与合并
-（merge）操作。如果你有使用数据库的经验，那么对这类操作一定很
-熟悉。Pandas 的主接口是 pd.merge 函数，下面让我们通过一些示例来
-介绍它的用法。</p>
+<p>在对较大的数据进行分析时，一项基本的工作就是有效的数据累计
+（summarization）：计算累计（aggregation）指标，如
+sum()、mean()、median()、min() 和 max()，其中每一个指标都呈
+现了大数据集的特征。在这一节中，我们将探索 Pandas 的累计功能，
+从类似前面 NumPy 数组中的简单操作，到基于 groupby 实现的复杂操
+作。</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34aabb82-d091-4864-8e3a-831c3b4b334a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed6bb9db-938c-4708-ab75-88e6697adc35">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.8.1-%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0">3.8.1 关系代数<a class="anchor-link" href="#3.8.1-%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0">¶</a></h3>
+<h3 id="3.9.1-%E8%A1%8C%E6%98%9F%E6%95%B0%E6%8D%AE">3.9.1 行星数据<a class="anchor-link" href="#3.9.1-%E8%A1%8C%E6%98%9F%E6%95%B0%E6%8D%AE">¶</a></h3>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e98a9af-eb1d-4f49-8d6f-fc5f42db6d61">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fac0ecc2-5f86-4bef-af4d-63afbb5d125f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>pd.merge() 实现的功能基于关系代数（relational algebra）的一部分。<br/>
-关系代数是处理关系型数据的通用理论，绝大部分数据库的可用操作都<br/>
-以此为理论基础。关系代数方法论的强大之处在于，它提出的若干简单<br/>
-操作规则经过组合就可以为任意数据集构建十分复杂的操作。借助在数<br/>
-据库或程序里已经高效实现的基本操作规则，你可以完成许多非常复杂<br/>
-的操作。<br/>
-Pandas 在 pd.merge() 函数与 Series 和 DataFrame 的 join() 方法里<br/>
-实现了这些基本操作规则。下面来看看如何用这些简单的规则连接不同<br/>
-数据源的数据。</p>
+<p>我们将通过 Seaborn 程序库（<a href="http://seaborn.pydata.org%EF%BC%8C%E8%AF%A6%E6%83%85%E8%AF%B7%E5%8F%82%E8%A7%81">http://seaborn.pydata.org，详情请参见</a> 4.16
+节）用一份行星数据来进行演示，其中包含天文学家观测到的围绕恒星
+运转的行星数据（通常简称为太阳系外行星或外行星）。行星数据可以
+直接通过 Seaborn 下载：</p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d9e5da5-bb13-4a5a-ba28-3902b3c9fd6e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.8.2-%E6%95%B0%E6%8D%AE%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%B1%BB%E5%9E%8B">3.8.2 数据连接的类型<a class="anchor-link" href="#3.8.2-%E6%95%B0%E6%8D%AE%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%B1%BB%E5%9E%8B">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a3c48f9f-00fd-4eb4-b345-31ea7fec9e0d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>pd.merge() 函数实现了三种数据连接的类型：一对一、多对一和多对
-多。这三种数据连接类型都通过 pd.merge() 接口进行调用，根据不同
-的数据连接需求进行不同的操作。下面将通过一些示例来演示这三种类
-型，并进一步介绍更多的细节。</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3be7427d-df5d-48f8-9312-b3243e399af1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li>一对一连接</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c5ecaaf1-75f2-4bfe-bfaf-4e051523c7f2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>一对一连接可能是最简单的数据合并类型了，与 3.7 节介绍的按列
-合并十分相似。如下面示例所示，有两个包含同一所公司员工不同
-信息的 DataFrame：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c645a2a0-f3d4-4d45-b2da-80f3ce0ae236">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0378362f-ea5f-4b11-8009-1cd7be50ef12">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7763,12 +7709,9 @@ Pandas 在 pd.merge() 函数与 Series 和 DataFrame 的 join() 方法里<br/>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'employee'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Bob'</span><span class="p">,</span> <span class="s1">'Jake'</span><span class="p">,</span> <span class="s1">'Lisa'</span><span class="p">,</span> <span class="s1">'Sue'</span><span class="p">],</span>
-                    <span class="s1">'group'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Accounting'</span><span class="p">,</span> <span class="s1">'Engineering'</span><span class="p">,</span> <span class="s1">'Engineering'</span><span class="p">,</span> <span class="s1">'HR'</span><span class="p">]})</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'employee'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Lisa'</span><span class="p">,</span> <span class="s1">'Bob'</span><span class="p">,</span> <span class="s1">'Jake'</span><span class="p">,</span> <span class="s1">'Sue'</span><span class="p">],</span>
-<span class="s1">'hire_date'</span><span class="p">:</span> <span class="p">[</span><span class="mi">2004</span><span class="p">,</span> <span class="mi">2008</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2014</span><span class="p">]})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">planets</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">'planets'</span><span class="p">)</span>
+<span class="n">planets</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -7778,37 +7721,15 @@ Pandas 在 pd.merge() 函数与 Series 和 DataFrame 的 join() 方法里<br/>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  employee        group
-0      Bob   Accounting
-1     Jake  Engineering
-2     Lisa  Engineering
-3      Sue           HR
-  employee  hire_date
-0     Lisa       2004
-1      Bob       2008
-2     Jake       2012
-3      Sue       2014
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>(1035, 6)</pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=683234ef-bb5e-4baa-bbcb-bda861e643d2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>若想将这两个 DataFrame 合并成一个 DataFrame，可以用
-pd.merge() 函数实现：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c326e020-e199-4b8e-9b21-2d8970299b99">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dc07c391-59a8-485f-b9d5-1aa7b297304c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7816,8 +7737,7 @@ pd.merge() 函数实现：</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">)</span>
-<span class="n">df3</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">planets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7848,35 +7768,59 @@ pd.merge() 函数实现：</p>
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>employee</th>
-<th>group</th>
-<th>hire_date</th>
+<th>method</th>
+<th>number</th>
+<th>orbital_period</th>
+<th>mass</th>
+<th>distance</th>
+<th>year</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>0</th>
-<td>Bob</td>
-<td>Accounting</td>
-<td>2008</td>
+<td>Radial Velocity</td>
+<td>1</td>
+<td>269.300</td>
+<td>7.10</td>
+<td>77.40</td>
+<td>2006</td>
 </tr>
 <tr>
 <th>1</th>
-<td>Jake</td>
-<td>Engineering</td>
-<td>2012</td>
+<td>Radial Velocity</td>
+<td>1</td>
+<td>874.774</td>
+<td>2.21</td>
+<td>56.95</td>
+<td>2008</td>
 </tr>
 <tr>
 <th>2</th>
-<td>Lisa</td>
-<td>Engineering</td>
-<td>2004</td>
+<td>Radial Velocity</td>
+<td>1</td>
+<td>763.000</td>
+<td>2.60</td>
+<td>19.84</td>
+<td>2011</td>
 </tr>
 <tr>
 <th>3</th>
-<td>Sue</td>
-<td>HR</td>
-<td>2014</td>
+<td>Radial Velocity</td>
+<td>1</td>
+<td>326.030</td>
+<td>19.40</td>
+<td>110.62</td>
+<td>2007</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Radial Velocity</td>
+<td>1</td>
+<td>516.220</td>
+<td>10.50</td>
+<td>119.47</td>
+<td>2009</td>
 </tr>
 </tbody>
 </table>
@@ -7886,36 +7830,41 @@ pd.merge() 函数实现：</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cc85eb26-6901-4f79-a72a-53fe041ad169">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=35bea6e3-08f4-44c2-9148-63fb0ca63220">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>pd.merge() 方法会发现两个 DataFrame 都有“employee”列，并会
-自动以这列作为键进行连接。两个输入的合并结果是一个新的
-DataFrame。需要注意的是，共同列的位置可以是不一致的。例如
-在这个例子中，虽然 df1 与 df2 中“employee”列的位置是不一样
-的，但是 pd.merge() 函数会正确处理这个问题。另外还需要注意
-的是，pd.merge() 会默认丢弃原来的行索引，不过也可以自定义
-（详情请参见 3.8.3 节）。</p>
+<p>数据中包含了截至 2014 年已被发现的一千多颗外行星的资料。</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e44a4825-1c55-4058-959f-42b7697103de">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a73a176c-d3b3-4c39-ac09-72c3661a06a9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol start="2">
-<li>多对一连接</li>
-</ol>
+<h3 id="3.9.2-Pandas%E7%9A%84%E7%AE%80%E5%8D%95%E7%B4%AF%E8%AE%A1%E5%8A%9F%E8%83%BD">3.9.2 Pandas的简单累计功能<a class="anchor-link" href="#3.9.2-Pandas%E7%9A%84%E7%AE%80%E5%8D%95%E7%B4%AF%E8%AE%A1%E5%8A%9F%E8%83%BD">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d4fa06c2-1b74-4778-9e4e-5f7d7314df59">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5fff3436-37d4-44e2-974c-52eea0f6c572">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>之前我们介绍过 NumPy 数组的一些数据累计指标（详情请参见 2.4
+节）。与一维 NumPy 数组相同，Pandas 的 Series 的累计函数也会返
+回一个统计值：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5d109b1d-18b2-4082-af94-63ad9f4d347e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7923,9 +7872,9 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> <span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'group'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Accounting'</span><span class="p">,</span> <span class="s1">'Engineering'</span><span class="p">,</span> <span class="s1">'HR'</span><span class="p">],</span>
-<span class="s1">'supervisor'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Carly'</span><span class="p">,</span> <span class="s1">'Guido'</span><span class="p">,</span> <span class="s1">'Steve'</span><span class="p">]})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">);</span><span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">);</span><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span><span class="n">df4</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ser</span>
 </pre></div>
 </div>
 </div>
@@ -7935,86 +7884,20 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  employee        group  hire_date
-0      Bob   Accounting       2008
-1     Jake  Engineering       2012
-2     Lisa  Engineering       2004
-3      Sue           HR       2014
-         group supervisor
-0   Accounting      Carly
-1  Engineering      Guido
-2           HR      Steve
-  employee        group  hire_date supervisor
-0      Bob   Accounting       2008      Carly
-1     Jake  Engineering       2012      Guido
-2     Lisa  Engineering       2004      Guido
-3      Sue           HR       2014      Steve
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>0    0.374540
+1    0.950714
+2    0.731994
+3    0.598658
+4    0.156019
+dtype: float64</pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dc2ff394-49c7-4a09-b95a-210d14015f69">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>在结果 DataFrame 中多了一个“supervisor”列，<span id="imp">里面有些值会因为
-输入数据的对应关系而有所重复。</span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=991e7dc0-bafe-40fa-85ae-20ddee393f63">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p class="raw">
-    简单理解上面代码,因为我们创建的df4中写了group和
-    supervisor的对应关系,所以在合并两个df时候,
-    df3即使行数多,但是只要有一个公共的列group,那么就会对应的
-    从df4中的group和supervisor的对应关系中“推测”出应该补全什么样
-    的数据
-</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=654e61bd-7030-4ba6-a642-7715b41ddbc5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol start="3">
-<li>多对多连接</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d06ed285-8d50-4886-a93a-d94208b44d3d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>多对多连接是个有点儿复杂的概念，不过也可以理解。如果左右两<br/>
-个输入的共同列都包含重复值，那么合并的结果就是一种多对多连<br/>
-接。用一个例子来演示可能更容易理解。来看下面的例子，里面有<br/>
-一个 DataFrame 显示不同岗位人员的一种或多种能力。<br/>
-通过多对多链接，就可以得知每位员工所具备的能力：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=64ca42f2-fe2d-421c-adb4-b1e37e30b8d0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=017da013-8d87-4bf9-9796-cefe64d73eae">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8022,11 +7905,7 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'group'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Accounting'</span><span class="p">,</span> <span class="s1">'Accounting'</span><span class="p">,</span>
-<span class="s1">'Engineering'</span><span class="p">,</span> <span class="s1">'Engineering'</span><span class="p">,</span> <span class="s1">'HR'</span><span class="p">,</span> <span class="s1">'HR'</span><span class="p">],</span>
-<span class="s1">'skills'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'math'</span><span class="p">,</span> <span class="s1">'spreadsheets'</span><span class="p">,</span> <span class="s1">'coding'</span><span class="p">,</span> <span class="s1">'linux'</span><span class="p">,</span>
-           <span class="s1">'spreadsheets'</span><span class="p">,</span> <span class="s1">'organization'</span><span class="p">]})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">);</span><span class="nb">print</span><span class="p">(</span><span class="n">df5</span><span class="p">);</span><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df5</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8036,99 +7915,15 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  employee        group
-0      Bob   Accounting
-1     Jake  Engineering
-2     Lisa  Engineering
-3      Sue           HR
-         group        skills
-0   Accounting          math
-1   Accounting  spreadsheets
-2  Engineering        coding
-3  Engineering         linux
-4           HR  spreadsheets
-5           HR  organization
-  employee        group        skills
-0      Bob   Accounting          math
-1      Bob   Accounting  spreadsheets
-2     Jake  Engineering        coding
-3     Jake  Engineering         linux
-4     Lisa  Engineering        coding
-5     Lisa  Engineering         linux
-6      Sue           HR  spreadsheets
-7      Sue           HR  organization
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>np.float64(2.811925491708157)</pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2dd376a8-f810-46c4-87af-1b185af38157">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>这三种数据连接类型可以直接与其他 Pandas 工具组合使用，从而
-实现各种各样的功能。但是工作中的真实数据集往往并不像示例中
-演示的那么干净、整洁。下面就来介绍 pd.merge() 的一些功能，
-它们可以让你更好地应对数据连接中的问题。</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0468a130-34ec-421f-82c2-1292cd932716">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.8.3-%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6%E7%9A%84%E9%94%AE">3.8.3 设置数据合并的键<a class="anchor-link" href="#3.8.3-%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6%E7%9A%84%E9%94%AE">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=95b18dd8-0c48-4789-9902-a9483704002e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>我们已经见过 pd.merge() 的默认行为：它会将两个输入的一个或多个
-共同列作为键进行合并。但由于两个输入要合并的列通常都不是同名
-的，因此 pd.merge() 提供了一些参数处理这个问题。</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9881e1d7-1b8c-4652-a928-a137cc8f085e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol>
-<li>参数on的用法</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2758eb1d-b627-4d5e-9ecc-9ed54a0a6b5c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>最简单的方法就是直接将参数 on 设置为一个列名字符串或者一个
-包含多列名称的列表：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=12484121-57a7-468c-a7b7-831245524762">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=87f8adeb-964e-40ad-a9b1-faa15ce6a768">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8136,8 +7931,7 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">);</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'employee'</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8147,67 +7941,26 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  employee        group
-0      Bob   Accounting
-1     Jake  Engineering
-2     Lisa  Engineering
-3      Sue           HR
-  employee  hire_date
-0     Lisa       2004
-1      Bob       2008
-2     Jake       2012
-3      Sue       2014
-  employee        group  hire_date
-0      Bob   Accounting       2008
-1     Jake  Engineering       2012
-2     Lisa  Engineering       2004
-3      Sue           HR       2014
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>np.float64(0.5623850983416314)</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0155a687-a549-4ab2-9c37-38b74ff716b9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=290eefb2-dc2b-42ae-b13f-6e449a863f5f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>这个参数只能在两个 DataFrame 有共同列名的时候才可以使用。</p>
+<p>DataFrame 的累计函数默认对每列进行统计：</p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=06c9f5e3-bc99-46bd-b83b-7efddf3db67d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol start="2">
-<li>left_on与right_on参数</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ab80407-ec2c-4ec9-b554-19cde5c806e1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>有时你也需要合并<span id="imp">两个列名不同</span>的数据集，例如前面的员工信息表
-中有一个字段不是“employee”而是“name”。在这种情况下，就可以
-用 left_on 和 right_on 参数来指定列名：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=07a13125-ac3d-495a-97a6-8d00fdbcdf5f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=41d1355f-9b76-40a4-9729-2aa810b80c20">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8215,10 +7968,8 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Bob'</span><span class="p">,</span> <span class="s1">'Jake'</span><span class="p">,</span> <span class="s1">'Lisa'</span><span class="p">,</span> <span class="s1">'Sue'</span><span class="p">],</span>
-<span class="s1">'salary'</span><span class="p">:</span> <span class="p">[</span><span class="mi">70000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">,</span> <span class="mi">120000</span><span class="p">,</span> <span class="mi">90000</span><span class="p">]})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">);</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"employee"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"name"</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'A'</span><span class="p">:</span><span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="s1">'B'</span><span class="p">:</span><span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">)})</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -8228,42 +7979,65 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  employee        group
-0      Bob   Accounting
-1     Jake  Engineering
-2     Lisa  Engineering
-3      Sue           HR
-   name  salary
-0   Bob   70000
-1  Jake   80000
-2  Lisa  120000
-3   Sue   90000
-  employee        group  name  salary
-0      Bob   Accounting   Bob   70000
-1     Jake  Engineering  Jake   80000
-2     Lisa  Engineering  Lisa  120000
-3      Sue           HR   Sue   90000
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>0.155995</td>
+<td>0.020584</td>
+</tr>
+<tr>
+<th>1</th>
+<td>0.058084</td>
+<td>0.969910</td>
+</tr>
+<tr>
+<th>2</th>
+<td>0.866176</td>
+<td>0.832443</td>
+</tr>
+<tr>
+<th>3</th>
+<td>0.601115</td>
+<td>0.212339</td>
+</tr>
+<tr>
+<th>4</th>
+<td>0.708073</td>
+<td>0.181825</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0e5d54d7-11cd-475a-94fb-674327eeeac0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>获取的结果中会有一个多余的列，可以通过 DataFrame 的 drop()
-方法将这列去掉：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fa3753a9-2900-43ab-80aa-a6fd11ead8c8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=67e52bdb-496a-42ca-aa67-7fab423ecd8d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8271,8 +8045,7 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df3</span><span class="p">,</span><span class="n">left_on</span><span class="o">=</span><span class="s1">'employee'</span><span class="p">,</span><span class="n">right_on</span><span class="o">=</span><span class="s1">'name'</span><span class="p">)</span><span class="o">.</span>\
-<span class="n">drop</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8284,6 +8057,105 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>A    0.477888
+B    0.443420
+dtype: float64</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8b2d4603-c237-4a7e-a2ed-7cf87f75efae">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>设置 axis 参数，你就可以对每一行进行统计了：</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=00a7f99c-0693-46f9-b2e0-b531a17a0101">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p class="raw">
+理解下面的一行代码,我们指定了axis=columns,
+也就是说,我么这样是为了保存列数据,列不坍缩,
+那么就是每行数据平着加起来然后求均值
+</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e4a8f4ff-e09f-4de4-960b-ad14a9d76a03">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'columns'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>0    0.088290
+1    0.513997
+2    0.849309
+3    0.406727
+4    0.444949
+dtype: float64</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2334cff6-b19e-47e4-b8f5-b2239da53b20">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Pandas 的 Series 和 DataFrame 支持所有 2.4 节中介绍的常用累计函
+数。另外，还有一个非常方便的 describe() 方法可以计算每一列的若
+干常用统计值。让我们在行星数据上试验一下，首先丢弃有缺失值的
+行：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6099669e-3774-4ad3-aaa9-2c863be9ee21">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">planets</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8303,35 +8175,77 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>employee</th>
-<th>group</th>
-<th>salary</th>
+<th>number</th>
+<th>orbital_period</th>
+<th>mass</th>
+<th>distance</th>
+<th>year</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>0</th>
-<td>Bob</td>
-<td>Accounting</td>
-<td>70000</td>
+<th>count</th>
+<td>498.00000</td>
+<td>498.000000</td>
+<td>498.000000</td>
+<td>498.000000</td>
+<td>498.000000</td>
 </tr>
 <tr>
-<th>1</th>
-<td>Jake</td>
-<td>Engineering</td>
-<td>80000</td>
+<th>mean</th>
+<td>1.73494</td>
+<td>835.778671</td>
+<td>2.509320</td>
+<td>52.068213</td>
+<td>2007.377510</td>
 </tr>
 <tr>
-<th>2</th>
-<td>Lisa</td>
-<td>Engineering</td>
-<td>120000</td>
+<th>std</th>
+<td>1.17572</td>
+<td>1469.128259</td>
+<td>3.636274</td>
+<td>46.596041</td>
+<td>4.167284</td>
 </tr>
 <tr>
-<th>3</th>
-<td>Sue</td>
-<td>HR</td>
-<td>90000</td>
+<th>min</th>
+<td>1.00000</td>
+<td>1.328300</td>
+<td>0.003600</td>
+<td>1.350000</td>
+<td>1989.000000</td>
+</tr>
+<tr>
+<th>25%</th>
+<td>1.00000</td>
+<td>38.272250</td>
+<td>0.212500</td>
+<td>24.497500</td>
+<td>2005.000000</td>
+</tr>
+<tr>
+<th>50%</th>
+<td>1.00000</td>
+<td>357.000000</td>
+<td>1.245000</td>
+<td>39.940000</td>
+<td>2009.000000</td>
+</tr>
+<tr>
+<th>75%</th>
+<td>2.00000</td>
+<td>999.600000</td>
+<td>2.867500</td>
+<td>59.332500</td>
+<td>2011.000000</td>
+</tr>
+<tr>
+<th>max</th>
+<td>6.00000</td>
+<td>17337.500000</td>
+<td>25.000000</td>
+<td>354.000000</td>
+<td>2014.000000</td>
 </tr>
 </tbody>
 </table>
@@ -8341,141 +8255,211 @@ DataFrame。需要注意的是，共同列的位置可以是不一致的。例�
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39df1952-acde-4197-9867-2d84cea92ce4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9cc6b357-f736-465f-b34a-e32fe28451ab">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ol start="3">
-<li>left_index与right_index参数</li>
+<p>这是一种理解数据集所有统计属性的有效方法。例如，从年份 year 列<br/>
+中可以看出，1989 年首次发现外行星，而且一半的已知外行星都是在<br/>
+2010 年及以后的年份被发现的。这主要得益于开普勒计划——一个通<br/>
+过激光望远镜发现恒星周围椭圆轨道行星的太空计划。</p>
+<p>Pandas 内置的一些累计方法如表 3-3 所示。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3ad23516-b716-4539-a753-edb6fc37b12b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="%E8%A1%A83-3%EF%BC%9APandas%E7%9A%84%E7%B4%AF%E8%AE%A1%E6%96%B9%E6%B3%95">表3-3：Pandas的累计方法<a class="anchor-link" href="#%E8%A1%A83-3%EF%BC%9APandas%E7%9A%84%E7%B4%AF%E8%AE%A1%E6%96%B9%E6%B3%95">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bf1f0e5b-d0ef-4376-9142-842bd36670e3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<tr>
+<th>指标</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>count()</td>
+<td>计数项</td>
+</tr>
+<tr>
+<td>first()、last()</td>
+<td>第一项与最后一项</td>
+</tr>
+<tr>
+<td>mean()、median()</td>
+<td>均值与中位数</td>
+</tr>
+<tr>
+<td>min()、max()</td>
+<td>最小值与最大值</td>
+</tr>
+<tr>
+<td>std()、var()</td>
+<td>标准差与方差</td>
+</tr>
+<tr>
+<td>mad()</td>
+<td>均值绝对偏差（mean absolute deviation）</td>
+</tr>
+<tr>
+<td>prod() </td>
+<td>所有项乘积</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>所有项求和</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fdff1d35-f746-4025-b3e3-d612c8ed3dcf">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>DataFrame 和 Series 对象支持以上所有方法。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1b4a6466-744c-4add-96f2-5c4f4600be8b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>但若想深入理解数据，仅仅依靠累计函数是远远不够的。数据累计的下
+一级别是 groupby 操作，它可以让你快速、有效地计算数据各子集的累
+计值。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7d545c7a-0060-40c1-b3bc-462da22718d3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="3.9.3-GroupBy%EF%BC%9A%E5%88%86%E5%89%B2%E3%80%81%E5%BA%94%E7%94%A8%E5%92%8C%E7%BB%84%E5%90%88">3.9.3 GroupBy：分割、应用和组合<a class="anchor-link" href="#3.9.3-GroupBy%EF%BC%9A%E5%88%86%E5%89%B2%E3%80%81%E5%BA%94%E7%94%A8%E5%92%8C%E7%BB%84%E5%90%88">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=25ab34fa-2c5a-4034-a432-4931f55d9a47">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>简单的累计方法可以让我们对数据集有一个笼统的认识，但是我们经常
+还需要对某些标签或索引的局部进行累计分析，这时就需要用到
+groupby 了。虽然“分组”（group by）这个名字是借用 SQL 数据库语言
+的命令，但其理念引用发明 R 语言 frame 的 Hadley Wickham 的观点可
+能更合适：分割（split）、应用（apply）和组合（combine）。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=388c66bf-0c5f-46a6-9a1d-bf52a74ddde0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol>
+<li>分割、应用和组合</li>
 </ol>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=20cccb5a-9a07-4a9c-87ad-763fb49c33fc">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=42367969-a555-4cb0-950c-734f6d2f3888">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>除了合并列之外，你可能还需要合并索引。就像下面例子中的数据
-那样：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8ee1cfd2-d01b-4b43-9393-a5312867f62d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df1a</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'employee'</span><span class="p">)</span>
-<span class="n">df2a</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'employee'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df1a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df2a</span><span class="p">)</span>
-</pre></div>
+<p>一个经典分割 - 应用 - 组合操作示例如图 3-1 所示，其中“apply”的
+是一个求和函数。</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>                group
-employee             
-Bob        Accounting
-Jake      Engineering
-Lisa      Engineering
-Sue                HR
-          hire_date
-employee           
-Lisa           2004
-Bob            2008
-Jake           2012
-Sue            2014
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f9822fef-353c-4bd0-9cca-7ce50d68773c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8945028-bc60-41ab-8dc1-68a11f58888f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>你可以通过设置 pd.merge() 中的 <span id="imp">left_index 和 / 或
-right_index </span>参数将索引设置为按<span id="imp">键</span>来实现合并：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d9bc2697-0cfd-4f98-a0de-c6ccd8ceb325">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df1a</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df2a</span><span class="p">);</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1a</span><span class="p">,</span> <span class="n">df2a</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-</pre></div>
+<p>图 3-1 清晰地描述了 GroupBy 的过程。</p>
+<ul>
+<li>分割步骤将 DataFrame 按照指定的键分割成若干组。</li>
+<li>应用步骤对每个组应用函数，通常是累计、转换或过滤函数。</li>
+<li>组合步骤将每一组的结果合并成一个输出数组。</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>                group
-employee             
-Bob        Accounting
-Jake      Engineering
-Lisa      Engineering
-Sue                HR
-          hire_date
-employee           
-Lisa           2004
-Bob            2008
-Jake           2012
-Sue            2014
-                group  hire_date
-employee                        
-Bob        Accounting       2008
-Jake      Engineering       2012
-Lisa      Engineering       2004
-Sue                HR       2014
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b045061c-f13c-41b6-ba31-c6928e0ab956">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2e560745-9d6f-4ad7-9d9d-8a3dd8358f29">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>为了方便考虑，<span id="imp">DataFrame 实现了 join() 方法，它可以按照索引
-进行数据合并：</span></p>
+<p><img alt="No description has been provided for this image" src="../imgs/gropby_.png"/></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=68933366-a37f-4297-a740-b8d8a8334248">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=69bf7326-f61d-41cd-bf6c-7c1cb0453b83">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p id="ct">图 3-1：groupby 操作的可视化过程</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=79d85d64-6083-4114-ae17-34c6b236c35a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>虽然我们也可以通过前面介绍的一系列的掩码、累计与合并操作来<br/>
+实现，但是意识到中间分割过程不需要显式地暴露出来这一点十<br/>
+分重要。而且 GroupBy（经常）只需要一行代码，就可以计算每组<br/>
+的和、均值、计数、最小值以及其他累计值。GroupBy 的用处就是<br/>
+将这些步骤进行抽象：用户不需要知道在底层如何计算，只要把操<br/>
+作看成一个整体就够了。</p>
+<p>用 Pandas 进行图 3-1 所示的计算作为具体的示例。从创建输入<br/>
+DataFrame 开始：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b298c52d-1402-4173-8fcc-8429f4348c00">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8483,9 +8467,9 @@ Sue                HR       2014
 <div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df1a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df2a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df1a</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2a</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'key'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">],</span>
+<span class="s1">'data'</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)},</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'key'</span><span class="p">,</span> <span class="s1">'data'</span><span class="p">])</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -8495,45 +8479,82 @@ Sue                HR       2014
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>                group
-employee             
-Bob        Accounting
-Jake      Engineering
-Lisa      Engineering
-Sue                HR
-          hire_date
-employee           
-Lisa           2004
-Bob            2008
-Jake           2012
-Sue            2014
-                group  hire_date
-employee                        
-Bob        Accounting       2008
-Jake      Engineering       2012
-Lisa      Engineering       2004
-Sue                HR       2014
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>key</th>
+<th>data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A</td>
+<td>0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>B</td>
+<td>1</td>
+</tr>
+<tr>
+<th>2</th>
+<td>C</td>
+<td>2</td>
+</tr>
+<tr>
+<th>3</th>
+<td>A</td>
+<td>3</td>
+</tr>
+<tr>
+<th>4</th>
+<td>B</td>
+<td>4</td>
+</tr>
+<tr>
+<th>5</th>
+<td>C</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aabd66f7-5148-4657-b41b-45fa400ad5e9">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3798dfff-0e42-4daa-8fd6-8cd4ef9b3149">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>如果想将索引与列混合使用，那么可以通过结合 left_index 与
-right_on，或者结合 left_on 与 right_index 来实现：</p>
+<p>我们可以用 DataFrame 的 groupby() 方法进行绝大多数常见的分
+割 - 应用 - 组合操作，将需要分组的列名传进去即可：</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=07fc8041-bf4b-4718-b13f-d40959576792">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0b3e29d3-349f-42ca-96ae-c06034e4c861">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8541,9 +8562,7 @@ right_on，或者结合 left_on 与 right_index 来实现：</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df1a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1a</span><span class="p">,</span><span class="n">df3</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_on</span><span class="o">=</span><span class="s1">'name'</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8553,84 +8572,33 @@ right_on，或者结合 left_on 与 right_index 来实现：</p>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>                group
-employee             
-Bob        Accounting
-Jake      Engineering
-Lisa      Engineering
-Sue                HR
-   name  salary
-0   Bob   70000
-1  Jake   80000
-2  Lisa  120000
-3   Sue   90000
-         group  name  salary
-0   Accounting   Bob   70000
-1  Engineering  Jake   80000
-2  Engineering  Lisa  120000
-3           HR   Sue   90000
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x000001DC7B8886D0&gt;</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9f567a00-c748-44b6-8fe7-e2c6ab5109c2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=08f7615e-6b34-4dc4-8d03-03b3f10a3c32">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p class="raw">
-简单理解上面的代码,融合了left/right_index和left/right_on,
-因为left/right_index指定的是按照键合并,且必须是两个表有公共
-的列才行,但是df1a和df3的列名称不同,但是可以使用left/right_on
-的功能指定列名
-</p>
+<p>需要注意的是，<span id="imp">这里的返回值不是一个 DataFrame 对象，而是一<br/>
+个 DataFrameGroupBy 对象。这个对象的魔力在于，你可以将它<br/>
+看成是一种特殊形式的 DataFrame，里面隐藏着若干组数据，但是<br/>
+在没有应用累计函数之前不会计算。</span>这种“延迟计算”（lazy<br/>
+evaluation）的方法使得大多数常见的累计操作可以通过一种对用户
+而言几乎是透明的（感觉操作仿佛不存在）方式非常高效地实现。</p>
+<p>为了得到这个结果，可以对 DataFrameGroupBy 对象<span id="imp">应用累计函
+数，它会完成相应的应用 / 组合步骤并生成结果： </span></p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b986fc3-9f52-4463-a300-bc5a5f54d7a3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>当然，这些参数都适用于多个索引和 / 或多个列名，函数接口非常
-简单。若想了解 Pandas 数据合并的更多信息，请参考 Pandas 文档
-中“Merge, Join, and Concatenate”（<a href="http://pandas.pydata.org/pandasdocs/stable/merging.html%EF%BC%89%E8%8A%82%E3%80%82">http://pandas.pydata.org/pandasdocs/stable/merging.html）节。</a></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0052aa5-7153-48b8-b172-cc9e0244dc28">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.8.4-%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C%E8%A7%84%E5%88%99">3.8.4 设置数据连接的集合操作规则<a class="anchor-link" href="#3.8.4-%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E8%BF%9E%E6%8E%A5%E7%9A%84%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C%E8%A7%84%E5%88%99">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0403b4ba-9185-4696-a1b7-80591913a2b3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>通过前面的示例，我们总结出数据连接的一个重要条件：集合操作规
-则。当一个值出现在一列，却没有出现在另一列时，就需要考虑集合操
-作规则了。来看看下面的例子：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8dd706d7-4ab9-405e-8cf0-31ce75054670">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b0c65c4d-ee0f-4fb0-bc93-fd6859a030f2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8638,15 +8606,7 @@ Sue                HR
 <div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df6</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Peter'</span><span class="p">,</span> <span class="s1">'Paul'</span><span class="p">,</span> <span class="s1">'Mary'</span><span class="p">],</span>
-<span class="s1">'food'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'fish'</span><span class="p">,</span> <span class="s1">'beans'</span><span class="p">,</span> <span class="s1">'bread'</span><span class="p">]},</span>
-<span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'food'</span><span class="p">])</span>
-<span class="n">df7</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Mary'</span><span class="p">,</span> <span class="s1">'Joseph'</span><span class="p">],</span>
-<span class="s1">'drink'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'wine'</span><span class="p">,</span> <span class="s1">'beer'</span><span class="p">]},</span>
-<span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'drink'</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df6</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df7</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df6</span><span class="p">,</span><span class="n">df7</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8656,38 +8616,109 @@ Sue                HR
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>    name   food
-0  Peter   fish
-1   Paul  beans
-2   Mary  bread
-     name drink
-0    Mary  wine
-1  Joseph  beer
-   name   food drink
-0  Mary  bread  wine
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>data</th>
+</tr>
+<tr>
+<th>key</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>3</td>
+</tr>
+<tr>
+<th>B</th>
+<td>5</td>
+</tr>
+<tr>
+<th>C</th>
+<td>7</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=70bb8fd0-ca75-4394-9702-456cef75821c">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a2235c22-1a70-4f44-bd94-08680f20a726">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>我们合并两个数据集，在“name”列中只有一个共同的值：Mary。默认
-情况下，结果中只会包含两个输入集合的交集，这种连接方式被称为内
-连接（inner join）。<span id="imp">我们可以用 how 参数设置连接方式，默认值为
-'inner'：</span></p>
+<p>sum() 只是众多可用方法中的一个。你可以用 Pandas 或 NumPy 的
+任意一种累计函数，也可以用任意有效的 DataFrame 对象。下面
+就会介绍。</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2f8f7382-7c17-4b8a-987b-667737723ec2">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f26b77c4-de45-409f-8812-4382f22d3bc4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="2">
+<li>GroupBy对象</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=45306536-c68e-4cb5-9358-c4b10de6f3f0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>GroupBy 对象是一种非常灵活的抽象类型。在大多数场景中，你可<br/>
+以将它看成是 DataFrame 的集合，在底层解决所有难题。让我们<br/>
+用行星数据来做一些演示。</p>
+<p>GroupBy 中最重要的操作可能就是 aggregate、filter、transform<br/>
+和 apply（累计、过滤、转换、应用）了，后文将详细介绍这些内<br/>
+容，现在先来介绍一些 GroupBy 的基本操作方法。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9546661-0e0f-45a5-9fb4-91a4c1ebd79a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>(1) 按列取值。GroupBy 对象与 DataFrame 一样，也支持按列取
+值，并返回一个修改过的 GroupBy 对象，例如：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=72815d21-e3ed-4637-aca1-bc2bbf76f151">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8695,7 +8726,7 @@ Sue                HR
 <div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df6</span><span class="p">,</span> <span class="n">df7</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">planets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'method'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8707,70 +8738,13 @@ Sue                HR
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>name</th>
-<th>food</th>
-<th>drink</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>Mary</td>
-<td>bread</td>
-<td>wine</td>
-</tr>
-</tbody>
-</table>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x000001DC7B648160&gt;</pre>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b8c7e969-f256-45cc-adad-3ba97dc7043b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>how 参数支持的数据连接方式还有 'outer'、'left' 和 'right'。外
-连接（outer join）<span id="imp">返回两个输入列的交集，所有缺失值都用 NaN 填充：</span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=15c659c9-6ede-47e0-abe0-2955a61b0fa7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p class="raw">
-注意,结合mysql的外连接来思考
-</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4fd5f717-c336-46ee-95d2-ed26f3c70472">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=31638ab4-7432-43f6-a570-273bcfea38af">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8778,8 +8752,7 @@ Sue                HR
 <div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df6</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df7</span><span class="p">);</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df6</span><span class="p">,</span> <span class="n">df7</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'outer'</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">planets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'method'</span><span class="p">)[</span><span class="s1">'orbital_period'</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -8789,53 +8762,27 @@ Sue                HR
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>    name   food
-0  Peter   fish
-1   Paul  beans
-2   Mary  bread
-     name drink
-0    Mary  wine
-1  Joseph  beer
-     name   food drink
-0  Joseph    NaN  beer
-1    Mary  bread  wine
-2    Paul  beans   NaN
-3   Peter   fish   NaN
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x000001DC7B6482E0&gt;</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1113f8ec-ed0c-4ed7-bcf2-2d1a68bde7d5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bfd78405-8689-4b81-a864-df6856f0e945">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>左连接（left join）和右连接（right join）返回的结果分别只包含左列和
-右列，如下所示：</p>
+<p>这里从原来的 DataFrame 中取某个列名作为一个 Series 组。<span id="imp">与
+GroupBy 对象一样，直到我们运行累计函数，才会开始计算：</span></p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bbb63cd6-152b-4ced-8d95-68c95be3c56e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>例如下面的左链接:
-结合mysql的外连接中的左链接,
-左链接就是左边的表作为主表,从表中出现与主表不匹配的内容
-就用Nan填充,反之右链接也可以推断</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8e7e740d-049b-4ab1-97b5-e8c0e10e67b4">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6dcddd34-e4d2-491f-b9a9-78fbd974e400">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8843,7 +8790,7 @@ Sue                HR
 <div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df6</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df7</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df6</span><span class="p">,</span> <span class="n">df7</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">planets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'method'</span><span class="p">)[</span><span class="s1">'orbital_period'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8853,26 +8800,50 @@ Sue                HR
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>    name   food
-0  Peter   fish
-1   Paul  beans
-2   Mary  bread
-     name drink
-0    Mary  wine
-1  Joseph  beer
-    name   food drink
-0  Peter   fish   NaN
-1   Paul  beans   NaN
-2   Mary  bread  wine
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>method
+Astrometry                         631.180000
+Eclipse Timing Variations         4343.500000
+Imaging                          27500.000000
+Microlensing                      3300.000000
+Orbital Brightness Modulation        0.342887
+Pulsar Timing                       66.541900
+Pulsation Timing Variations       1170.000000
+Radial Velocity                    360.200000
+Transit                              5.714932
+Transit Timing Variations           57.011000
+Name: orbital_period, dtype: float64</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=41285101-b99c-46c0-ab77-8712d6a7c54b">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fa78e8c9-47b5-4fde-9be9-f9ee508f4d72">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>这样就可以获得不同方法下所有行星公转周期（按天计算）的中位
+数。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=261e609b-af3a-4c1d-ab9a-ed251eddb526">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>(2) 按组迭代。GroupBy 对象支持直接按组进行迭代，返回的每一
+组都是 Series 或 DataFrame：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a7a0f8a8-ff6e-4079-981f-e0c343c9c63c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8880,7 +8851,8 @@ Sue                HR
 <div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df6</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df7</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df6</span><span class="p">,</span> <span class="n">df7</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'right'</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="n">group</span><span class="p">)</span> <span class="ow">in</span> <span class="n">planets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'method'</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">method</span><span class="si">:</span><span class="s2">30s</span><span class="si">}</span><span class="s2"> shape=</span><span class="si">{</span><span class="n">group</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8893,59 +8865,49 @@ Sue                HR
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>    name   food
-0  Peter   fish
-1   Paul  beans
-2   Mary  bread
-     name drink
-0    Mary  wine
-1  Joseph  beer
-     name   food drink
-0    Mary  bread  wine
-1  Joseph    NaN  beer
+<pre>Astrometry                     shape=(2, 6)
+Eclipse Timing Variations      shape=(9, 6)
+Imaging                        shape=(38, 6)
+Microlensing                   shape=(23, 6)
+Orbital Brightness Modulation  shape=(3, 6)
+Pulsar Timing                  shape=(5, 6)
+Pulsation Timing Variations    shape=(1, 6)
+Radial Velocity                shape=(553, 6)
+Transit                        shape=(397, 6)
+Transit Timing Variations      shape=(4, 6)
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1a963885-3bbb-4b90-aee6-8bdb5db2ef5b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f2bd8acb-db95-4076-90fd-093fe7614c88">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>现在输出的行中只包含左边输入列的值。如果用 how='right' 的话，
-输出的行则只包含右边输入列的值。<br/>
-这四种数据连接的集合操作规则都可以直接应用于前面介绍过的连接类
-型。</p>
+<p>尽管通常还是使用内置的 apply 功能速度更快，但这种方式在手
+动处理某些问题时非常有用，后面会详细介绍。</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0aa44ce-51ca-4d1f-9e36-1a2f0a29c359">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d493a7bc-ba9b-4340-98f3-6a4c5a2205e8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.8.5-%E9%87%8D%E5%A4%8D%E5%88%97%E5%90%8D%EF%BC%9Asuffixes%E5%8F%82%E6%95%B0">3.8.5 重复列名：suffixes参数<a class="anchor-link" href="#3.8.5-%E9%87%8D%E5%A4%8D%E5%88%97%E5%90%8D%EF%BC%9Asuffixes%E5%8F%82%E6%95%B0">¶</a></h3>
+<p>(3) 调用方法。借助 Python 类的魔力（@classmethod<span id="imp">类方法</span>），可以让
+任何不由 GroupBy 对象直接实现的方法直接应用到每一组，无论
+是 DataFrame 还是 Series 对象都同样适用。例如，你可以用
+DataFrame 的 describe() 方法进行累计，对每一组数据进行描述
+性统计</p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6eedd762-09d2-479d-8b94-b69ca84a5fbe">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>最后，你可能会遇到两个输入 DataFrame 有重名列的情况。来看看下
-面的例子：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f004a21d-772d-4f12-b7f6-a09f7841be12">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5a4e3af5-8e84-4b32-a3a8-cb46c08155a5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8953,11 +8915,7 @@ Sue                HR
 <div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df8</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Bob'</span><span class="p">,</span> <span class="s1">'Jake'</span><span class="p">,</span> <span class="s1">'Lisa'</span><span class="p">,</span> <span class="s1">'Sue'</span><span class="p">],</span>
-<span class="s1">'rank'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
-<span class="n">df9</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Bob'</span><span class="p">,</span> <span class="s1">'Jake'</span><span class="p">,</span> <span class="s1">'Lisa'</span><span class="p">,</span> <span class="s1">'Sue'</span><span class="p">],</span>
-<span class="s1">'rank'</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df8</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df9</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df8</span><span class="p">,</span> <span class="n">df9</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"name"</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">planets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'method'</span><span class="p">)[</span><span class="s1">'year'</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8967,42 +8925,74 @@ Sue                HR
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>   name  rank
-0   Bob     1
-1  Jake     2
-2  Lisa     3
-3   Sue     4
-   name  rank
-0   Bob     3
-1  Jake     1
-2  Lisa     4
-3   Sue     2
-   name  rank_x  rank_y
-0   Bob       1       3
-1  Jake       2       1
-2  Lisa       3       4
-3   Sue       4       2
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>       method                       
+count  Astrometry                          2.0
+       Eclipse Timing Variations           9.0
+       Imaging                            38.0
+       Microlensing                       23.0
+       Orbital Brightness Modulation       3.0
+                                         ...  
+max    Pulsar Timing                    2011.0
+       Pulsation Timing Variations      2007.0
+       Radial Velocity                  2014.0
+       Transit                          2014.0
+       Transit Timing Variations        2014.0
+Length: 80, dtype: float64</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8bb62bd3-fe21-499b-9caa-dfac3366a006">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=51a2ec01-9252-4305-94a8-216d4f50b1b4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>由于输出结果中有两个重复的列名，因此 pd.merge() 函数会自动为它
-们增加后缀 _x 或 _y，当然也可以通过 suffixes 参数自定义后缀名：</p>
+<p>这张表可以帮助我们对数据有更深刻的认识，例如大多数行星都是<br/>
+通过 Radial Velocity 和 Transit 方法发现的，而且后者在近十年变得<br/>
+越来越普遍（得益于更新、更精确的望远镜）。最新的 Transit<br/>
+Timing Variation 和 Orbital Brightness Modulation 方法在 2011 年之
+后才有新的发现。<br/>
+这只是演示 Pandas 调用方法的示例之一。方法首先会应用到每组<br/>
+数据上，然后结果由 GroupBy 组合后返回。另外，任意<br/>
+DataFrame / Series 的方法都可以由 GroupBy 方法调用，从而实
+现非常灵活强大的操作。</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8c128bca-2be3-4402-96a5-b388e5bb197a">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=479f51c4-bfc1-4d61-950b-f0b04e319870">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="3">
+<li>累计、过滤、转换和应用</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae80aa6e-3369-444e-9d6f-f6ca6b2e1596">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>虽然前面的章节只重点介绍了组合操作，但是还有许多操作没有介
+绍，尤其是 GroupBy 对象的
+aggregate()、filter()、transform() 和 apply() 方法，在数
+据组合之前实现了大量高效的操作。<br/>
+为了方便后面内容的演示，使用下面这个 DataFrame：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a198b7e4-4e3c-47c6-887f-3d12c18bda4b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9010,8 +9000,370 @@ Sue                HR
 <div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df8</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df9</span><span class="p">);</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df8</span><span class="p">,</span> <span class="n">df9</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"name"</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s2">"_L"</span><span class="p">,</span> <span class="s2">"_R"</span><span class="p">]))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'key'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">],</span>
+<span class="s1">'data1'</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+<span class="s1">'data2'</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)},</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'key'</span><span class="p">,</span> <span class="s1">'data1'</span><span class="p">,</span> <span class="s1">'data2'</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>key</th>
+<th>data1</th>
+<th>data2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>A</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr>
+<th>1</th>
+<td>B</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>C</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<th>3</th>
+<td>A</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<th>4</th>
+<td>B</td>
+<td>4</td>
+<td>7</td>
+</tr>
+<tr>
+<th>5</th>
+<td>C</td>
+<td>5</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14052643-e537-4c56-ba9a-38a73bdb6c4d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>(1) 累计。我们目前比较熟悉的 GroupBy 累计方法只有 sum() 和
+median() 之类的简单函数，但是 aggregate() 其实可以支持更复
+杂的操作，比如字符串、函数或者函数列表，并且能一次性计算所
+有累计值。下面来快速演示一个例子：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b0406acb-5360-4f23-a267-fb00c1c31128">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span><span class="s1">'min'</span><span class="p">,</span> <span class="s1">'median'</span><span class="p">,</span> <span class="s1">'max'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr>
+<th></th>
+<th colspan="3" halign="left">data1</th>
+<th colspan="3" halign="left">data2</th>
+</tr>
+<tr>
+<th></th>
+<th>min</th>
+<th>median</th>
+<th>max</th>
+<th>min</th>
+<th>median</th>
+<th>max</th>
+</tr>
+<tr>
+<th>key</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>0</td>
+<td>1.5</td>
+<td>3</td>
+<td>3</td>
+<td>4.0</td>
+<td>5</td>
+</tr>
+<tr>
+<th>B</th>
+<td>1</td>
+<td>2.5</td>
+<td>4</td>
+<td>0</td>
+<td>3.5</td>
+<td>7</td>
+</tr>
+<tr>
+<th>C</th>
+<td>2</td>
+<td>3.5</td>
+<td>5</td>
+<td>3</td>
+<td>6.0</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b28251f5-426f-4e6b-ae57-46e11e10b5ac">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>另一种用法就是<span id="imp">通过 Python 字典指定不同列</span>需要累计的函数</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a3a09b8-652d-41a2-af31-81428bfabf17">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p class="raw">
+简单理解下面的代码:
+可以看到显进行了组合操作,按照键'key'分组,
+然后使用组合操作
+指定的是字典,data1这一列的最小值data2这一列的最大值
+</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=364fddb6-e570-4ec1-b94a-dfa176b1ee12">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">({</span>
+    <span class="s1">'data1'</span><span class="p">:</span><span class="s1">'min'</span><span class="p">,</span>
+    <span class="s1">'data2'</span><span class="p">:</span><span class="s1">'max'</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>data1</th>
+<th>data2</th>
+</tr>
+<tr>
+<th>key</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>A</th>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr>
+<th>B</th>
+<td>1</td>
+<td>7</td>
+</tr>
+<tr>
+<th>C</th>
+<td>2</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a8be3054-84cf-4789-9b6c-fb53a30d1a30">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="No description has been provided for this image" src="../imgs/ag1.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a5c6451-c89c-4a11-8079-b3362d0e4f77">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>(2) 过滤。过滤操作可以让你按照分组的属性丢弃若干数据。例
+如，我们可能只需要保留标准差超过某个阈值的组：</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5f5e570f-e793-43e3-9f35-548ad98c8438">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p class="raw">
+    简单理解下面的代码,
+    定义了一个函数,返回的是传入的数据的
+    'data2'这一列的数据的标准差且是大于4的标准差,
+    学习filter时候,回顾之前学的python中的filter
+</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=032ed00a-2732-47f4-aace-6e801906e649">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">filter_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="s1">'data2'</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9bee2f27-f9be-4b30-bcea-7849d1e56ebd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">());</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">filter_func</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -9024,107 +9376,178 @@ Sue                HR
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>   name  rank
-0   Bob     1
-1  Jake     2
-2  Lisa     3
-3   Sue     4
-   name  rank
-0   Bob     3
-1  Jake     1
-2  Lisa     4
-3   Sue     2
-   name  rank_L  rank_R
-0   Bob       1       3
-1  Jake       2       1
-2  Lisa       3       4
-3   Sue       4       2
+<pre>  key  data1  data2
+0   A      0      5
+1   B      1      0
+2   C      2      3
+3   A      3      3
+4   B      4      7
+5   C      5      9
+       data1     data2
+key                   
+A    2.12132  1.414214
+B    2.12132  4.949747
+C    2.12132  4.242641
+  key  data1  data2
+1   B      1      0
+2   C      2      3
+4   B      4      7
+5   C      5      9
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=58e95ba5-1cbd-4c92-b5f0-c6de84e57c3b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=446e7628-be2e-4e03-81a9-1c7336accc32">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>suffixes 参数同样适用于任何连接方式，即使有三个及三个以上的重
-复列名时也同样适用。
-关于关系代数的更多信息，请参见 3.9 节，里面对关系代数进行了更加
-深入的介绍。另外，还可以参考 Pandas 文档中“Merge, Join, and
-Concatenate”（<a href="http://pandas.pydata.org/pandas-docs/stable/merging.html%EF%BC%89">http://pandas.pydata.org/pandas-docs/stable/merging.html）</a>
-节。</p>
+<p>filter() 函数会返回一个布尔值，表示每个组是否通过过滤。由
+于 A 组 'data2' 列的标准差不大于 4，所以被丢弃了。</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=81cb1e1a-484d-49c2-9854-079a0f82ffa8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34b91ff0-8e1b-4f29-86c4-f9b7026e3e9a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.8.6-%E6%A1%88%E4%BE%8B%EF%BC%9A%E7%BE%8E%E5%9B%BD%E5%90%84%E5%B7%9E%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE">3.8.6 案例：美国各州的统计数据<a class="anchor-link" href="#3.8.6-%E6%A1%88%E4%BE%8B%EF%BC%9A%E7%BE%8E%E5%9B%BD%E5%90%84%E5%B7%9E%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE">¶</a></h3>
+<p>(3) 转换。累计操作返回的是对组内全量数据缩减过的结果，而转
+换操作会返回一个新的全量数据。数据经过转换之后，其形状与原
+来的输入数据是一样的。常见的例子就是将每一组的样本数据减去
+各组的均值，实现数据标准化：</p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c60627e3-a91a-43d6-b94a-54c07be57800">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=37bb0c99-02a3-42ac-8c96-35ced8deb799">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>数据的合并与连接是组合来源不同的数据的最常用方法。下面通过美国
-各州的统计数据来进行一个演示，请到 <a href="https://github.com/jakevdp/dataUSstates/">https://github.com/jakevdp/dataUSstates/</a> 下载数据：</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=72fbb6bd-bb02-4fe7-94e3-f1e7d3664c05">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="c1"># 请使用下面的shell下载数据</span>
-!curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/jakevdp/<span class="w"> </span>data-USstates/master/state-population.csv
-!curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/jakevdp/
-data-USstates/master/state-areas.csv
-!curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/jakevdp/
-data-USstates/master/state-abbrevs.csv
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9d3af01-8bb5-4cc6-9fda-445c949ad2a7">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>data1</th>
+<th>data2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>-1.5</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>-1.5</td>
+<td>-3.5</td>
+</tr>
+<tr>
+<th>2</th>
+<td>-1.5</td>
+<td>-3.0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>1.5</td>
+<td>-1.0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>1.5</td>
+<td>3.5</td>
+</tr>
+<tr>
+<th>5</th>
+<td>1.5</td>
+<td>3.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d0b3f52-4533-4842-8206-235a661ac723">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>用 Pandas 的 read_csv() 函数看看这三个数据集：</p>
+<p>(4) apply() 方法。apply() 方法让你可以在每个组上应用任意方<br/>
+法。这个函数输入一个 DataFrame，返回一个 Pandas 对象<br/>
+（DataFrame 或 Series）或一个标量（scalar，单个数值）。组合<br/>
+操作会适应返回结果类型。</p>
+<p>下面的例子就是用 apply() 方法将第一列数据以第二列的和为基<br/>
+数进行标准化：</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7f06ad50-0815-4096-934f-34eca75c3b88">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1b1cd7f2-933d-40bd-92f7-f297b130b748">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/state-population.csv'</span><span class="p">)</span>
-<span class="n">areas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/state-areas.csv'</span><span class="p">)</span>
-<span class="n">abbrevs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/state-abbrevs.csv'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">abbrevs</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">norm_by_data2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># x是一个分组数据的DataFrame</span>
+    <span class="n">x</span><span class="p">[</span><span class="s1">'data1'</span><span class="p">]</span> <span class="o">/=</span> <span class="n">x</span><span class="p">[</span><span class="s1">'data2'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6597303f-a8ea-4835-9f5a-06f9be1ea76d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">norm_by_data2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -9137,58 +9560,288 @@ data-USstates/master/state-abbrevs.csv
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>  state/region     ages  year  population
-0           AL  under18  2012   1117489.0
-1           AL    total  2012   4817528.0
-2           AL  under18  2010   1130966.0
-3           AL    total  2010   4785570.0
-4           AL  under18  2011   1125763.0
-        state  area (sq. mi)
-0     Alabama          52423
-1      Alaska         656425
-2     Arizona         114006
-3    Arkansas          53182
-4  California         163707
-        state abbreviation
-0     Alabama           AL
-1      Alaska           AK
-2     Arizona           AZ
-3    Arkansas           AR
-4  California           CA
+<pre>  key  data1  data2
+0   A      0      5
+1   B      1      0
+2   C      2      3
+3   A      3      3
+4   B      4      7
+5   C      5      9
+      key     data1  data2
+key                       
+A   0   A  0.000000      5
+    3   A  0.375000      3
+B   1   B  0.142857      0
+    4   B  0.571429      7
+C   2   C  0.166667      3
+    5   C  0.416667      9
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>C:\Users\郝海程\AppData\Local\Temp\ipykernel_20208\1409288817.py:2: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  print(df.groupby('key').apply(norm_by_data2))
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1773078d-5459-4432-968d-12e331fbbd4d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bb2ec984-78de-4557-9e75-8bbdd67ac46b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>看过这些数据之后，我们想要计算一个比较简单的指标：美国各州的人<br/>
-口密度排名。虽然可以直接通过计算每张表获取结果，但这次试着用数<br/>
-据集连接来解决这个问题。<br/>
-首先用一个多对一合并获取人口（pop）DataFrame 中各州名称缩写对<br/>
-应的全称。我们需要将 pop 的 state/region 列与 abbrevs 的<br/>
-abbreviation 列进行合并，还需要通过 how='outer' 确保数据没有<br/>
-丢失。</p>
+<p>GroupBy 里的 apply() 方法非常灵活，唯一需要注意的地方是它
+总是输入分组数据的 DataFrame，返回 Pandas 对象或标量。具体
+如何选择需要视情况而定。</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8b3c311b-0b71-4a4d-a7f8-a0df3350d04d">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=af6e862e-6206-4627-a4f0-01b3a44a9e0e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="4">
+<li>设置分割的键</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=208114a1-47fc-4701-9088-38ac1cbc0bb9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>前面的简单例子一直在用列名分割 DataFrame。这只是众多分组操<br/>
+作中的一种，下面将继续介绍更多的分组方法。<br/>
+(1) 将列表、数组、Series 或索引作为分组键。分组键可以是长度<br/>
+与 DataFrame 匹配的任意 Series 或列表，例如：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=29188475-acd4-4750-ab6c-21b90bcb5bb5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">pop</span><span class="p">,</span><span class="n">abbrevs</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">'outer'</span><span class="p">,</span>
-                 <span class="n">left_on</span><span class="o">=</span><span class="s1">'state/region'</span><span class="p">,</span><span class="n">right_on</span><span class="o">=</span><span class="s1">'abbreviation'</span><span class="p">)</span>
-<span class="n">merged</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'abbreviation'</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#丢弃重复信息</span>
-<span class="n">merged</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  key  data1  data2
+0   A      0      5
+1   B      1      0
+2   C      2      3
+3   A      3      3
+4   B      4      7
+5   C      5      9
+   key  data1  data2
+0  ACC      7     17
+1   BA      4      3
+2    B      4      7
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4e63fa54-d554-4dfb-a599-1f637187d1e7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>因此，还有一种比前面直接用列名更啰嗦的表示方法
+df.groupby('key')：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=15206117-8578-4c6f-84fe-8c6d25241f1f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'key'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>  key  data1  data2
+0   A      0      5
+1   B      1      0
+2   C      2      3
+3   A      3      3
+4   B      4      7
+5   C      5      9
+     data1  data2
+key              
+A        3      8
+B        5      7
+C        7     12
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b84aa665-a301-43ba-afa2-c4daf5fb09b3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>(2) 用字典或 Series 将索引映射到分组名称。另一种方法是提供一
+个字典，将索引映射到分组键：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=25bfe4ff-906b-43e8-b0e3-004a68767bef">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'key'</span><span class="p">)</span> <span class="c1">#设置多级索引名称为‘key’</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span> <span class="s1">'vowel'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span> <span class="s1">'consonant'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span> <span class="s1">'consonant'</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>     data1  data2
+key              
+A        0      5
+B        1      0
+C        2      3
+A        3      3
+B        4      7
+C        5      9
+           data1  data2
+key                    
+consonant     12     19
+vowel          3      8
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8b3a079a-3c87-4d11-ae62-efc34e0d54f9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>(3) 任意 Python 函数。与前面的字典映射类似，你可以将任意
+Python 函数传入 groupby，函数映射到索引，然后新的分组输出：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d148bf79-2734-45cf-bbd6-c739cfe8b973">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>     data1  data2
+key              
+A        0      5
+B        1      0
+C        2      3
+A        3      3
+B        4      7
+C        5      9
+     data1  data2
+key              
+a      1.5    4.0
+b      2.5    3.5
+c      3.5    6.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=baedb5bc-3fae-4d6d-a137-0eeb1889e248">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>(4) 多个有效键构成的列表。此外，任意之前有效的键都可以组合
+起来进行分组，从而返回一个多级索引的分组结果：</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4a97bb49-9aa5-4947-b9bd-42a3f8c3ef52">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span><span class="n">mapping</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -9199,7 +9852,7 @@ abbreviation 列进行合并，还需要通过 how='outer' 确保数据没有<br
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9219,53 +9872,35 @@ abbreviation 列进行合并，还需要通过 how='outer' 确保数据没有<br
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>state/region</th>
-<th>ages</th>
-<th>year</th>
-<th>population</th>
-<th>state</th>
+<th></th>
+<th>data1</th>
+<th>data2</th>
+</tr>
+<tr>
+<th>key</th>
+<th>key</th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>0</th>
-<td>AK</td>
-<td>total</td>
-<td>1990</td>
-<td>553290.0</td>
-<td>Alaska</td>
+<th>a</th>
+<th>vowel</th>
+<td>1.5</td>
+<td>4.0</td>
 </tr>
 <tr>
-<th>1</th>
-<td>AK</td>
-<td>under18</td>
-<td>1990</td>
-<td>177502.0</td>
-<td>Alaska</td>
+<th>b</th>
+<th>consonant</th>
+<td>2.5</td>
+<td>3.5</td>
 </tr>
 <tr>
-<th>2</th>
-<td>AK</td>
-<td>total</td>
-<td>1992</td>
-<td>588736.0</td>
-<td>Alaska</td>
-</tr>
-<tr>
-<th>3</th>
-<td>AK</td>
-<td>under18</td>
-<td>1991</td>
-<td>182180.0</td>
-<td>Alaska</td>
-</tr>
-<tr>
-<th>4</th>
-<td>AK</td>
-<td>under18</td>
-<td>1992</td>
-<td>184878.0</td>
-<td>Alaska</td>
+<th>c</th>
+<th>consonant</th>
+<td>3.5</td>
+<td>6.0</td>
 </tr>
 </tbody>
 </table>
@@ -9275,26 +9910,33 @@ abbreviation 列进行合并，还需要通过 how='outer' 确保数据没有<br
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=755b8c30-9eb0-4c75-918e-05ac99b6907f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c56541b6-3533-4ca0-9b89-ae7f0709eab4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>来全面检查一下数据是否有缺失，我们可以对每个字段逐行检查是否有
-缺失值：</p>
+<ol start="5">
+<li>分组案例
+通过下例中的几行 Python 代码，我们就可以运用上述知识，获取
+不同方法和不同年份发现的行星数量：</li>
+</ol>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=53295fb3-13d7-4859-b0d0-57016a9ef9ad">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1049db79-c076-434d-9d8e-99d6dc19a567">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">merged</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">decade</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="p">(</span><span class="n">planets</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span><span class="o">//</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">decade</span> <span class="o">=</span> <span class="n">decade</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'s'</span>
+<span class="n">decade</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'decade'</span>
+<span class="n">planets</span><span class="o">.</span>\
+<span class="n">groupby</span><span class="p">([</span><span class="s1">'method'</span><span class="p">,</span> <span class="n">decade</span><span class="p">])[</span><span class="s1">'number'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9305,49 +9947,7 @@ abbreviation 列进行合并，还需要通过 how='outer' 确保数据没有<br
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>state/region     0
-ages             0
-year             0
-population      20
-state           96
-dtype: int64</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fe05abfe-d740-4508-9787-1d92d1aec511">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>部分 population 是缺失值，让我们仔细看看那些数据！</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7858ef34-35dc-43cb-88e7-7843b3a0cf94">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">merged</span><span class="p">[</span><span class="n">merged</span><span class="p">[</span><span class="s1">'population'</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9366,54 +9966,90 @@ dtype: int64</pre>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
+<th>decade</th>
+<th>1980s</th>
+<th>1990s</th>
+<th>2000s</th>
+<th>2010s</th>
+</tr>
+<tr>
+<th>method</th>
 <th></th>
-<th>state/region</th>
-<th>ages</th>
-<th>year</th>
-<th>population</th>
-<th>state</th>
+<th></th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>1872</th>
-<td>PR</td>
-<td>under18</td>
-<td>1990</td>
-<td>NaN</td>
-<td>NaN</td>
+<th>Astrometry</th>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.0</td>
 </tr>
 <tr>
-<th>1873</th>
-<td>PR</td>
-<td>total</td>
-<td>1990</td>
-<td>NaN</td>
-<td>NaN</td>
+<th>Eclipse Timing Variations</th>
+<td>0.0</td>
+<td>0.0</td>
+<td>5.0</td>
+<td>10.0</td>
 </tr>
 <tr>
-<th>1874</th>
-<td>PR</td>
-<td>total</td>
-<td>1991</td>
-<td>NaN</td>
-<td>NaN</td>
+<th>Imaging</th>
+<td>0.0</td>
+<td>0.0</td>
+<td>29.0</td>
+<td>21.0</td>
 </tr>
 <tr>
-<th>1875</th>
-<td>PR</td>
-<td>under18</td>
-<td>1991</td>
-<td>NaN</td>
-<td>NaN</td>
+<th>Microlensing</th>
+<td>0.0</td>
+<td>0.0</td>
+<td>12.0</td>
+<td>15.0</td>
 </tr>
 <tr>
-<th>1876</th>
-<td>PR</td>
-<td>total</td>
-<td>1993</td>
-<td>NaN</td>
-<td>NaN</td>
+<th>Orbital Brightness Modulation</th>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>5.0</td>
+</tr>
+<tr>
+<th>Pulsar Timing</th>
+<td>0.0</td>
+<td>9.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>Pulsation Timing Variations</th>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>Radial Velocity</th>
+<td>1.0</td>
+<td>52.0</td>
+<td>475.0</td>
+<td>424.0</td>
+</tr>
+<tr>
+<th>Transit</th>
+<td>0.0</td>
+<td>0.0</td>
+<td>64.0</td>
+<td>712.0</td>
+</tr>
+<tr>
+<th>Transit Timing Variations</th>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>9.0</td>
 </tr>
 </tbody>
 </table>
@@ -9423,656 +10059,22 @@ dtype: int64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c1685850-d3a3-41c0-8e03-598e26ed818a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0234866-e976-4fe4-b618-2ea3e1e53cbd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>好像所有的人口缺失值都出现在 2000 年之前的波多黎各 ，此前并没有
-统计过波多黎各的人口。</p>
+<p>此例足以展现 GroupBy 在探索真实数据集时快速组合多种操作的
+能力——只用寥寥几行代码，就可以让我们立即对过去几十年里不
+同年代的行星发现方法有一个大概的了解。
+我建议你花点时间分析这几行代码，确保自己真正理解了每一行代
+码对结果产生了怎样的影响。虽然这个例子的确有点儿复杂，但是
+理解这几行代码的含义可以帮你掌握分析类似数据的方法。</p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eb87a521-9d9a-412a-bbc1-afed2db6e318">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>更重要的是，我们还发现一些新的州的数据也有缺失，可能是由于名称
-缩写没有匹配上全程！来看看究竟是哪个州有缺失：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=030ad756-3835-455e-a0e4-cf1951d38d9a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">merged</span><span class="p">[</span><span class="s1">'state'</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span><span class="s1">'state/region'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>array(['PR', 'USA'], dtype=object)</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b054468f-6479-4493-9871-c49d1301ddcd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>我们可以快速解决这个问题：人口数据中包含波多黎各（PR）和全国
-总数（USA），但这两项没有出现在州名称缩写表中。来快速填充对应
-的全称：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4e5f54a2-4ffc-4439-98e2-59fa3042e60f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">merged</span><span class="p">[</span><span class="s1">'state/region'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'PR'</span><span class="p">,</span> <span class="s1">'state'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Puerto Rico'</span>
-<span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">merged</span><span class="p">[</span><span class="s1">'state/region'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'USA'</span><span class="p">,</span> <span class="s1">'state'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'United States'</span>
-<span class="n">merged</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>state/region    False
-ages            False
-year            False
-population       True
-state           False
-dtype: bool</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9c68b1bd-dbc3-45b8-b61d-d8fb43796905">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>现在 state 列没有缺失值了，万事俱备！
-让我们用类似的规则将面积数据也合并进来。用两个数据集共同的
-state 列来合并：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ff7400d2-8dfd-4b49-842b-7cadece1672d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [44]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">merged</span><span class="p">,</span> <span class="n">areas</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'state'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
-<span class="n">final</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[44]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>state/region</th>
-<th>ages</th>
-<th>year</th>
-<th>population</th>
-<th>state</th>
-<th>area (sq. mi)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>AK</td>
-<td>total</td>
-<td>1990</td>
-<td>553290.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-<tr>
-<th>1</th>
-<td>AK</td>
-<td>under18</td>
-<td>1990</td>
-<td>177502.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-<tr>
-<th>2</th>
-<td>AK</td>
-<td>total</td>
-<td>1992</td>
-<td>588736.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-<tr>
-<th>3</th>
-<td>AK</td>
-<td>under18</td>
-<td>1991</td>
-<td>182180.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-<tr>
-<th>4</th>
-<td>AK</td>
-<td>under18</td>
-<td>1992</td>
-<td>184878.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c855a238-a680-4851-81f6-6f951d0b2518">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>再检查一下数据，看看哪些列还有缺失值，没有匹配上：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f72495d7-501f-4324-9242-8110ec3143b4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">final</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[45]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>state/region     False
-ages             False
-year             False
-population        True
-state            False
-area (sq. mi)     True
-dtype: bool</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=04c616ee-2d91-4d08-bb09-84b32d9900cc">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>面积 area 列里面还有缺失值。来看看究竟是哪些地区面积缺失：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d85340cf-4fe8-42ef-b397-c1805a9f1afd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">final</span><span class="p">[</span><span class="s1">'state'</span><span class="p">][</span><span class="n">final</span><span class="p">[</span><span class="s1">'area (sq. mi)'</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[46]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>array(['United States'], dtype=object)</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e2d059d3-e441-45a1-b322-5f7ae767f7c7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>我们发现面积（areas）DataFrame 里面不包含全美国的面积数据。可
-以插入全国总面积数据（对各州面积求和即可），但是针对本案例，我
-们要去掉这个缺失值，因为全国的人口密度在此无关紧要：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6aaf5bea-6ee0-4102-8c98-25cf73bf1a71">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">final</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">final</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>state/region</th>
-<th>ages</th>
-<th>year</th>
-<th>population</th>
-<th>state</th>
-<th>area (sq. mi)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>AK</td>
-<td>total</td>
-<td>1990</td>
-<td>553290.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-<tr>
-<th>1</th>
-<td>AK</td>
-<td>under18</td>
-<td>1990</td>
-<td>177502.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-<tr>
-<th>2</th>
-<td>AK</td>
-<td>total</td>
-<td>1992</td>
-<td>588736.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-<tr>
-<th>3</th>
-<td>AK</td>
-<td>under18</td>
-<td>1991</td>
-<td>182180.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-<tr>
-<th>4</th>
-<td>AK</td>
-<td>under18</td>
-<td>1992</td>
-<td>184878.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc794cf7-a250-4f03-b47a-10eef97e57a4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>现在所有的数据都准备好了。为了解决眼前的问题，先选择 2000 年的
-各州人口以及总人口数据。让我们用 query() 函数进行快速计算（这
-需要用到 numexpr 程序库，详情请参见 3.13 节）：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f59b1cbe-ffb7-47b1-8b8c-ce74113798a4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">data2010</span> <span class="o">=</span> <span class="n">final</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"year == 2010 &amp; ages == 'total'"</span><span class="p">)</span>
-<span class="n">data2010</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>state/region</th>
-<th>ages</th>
-<th>year</th>
-<th>population</th>
-<th>state</th>
-<th>area (sq. mi)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>43</th>
-<td>AK</td>
-<td>total</td>
-<td>2010</td>
-<td>713868.0</td>
-<td>Alaska</td>
-<td>656425.0</td>
-</tr>
-<tr>
-<th>51</th>
-<td>AL</td>
-<td>total</td>
-<td>2010</td>
-<td>4785570.0</td>
-<td>Alabama</td>
-<td>52423.0</td>
-</tr>
-<tr>
-<th>141</th>
-<td>AR</td>
-<td>total</td>
-<td>2010</td>
-<td>2922280.0</td>
-<td>Arkansas</td>
-<td>53182.0</td>
-</tr>
-<tr>
-<th>149</th>
-<td>AZ</td>
-<td>total</td>
-<td>2010</td>
-<td>6408790.0</td>
-<td>Arizona</td>
-<td>114006.0</td>
-</tr>
-<tr>
-<th>197</th>
-<td>CA</td>
-<td>total</td>
-<td>2010</td>
-<td>37333601.0</td>
-<td>California</td>
-<td>163707.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=90746e69-1542-4d66-ad50-ceb69349aaa8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>现在来计算人口密度并按序排列。首先对索引进行重置，然后再计算结
-果：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ff2f77dc-9d88-48dd-9158-3f65e600d56d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">data2010</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'state'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">density</span> <span class="o">=</span> <span class="n">data2010</span><span class="p">[</span><span class="s1">'population'</span><span class="p">]</span> <span class="o">/</span> <span class="n">data2010</span><span class="p">[</span><span class="s1">'area (sq. mi)'</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a9b7517e-3d7c-436e-8d05-5e94107ca8d0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">density</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">density</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[50]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>state
-District of Columbia    8898.897059
-Puerto Rico             1058.665149
-New Jersey              1009.253268
-Rhode Island             681.339159
-Connecticut              645.600649
-dtype: float64</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a83889af-09d8-4bc4-afb9-d8a3e284e1b6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>计算结果是美国各州加上华盛顿特区（Washington, DC）、波多黎各在<br/>
-2010 年的人口密度排序，以万人 / 平方英里为单位。我们发现人口密度<br/>
-最高的地区是华盛顿特区的哥伦比亚地区（the District of Columbia）。
-在各州的人口密度中，新泽西州（New Jersey）是最高的。</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a2a44230-643f-4fe0-964e-6bfc9763e889">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>还可以看看人口密度最低的几个州的数据：</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ab8b2603-7d37-40ef-8338-5e2e8afccb41">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">density</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[51]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>state
-South Dakota    10.583512
-North Dakota     9.537565
-Montana          6.736171
-Wyoming          5.768079
-Alaska           1.087509
-dtype: float64</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f2ac2580-9714-4d06-a1a3-530d13f0dcd7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>可以看出，人口密度最低的州是阿拉斯加（Alaska），刚刚超过 1 万人<br/>
-/ 平方英里。<br/>
-当人们用现实世界的数据解决问题时，合并这类脏乱的数据是十分常见<br/>
-的任务。希望这个案例可以帮你把前面介绍过的工具串起来，从而在数<br/>
-据中找到想要的答案</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=794acb81-7868-42b6-9017-a0ff175689dc">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=bab37a34-28cf-424b-b8d0-cc306b7c737c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
